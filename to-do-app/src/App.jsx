@@ -1,11 +1,15 @@
 import './App.css'
+import AuthenticationPage from './components/AuthenticationPage'
+import { Route, Routes } from 'react-router-dom'
+
 
 function App() {
 
   return (
     <>
-    
-      <section id="spacer">hey</section>
+      <Routes>
+        <Route path='/login' element={<AuthenticationPage />} />
+      </Routes>
     </>
   )
 }
