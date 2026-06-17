@@ -1,14 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import './Login.css'
+import axios from "axios";
 
 const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [data, setData] = useState([])
+
+    useEffect(() =>{
+        const fetchData = async () => {
+            const response = await axios.get('/api/login-info')
+            setData(response.data)
+        }
+
+        console.log(data)
+
+        fetchData()
+        
+    },[])
 
     const handleData = (e) => {
         e.preventDefault()
 
-        
+
     }
 
     return (
