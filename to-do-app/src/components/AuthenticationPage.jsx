@@ -2,7 +2,7 @@ import './AuthenticationPage.css'
 import { Outlet } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 
 
 const AuthenticationPage = () => {
