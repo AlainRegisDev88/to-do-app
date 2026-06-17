@@ -1,6 +1,27 @@
-.authentication-container{
+.authentication-container {
     display: flex;
     height: 100vh;
     align-items: center;
     justify-content: center;
+}
+
+.auth-body {
+    display: flex;
+    margin: auto;
+    background-color: beige;
+    flex-direction: column;
+    padding: 5rem 3rem;
+    gap: 10px;
+    align-items: center;
+    border-radius: 25px;
+    box-shadow: 0px 0px 40px 1px rgba(255, 255, 255, 0.46);
+}
+
+.auth-header {
+    position: sticky;
+}
+
+.auth-link {
+    text-decoration: none;
+    color: rgba(14, 1, 53);
 }
