@@ -8,8 +8,8 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "start": "node server.js",
-    "dev:backend": "nodemon  server.js"
+    "start": "node server.cjs",
+    "dev:backend": "nodemon  server.cjs"
   },
   "dependencies": {
     "express": "^5.2.1",
