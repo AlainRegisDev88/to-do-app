@@ -8,7 +8,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/api/login-info', (req, res) => {
-    res.json({
+    res.json([{
         id: 'us_1',
         name: "Regis",
         email: "regis@gmail.com",
@@ -19,7 +19,7 @@ app.get('/api/login-info', (req, res) => {
         name: "Roger",
         email: "roger@gmail.com",
         password: "roger"
-    },
+    }]
     )
 })
 

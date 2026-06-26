@@ -1,27 +1,47 @@
 import { useEffect, useState } from "react";
 import './Login.css'
 import axios from "axios";
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
+    const navigate = useNavigate()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [data, setData] = useState([])
+    const [ failMessage, setFailMessage ] = useState('')
 
-    useEffect(() =>{
+    useEffect(() => {
         const fetchData = async () => {
             const response = await axios.get('/api/login-info')
             setData(response.data)
         }
 
-        console.log(data)
-
         fetchData()
-        
-    },[])
+
+
+
+    }, [])
 
     const handleData = (e) => {
         e.preventDefault()
 
+        const handleLogin = () => {
+            const user = data.find((info) => {
+                return info.email === email
+            })
+
+            if(user && user.password === password){
+                const message = 'Login Successful';
+                navigate('/', {state: {message: message, name: user.name}});
+            } 
+            else{
+                setFailMessage("Wrong credentials")
+                console.log(failMessage)
+                console.log(password)
+            }
+        }
+
+        handleLogin()
 
     }
 
@@ -59,6 +79,7 @@ const Login = () => {
                         <div className="class-item">
                             <button type="submit" className="submit-button">Submit</button>
                         </div>
+                        <div>{failMessage}</div>
                     </div>
                 </form>
             </div>
