@@ -17,9 +17,6 @@ const Login = () => {
         }
 
         fetchData()
-
-
-
     }, [])
 
     const handleData = (e) => {

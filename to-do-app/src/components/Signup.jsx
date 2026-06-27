@@ -1,17 +1,38 @@
-import { useState } from 'react'
-
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 import './Signup.css'
 
 const Signup = () => {
+    // this page states
     const [fullName, setFullName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
 
+    // other states
+    const [data, setData] = useState([])
+    const [message, setMessage] = useState('')
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await axios.get('/api/login-info')
+            console.log(response.data)
+            setData(response.data)
+        }
+
+        fetchData()
+
+    }, [])
+
+    axios.get('/api/login-info')
+
     const handleData = (e) => {
         e.preventDefault()
 
         
+
+
+
     }
 
     return (
@@ -69,6 +90,7 @@ const Signup = () => {
                                 required
                             />
                         </div>
+                        <div className="message">{message}</div>
 
                         <div className="class-item">
                             <button type="submit" className="submit-button">Submit</button>
@@ -79,5 +101,5 @@ const Signup = () => {
         </div>
     );
 }
- 
+
 export default Signup;
