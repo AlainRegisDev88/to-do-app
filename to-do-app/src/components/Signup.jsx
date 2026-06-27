@@ -29,7 +29,13 @@ const Signup = () => {
     const handleData = (e) => {
         e.preventDefault()
 
-        
+        if (email != data.email) {
+            const newUser = {
+                id: 
+            }
+
+                axios.post()
+        }
 
 
 
