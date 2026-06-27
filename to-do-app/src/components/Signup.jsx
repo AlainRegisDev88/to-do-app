@@ -31,7 +31,7 @@ const Signup = () => {
     const handleData = async (e) => {
         e.preventDefault()
 
-        if (email != data.email) {
+        if (email != data.email && password === confirmPassword) {
             const newUser = {
                 id: uuidv4(),
                 name: name,
