@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import {v4 as uuidv4} from 'uuid'
 import './Signup.css'
+import { useNavigate } from 'react-router-dom'
 
 const Signup = () => {
     // this page states
@@ -8,6 +10,7 @@ const Signup = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
+    const navigate  = useNavigate()
 
     // other states
     const [data, setData] = useState([])
@@ -24,17 +27,33 @@ const Signup = () => {
 
     }, [])
 
-    axios.get('/api/login-info')
 
-    const handleData = (e) => {
+    const handleData = async (e) => {
         e.preventDefault()
 
         if (email != data.email) {
             const newUser = {
-                id: 
+                id: uuidv4(),
+                name: name,
+                email: email,
+                password: password
             }
 
-                axios.post()
+        
+            await axios.post('/api/login-info',{
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'Application/json'
+                },
+                body: JSON.stringify(newUser)
+            })
+
+            alert('Data Submitted Successfully!')
+            navigate('/auth/login', {state: {message: 'Signup Successful'}})
+        }
+        else{
+            setMessage('Something Went Wrong :(')
+            console.log(message)
         }
 
 
