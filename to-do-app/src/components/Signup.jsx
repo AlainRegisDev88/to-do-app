@@ -40,16 +40,10 @@ const Signup = () => {
             }
 
         
-            await axios.post('/api/login-info',{
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'Application/json'
-                },
-                body: JSON.stringify(newUser)
-            })
+            const response = await axios.post('/api/login-info', newUser)
+            console.log('Server Response: ', response.data)
 
-            alert('Data Submitted Successfully!')
-            navigate('/auth/login', {state: {message: 'Signup Successful'}})
+            navigate('/auth/login', {state: {message: response.data, name:name}})
         }
         else{
             setMessage('Something Went Wrong :(')

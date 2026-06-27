@@ -27,15 +27,19 @@ app.get('/api/login-info', (req, res) => {
 
 app.post('/api/login-info', (req, res) => {
     const newUser = req.body
+    
+    console.log(newUser)
 
     res.json({
         message: 'Saved the new user',
         savedUser: newUser
     })
+
+
 })
 
 
-    
+
 app.listen(PORT, () => {
     console.log(`server running on port http://localhost:${PORT}`)
 })
