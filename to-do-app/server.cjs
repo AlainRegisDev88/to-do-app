@@ -3,6 +3,8 @@ const app = express()
 
 const PORT = 4000
 
+app.use(express.json())
+
 app.get('/', (req, res) => {
     res.send('Hello mate!')
 })
@@ -27,11 +29,11 @@ app.get('/api/login-info', (req, res) => {
 
 app.post('/api/login-info', (req, res) => {
     const newUser = req.body
-    
+
     console.log(newUser)
 
     res.json({
-        message: 'Saved the new user',
+        message: 'Signup Successful',
         savedUser: newUser
     })
 

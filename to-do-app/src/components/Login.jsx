@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import './Login.css'
 import axios from "axios";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 
 const Login = () => {
@@ -10,6 +10,9 @@ const Login = () => {
     const [password, setPassword] = useState('')
     const [data, setData] = useState([])
     const [ failMessage, setFailMessage ] = useState('')
+
+    const location = useLocation()
+    const {successMessage, name} = location.state || {}
 
     useEffect(() => {
         const fetchData = async () => {
@@ -77,7 +80,7 @@ const Login = () => {
                         <div className="class-item">
                             <button type="submit" className="submit-button">Submit</button>
                         </div>
-                        <div>{failMessage}</div>
+                        <div>{failMessage}{`${successMessage}, You Can now login ${name}`}</div>
                     </div>
                 </form>
             </div>

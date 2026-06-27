@@ -34,16 +34,18 @@ const Signup = () => {
         if (email != data.email && password === confirmPassword) {
             const newUser = {
                 id: uuidv4(),
-                name: name,
+                name: fullName,
                 email: email,
                 password: password
             }
 
         
             const response = await axios.post('/api/login-info', newUser)
-            console.log('Server Response: ', response.data)
 
-            navigate('/auth/login', {state: {message: response.data, name:name}})
+            const successMessage = response.data.message
+            console.log(successMessage)
+
+            navigate('/auth/login', {state: {successMessage: successMessage, name: fullName}})
         }
         else{
             setMessage('Something Went Wrong :(')
