@@ -1,5 +1,8 @@
 const express = require('express');
 const app = express()
+const mysql = require('mysql2/promise')
+
+require('dotenv').config();
 
 const PORT = 4000
 
