@@ -1,47 +1,25 @@
 const express = require('express');
+const cors = require('cors')
 const app = express()
 const mysql = require('mysql2/promise')
 
 require('dotenv').config();
 
-const PORT = 4000
+const PORT = process.env.PORT || 5000
 
+
+// middleware
+app.use(cors())
 app.use(express.json())
 
-app.get('/', (req, res) => {
+
+app.get('/test', (req, res) => {
     res.send('Hello mate!')
 })
 
-app.get('/api/login-info', (req, res) => {
-    res.json([{
-        id: 'us_1',
-        name: "Regis",
-        email: "regis@gmail.com",
-        password: "regis"
-    },
-    {
-        id: 'us_2',
-        name: "Roger",
-        email: "roger@gmail.com",
-        password: "roger"
-    }]
-    )
-})
-
-// saving a new user
-
-app.post('/api/login-info', (req, res) => {
-    const newUser = req.body
-
-    console.log(newUser)
-
-    res.json({
-        message: 'Signup Successful',
-        savedUser: newUser
-    })
 
 
-})
+
 
 
 
