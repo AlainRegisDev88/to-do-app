@@ -51,7 +51,9 @@ app.post('/api/users', async(req, res) =>{
 
 })
 
-app.get('api/users', async(req, res) => {
+
+
+app.get('/api/users', async(req, res) => {
 
     try{
         const connection = await pool.getConnection()
@@ -71,6 +73,8 @@ app.get('api/users', async(req, res) => {
         res.status(500).json({message: 'Failed to get the user'})
     }
 })
+
+
 
 
 app.listen(PORT, () => {

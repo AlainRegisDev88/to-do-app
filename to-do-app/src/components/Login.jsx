@@ -27,7 +27,7 @@ const Login = () => {
         e.preventDefault()
 
         const handleLogin = () => {
-            const user = data.find((targetUser) => {
+            const user = data.users.find((targetUser) => {
                 return targetUser.email === email
             })
 
