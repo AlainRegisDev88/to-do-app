@@ -55,7 +55,7 @@ app.get('api/users', async(req, res) => {
 
     try{
         const connection = await pool.getConnection()
-        const [rows] = connection.execute(
+        const [rows] = await connection.execute(
             "SELECT * FROM users"
         )
         connection.release()
