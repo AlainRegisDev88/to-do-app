@@ -6,12 +6,12 @@ const mysql = require('mysql2/promise')
 require('dotenv').config();
 
 const PORT = process.env.PORT || 5000
+const pool = require('./db')
 
 
 // middleware
 app.use(cors())
 app.use(express.json())
-
 
 app.get('/test', (req, res) => {
     res.send('Hello mate!')
