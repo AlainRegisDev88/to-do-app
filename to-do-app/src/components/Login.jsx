@@ -16,7 +16,7 @@ const Login = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await axios.get('/api/login-info')
+            const response = await axios.get('/api/users')
             setData(response.data)
         }
 
@@ -27,8 +27,8 @@ const Login = () => {
         e.preventDefault()
 
         const handleLogin = () => {
-            const user = data.find((info) => {
-                return info.email === email
+            const user = data.find((targetUser) => {
+                return targetUser.email === email
             })
 
             if(user && user.password === password){
