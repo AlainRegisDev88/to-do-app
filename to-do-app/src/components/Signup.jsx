@@ -13,27 +13,25 @@ const Signup = () => {
     const navigate  = useNavigate()
 
     // other states
-    // const [data, setData] = useState([])
+    const [data, setData] = useState([])
     const [message, setMessage] = useState('')
 
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         const response = await axios.get('/api/users')
-    //         console.log(response.data)
-    //         setData(response.data)
-    //     }
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await axios.get('/api/users')
+            console.log(response.data)
+            setData(response.data)
+        }
 
-    //     fetchData()
+        fetchData()
 
-    // }, [])
+    }, [])
 
 
     const handleData = async (e) => {
         e.preventDefault()
 
-        // if (email != data.email && password === confirmPassword) {
-        const TRUE = true
-        if (TRUE){
+        if (email != data.email && password === confirmPassword) {
             const newUser = {
                 id: uuidv4(),
                 name: fullName,

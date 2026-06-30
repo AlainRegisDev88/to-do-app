@@ -51,6 +51,27 @@ app.post('/api/users', async(req, res) =>{
 
 })
 
+app.get('api/users', async(req, res) => {
+
+    try{
+        const connection = await pool.getConnection()
+        const [rows] = connection.execute(
+            "SELECT * FROM users"
+        )
+        connection.release()
+
+        res.json({
+            message: "Users retrieved successfully",
+            count: rows.length,
+            users: rows
+        })
+    }
+    catch(error){
+        console.log(error);
+        res.status(500).json({message: 'Failed to get the user'})
+    }
+})
+
 
 app.listen(PORT, () => {
     console.log(`server running on port http://localhost:${PORT}`)
