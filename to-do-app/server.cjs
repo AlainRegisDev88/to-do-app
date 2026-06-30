@@ -6,7 +6,7 @@ const mysql = require('mysql2/promise')
 require('dotenv').config();
 
 const PORT = process.env.PORT || 5000
-const pool = require('./db')
+const pool = require('./db.cjs')
 
 
 // middleware
