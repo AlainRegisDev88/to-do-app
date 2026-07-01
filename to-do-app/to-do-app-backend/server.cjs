@@ -1,12 +1,16 @@
 const express = require('express');
 const cors = require('cors')
+const jwt = require('jsonwebtoken')
+const bcrypt = require('bcryptjs')
+const router = express.Router()
+
 const app = express()
 const mysql = require('mysql2/promise')
 
 require('dotenv').config();
 
 const PORT = process.env.PORT || 5000
-const pool = require('./db.cjs');
+const pool = require('../db.cjs');
 
 
 // middleware
