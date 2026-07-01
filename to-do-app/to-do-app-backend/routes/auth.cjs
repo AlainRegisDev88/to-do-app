@@ -101,7 +101,30 @@ router.post('/login', async (req, res) => {
             })
         }
 
-        
+        //generate a token
+        const token = jwt.sign(
+            {id: user.id, email: user.email},
+            process.env.JWT_SECRET,
+            {expiresIn:process.env.JWT_EXPIRE}
+        )
+
+        res.json({
+            message: "Login Successful!",
+            token,
+            user: {
+                id: user.id,
+                email:user.email,
+                name: user.fullName
+            }
+        })
 
     }
+    catch(error){
+        console.log(error),
+        res.status(500).json({
+            message: "Error loging you in"
+        })
+    }
 })
+
+module.exports = router;
