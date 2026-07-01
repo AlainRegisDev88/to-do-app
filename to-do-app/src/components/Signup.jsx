@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import {v4 as uuidv4} from 'uuid'
 import './Signup.css'
 import { useNavigate } from 'react-router-dom'
 
@@ -33,7 +32,6 @@ const Signup = () => {
 
         if (email != data.email && password === confirmPassword) {
             const newUser = {
-                id: uuidv4(),
                 name: fullName,
                 email: email,
                 password: password

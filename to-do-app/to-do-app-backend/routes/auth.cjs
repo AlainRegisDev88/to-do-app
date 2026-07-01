@@ -1,6 +1,7 @@
 const express = reuqire('express');
 const jwt = require('jsonwebtoken');
 const bkrypt = require('bcryptjs')
+const { randomUUID } = require('crypto')
 
 const router = express.Router()
 const pool = require('../db.cjs');
@@ -8,7 +9,8 @@ const { Connect } = require('vite');
 
 router.post('/signup', async (req, res) => {
     try{
-        const{id, name, email, password} = req.body
+        const userId =  randomUUID()
+        const{name, email, password} = req.body
 
         //validation
         if(!name || !email|| !password){
@@ -34,10 +36,10 @@ router.post('/signup', async (req, res) => {
 
         const result = await connection.execute(
             'insert into users (id, fullName, email, password) values(?,?,?,?)'
-            [id, name, email, hashedPassword]
+            [userId, name, email, hashedPassword]
         )
         connection.release()
 
-        const userId = result[0].insertId
+        
     }
 })
