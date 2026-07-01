@@ -8,12 +8,12 @@ const pool = require('../db.cjs');
 const { Connect } = require('vite');
 
 router.post('/signup', async (req, res) => {
-    try{
-        const userId =  randomUUID()
-        const{name, email, password} = req.body
+    try {
+        const userId = randomUUID()
+        const { name, email, password } = req.body
 
         //validation
-        if(!name || !email|| !password){
+        if (!name || !email || !password) {
             return res.status(400).json({
                 message: "Name, email and password required"
             })
@@ -23,7 +23,7 @@ router.post('/signup', async (req, res) => {
 
         const [existing] = await connection.execute('select * from users where email = ?', [email])
 
-        if(existing.length >0 ){
+        if (existing.length > 0) {
             return res.status(400).json({
                 message: 'User Already exist, try a different email'
             })
@@ -42,20 +42,56 @@ router.post('/signup', async (req, res) => {
 
         //generate a JWT
         const token = jwt.sign(
-            {id:userId, email},
+            { id: userId, email },
             process.env.JWT_SECRET,
-            {expiresIn: process.env.JWT_EXPIRE}
+            { expiresIn: process.env.JWT_EXPIRE }
         )
 
         res.status(201).json({
             message: 'User Created Successfully',
             token,
-            user: {id: userId, name, email}
+            user: { id: userId, name, email }
         })
     }
 
-    catch(error){
+    catch (error) {
         console.log(error),
-        res.status(500).json({message: 'Error creating the user'})
+            res.status(500).json({ message: 'Error creating the user' })
+    }
+})
+
+
+//LOGIN - verify credentials and return token
+router.post('/login', async (req, res) => {
+
+    try {
+        const { email, password } = req.body
+
+        //validate
+        if (!email || !password) {
+            return res.status(400).json({
+                message: "Email and password are required"
+            })
+        }
+
+        const connection = await pool.getConnection();
+
+        //find user by email
+        const [rows] = await connection.execute(
+            'select * from users where email = ?',
+            [email]
+        )
+        connection.release()
+
+        if (rows.length === 0) {
+            return res.status(401).json({
+                message: 'Invalid Username or email'
+            })
+        }
+
+        const user = rows[0]
+
+        
+
     }
 })
