@@ -48,9 +48,14 @@ const authService = {
 
     // Get Token
     getToken: () =>{
-        return localStorage.getItem('token')
+        return localStorage.getItem('token');
     },
 
     // check if the user is logged in
 
+    isLoggedIn: () =>{
+        return !!localStorage.getItem('token');
+    }
 }
+
+export default authService;
