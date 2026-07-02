@@ -2,6 +2,7 @@ import { useState } from "react";
 import './Login.css'
 import axios from "axios";
 import { useNavigate, useLocation } from 'react-router-dom'
+import authService from "../services/authService";
 
 
 const Login = () => {
@@ -16,14 +17,19 @@ const Login = () => {
 
     const handleData = async (e) => {
         e.preventDefault()
+        setLoading(true)
+        setError('')
 
         try {
-            const response = await axios.post('/api/auth/login', { email, password })
-            const user = response.data.user
-            const message = response.data.message
+            const result = await authService.login(email, password );
+            console.log('Login Successful', result.user)
+            const user =  result.user
+            const message = result.data.message
             navigate('/', {state: {message, name: user?.name || user?.email}})
         } catch (error) {
-            setError(error.response?.data?.message || 'Wrong credentials')
+            setError(error.toString() || 'Wrong credentials')
+        }finally{
+            setLoading(false)
         }
     }
 
@@ -61,7 +67,7 @@ const Login = () => {
                         <div className="class-item">
                             <button type="submit" className="submit-button">Submit</button>
                         </div>
-                        <div>{failMessage}{`${successMessage}, You Can now login ${name}`}</div>
+                        <div>{error}{successMessage && (`${successMessage}, You Can now login ${name}`)}</div>
                     </div>
                 </form>
             </div>
