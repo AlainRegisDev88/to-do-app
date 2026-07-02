@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import axios from 'axios'
+import authService from '../services/authService'
 import './Signup.css'
 import { useNavigate } from 'react-router-dom'
 
@@ -9,13 +9,16 @@ const Signup = () => {
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
     const navigate  = useNavigate()
-    const [message, setMessage] = useState('')
+    const [error, setError] = useState('')
+    const [loading, setLoading] = useState(false)
 
     const handleData = async (e) => {
         e.preventDefault()
+        setLoading(true)
+        setError('')
 
         if (password !== confirmPassword) {
-            setMessage('Passwords do not match')
+            setError('Passwords do not match')
             return
         }
 
@@ -26,10 +29,10 @@ const Signup = () => {
                 password
             }
 
-            const response = await axios.post('/api/auth/signup', newUser)
-            navigate('/auth/login', {state: {successMessage: response.data.message, name: fullName}})
+            const response = await authService.signup(newUser)
+            navigate('/auth/login', {state: {successMessage: response.message, name: response.user.name}})
         } catch (error) {
-            setMessage(error.response?.data?.message || 'Something went wrong :(')
+            setError(error.response?.data?.message || 'Error signing you up!')
         }
     }
 
@@ -88,7 +91,7 @@ const Signup = () => {
                                 required
                             />
                         </div>
-                        <div className="message">{message}</div>
+                        <div className="message">{error&&(error)}</div>
 
                         <div className="class-item">
                             <button type="submit" className="submit-button">Submit</button>

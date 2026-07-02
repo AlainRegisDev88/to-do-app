@@ -17,6 +17,8 @@ router.get('/login', (req, res) => {
     res.json({ message: 'Use POST /api/auth/login to sign in' })
 })
 
+
+// signup
 router.post('/signup', async (req, res) => {
     try {
         const userId = randomUUID()
@@ -95,7 +97,7 @@ router.post('/login', async (req, res) => {
 
         if (rows.length === 0) {
             return res.status(401).json({
-                message: 'Invalid email or password'
+                message: 'Invalid email or password1'
             })
         }
 
@@ -107,7 +109,7 @@ router.post('/login', async (req, res) => {
 
         if (!isPasswordValid) {
             return res.status(401).json({
-                message: "Invalid email or password"
+                message: "Invalid email or password2"
             })
         }
 

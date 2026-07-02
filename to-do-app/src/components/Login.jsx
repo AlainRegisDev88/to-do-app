@@ -1,6 +1,5 @@
 import { useState } from "react";
 import './Login.css'
-import axios from "axios";
 import { useNavigate, useLocation } from 'react-router-dom'
 import authService from "../services/authService";
 
@@ -24,7 +23,7 @@ const Login = () => {
             const result = await authService.login(email, password );
             console.log('Login Successful', result.user)
             const user =  result.user
-            const message = result.data.message
+            const message = result.user.message
             navigate('/', {state: {message, name: user?.name || user?.email}})
         } catch (error) {
             setError(error.toString() || 'Wrong credentials')

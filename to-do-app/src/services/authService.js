@@ -5,7 +5,7 @@ const API_URL = '/api/auth'
 const authService = {
 
     //signup
-    signup: async (name, email, password) => {
+    signup: async ({name, email, password}) => {
         try {
             const response = await axios.post(`${API_URL}/signup`, {
                 name,
