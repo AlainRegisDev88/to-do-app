@@ -8,7 +8,8 @@ const Login = () => {
     const navigate = useNavigate()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [ failMessage, setFailMessage ] = useState('')
+    const [error, setError ] = useState('')
+    const [loading, setLoading] = useState(false)
 
     const location = useLocation()
     const {successMessage, name} = location.state || {}
@@ -22,7 +23,7 @@ const Login = () => {
             const message = response.data.message
             navigate('/', {state: {message, name: user?.name || user?.email}})
         } catch (error) {
-            setFailMessage(error.response?.data?.message || 'Wrong credentials')
+            setError(error.response?.data?.message || 'Wrong credentials')
         }
     }
 
