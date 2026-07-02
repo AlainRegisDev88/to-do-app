@@ -1,11 +1,12 @@
 const express = require('express');
 const cors = require('cors')
+const path = require('path')
 const authRoutes = require('./routes/auth.cjs')
 const verifyToken = require('./middleware/auth.cjs')
 
 const app = express()
 
-require('dotenv').config();
+require('dotenv').config({ path: path.join(__dirname, '.env') });
 
 const PORT = process.env.PORT || 5000
 

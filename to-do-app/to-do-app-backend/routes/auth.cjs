@@ -1,4 +1,5 @@
-require('dotenv').config()
+const path = require('path')
+require('dotenv').config({ path: path.join(__dirname, '..', '.env') })
 
 const express = require('express');
 const jwt = require('jsonwebtoken');
@@ -7,6 +8,14 @@ const { randomUUID } = require('crypto')
 
 const router = express.Router()
 const pool = require('../db.cjs');
+
+router.get('/signup', (req, res) => {
+    res.json({ message: 'Use POST /api/auth/signup to create a user' })
+})
+
+router.get('/login', (req, res) => {
+    res.json({ message: 'Use POST /api/auth/login to sign in' })
+})
 
 router.post('/signup', async (req, res) => {
     try {
@@ -57,7 +66,7 @@ router.post('/signup', async (req, res) => {
 
     catch (error) {
         console.log(error),
-            res.status(500).json({ message: 'Error creating the user' })
+            res.status(500).json({ message: 'Error creating the user',systemError: error.message})            
     }
 })
 
@@ -96,7 +105,7 @@ router.post('/login', async (req, res) => {
 
         const isPasswordValid = await bcrypt.compare(password, user.password)
 
-        if(!isPasswordValid){
+        if (!isPasswordValid) {
             return res.status(401).json({
                 message: "Invalid email or password"
             })
@@ -104,9 +113,9 @@ router.post('/login', async (req, res) => {
 
         //generate a token
         const token = jwt.sign(
-            {id: user.id, email: user.email},
+            { id: user.id, email: user.email },
             process.env.JWT_SECRET,
-            {expiresIn:process.env.JWT_EXPIRE}
+            { expiresIn: process.env.JWT_EXPIRE }
         )
 
         res.json({
@@ -114,17 +123,18 @@ router.post('/login', async (req, res) => {
             token,
             user: {
                 id: user.id,
-                email:user.email,
+                email: user.email,
                 name: user.fullName
             }
         })
 
     }
-    catch(error){
+    catch (error) {
         console.log(error),
-        res.status(500).json({
-            message: "Error loging you in"
-        })
+            res.status(500).json({
+                message: "Error loging you in",
+                systemError: error.message
+            })
     }
 })
 

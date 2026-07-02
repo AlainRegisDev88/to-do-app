@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import './Login.css'
 import axios from "axios";
 import { useNavigate, useLocation } from 'react-router-dom'
@@ -8,42 +8,22 @@ const Login = () => {
     const navigate = useNavigate()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [data, setData] = useState([])
     const [ failMessage, setFailMessage ] = useState('')
 
     const location = useLocation()
     const {successMessage, name} = location.state || {}
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const response = await axios.get('/api/users')
-            setData(response.data)
-        }
-
-        fetchData()
-    }, [])
-
-    const handleData = (e) => {
+    const handleData = async (e) => {
         e.preventDefault()
 
-        const handleLogin = () => {
-            const user = data.users.find((targetUser) => {
-                return targetUser.email === email
-            })
-
-            if(user && user.password === password){
-                const message = 'Login Successful';
-                navigate('/', {state: {message: message, name: user.name}});
-            } 
-            else{
-                setFailMessage("Wrong credentials")
-                console.log(failMessage)
-                console.log(password)
-            }
+        try {
+            const response = await axios.post('/api/auth/login', { email, password })
+            const user = response.data.user
+            const message = response.data.message
+            navigate('/', {state: {message, name: user?.name || user?.email}})
+        } catch (error) {
+            setFailMessage(error.response?.data?.message || 'Wrong credentials')
         }
-
-        handleLogin()
-
     }
 
     return (

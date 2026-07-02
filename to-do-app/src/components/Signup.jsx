@@ -1,57 +1,36 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import axios from 'axios'
 import './Signup.css'
 import { useNavigate } from 'react-router-dom'
 
 const Signup = () => {
-    // this page states
     const [fullName, setFullName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
     const navigate  = useNavigate()
-
-    // other states
-    const [data, setData] = useState([])
     const [message, setMessage] = useState('')
-
-    useEffect(() => {
-        const fetchData = async () => {
-            const response = await axios.get('/api/users')
-            console.log(response.data)
-            setData(response.data)
-        }
-
-        fetchData()
-
-    }, [])
-
 
     const handleData = async (e) => {
         e.preventDefault()
 
-        if (email != data.email && password === confirmPassword) {
+        if (password !== confirmPassword) {
+            setMessage('Passwords do not match')
+            return
+        }
+
+        try {
             const newUser = {
                 name: fullName,
-                email: email,
-                password: password
+                email,
+                password
             }
 
-        
-            const response = await axios.post('/signup', newUser)
-
-            const successMessage = response.data.message
-            console.log(successMessage)
-
-            navigate('/auth/login', {state: {successMessage: successMessage, name: fullName}})
+            const response = await axios.post('/api/auth/signup', newUser)
+            navigate('/auth/login', {state: {successMessage: response.data.message, name: fullName}})
+        } catch (error) {
+            setMessage(error.response?.data?.message || 'Something went wrong :(')
         }
-        else{
-            setMessage('Something Went Wrong :(')
-            console.log(message)
-        }
-
-
-
     }
 
     return (
