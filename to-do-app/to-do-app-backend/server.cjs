@@ -75,9 +75,18 @@ app.use(express.json())
 */
 
 
+//unprotected route
 app.use('/api/auth', authRoutes)
 
-
+// protected route
+app.get('/api/profile', verifyToken, async (req, res) => {
+    try{
+        pass
+    }
+    catch(error){
+        console.log(error)
+    }
+})
 
 app.listen(PORT, () => {
     console.log(`server running on port http://localhost:${PORT}`)
