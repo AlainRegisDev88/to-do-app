@@ -38,7 +38,7 @@ const Signup = () => {
             }
 
         
-            const response = await axios.post('/api/users', newUser)
+            const response = await axios.post('/signup', newUser)
 
             const successMessage = response.data.message
             console.log(successMessage)

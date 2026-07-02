@@ -1,11 +1,12 @@
-const express = reuqire('express');
+require('dotenv').config()
+
+const express = require('express');
 const jwt = require('jsonwebtoken');
-const bkrypt = require('bcryptjs')
+const bcrypt = require('bcryptjs')
 const { randomUUID } = require('crypto')
 
 const router = express.Router()
 const pool = require('../db.cjs');
-const { Connect } = require('vite');
 
 router.post('/signup', async (req, res) => {
     try {
@@ -35,7 +36,7 @@ router.post('/signup', async (req, res) => {
         //create a new user 
 
         const result = await connection.execute(
-            'insert into users (id, fullName, email, password) values(?,?,?,?)'
+            'insert into users (id, fullName, email, password) values(?,?,?,?)',
             [userId, name, email, hashedPassword]
         )
         connection.release()
@@ -85,7 +86,7 @@ router.post('/login', async (req, res) => {
 
         if (rows.length === 0) {
             return res.status(401).json({
-                message: 'Invalid email or email'
+                message: 'Invalid email or password'
             })
         }
 

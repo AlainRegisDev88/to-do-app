@@ -1,83 +1,80 @@
 const express = require('express');
 const cors = require('cors')
-const jwt = require('jsonwebtoken')
-const bcrypt = require('bcryptjs')
-const router = express.Router()
+const authRoutes = require('./routes/auth.cjs')
+const verifyToken = require('./middleware/auth.cjs')
 
 const app = express()
-const mysql = require('mysql2/promise')
 
 require('dotenv').config();
 
 const PORT = process.env.PORT || 5000
-const pool = require('../db.cjs');
 
-
-// middleware
 app.use(cors())
 app.use(express.json())
 
+/* previous code no routes and tokens
 
-// test page
-app.get('/test', (req, res) => {
-    res.send('Hello mate!')
-})
+// // test page
+// app.get('/test', (req, res) => {
+//     res.send('Hello mate!')
+// })
 
-
-app.post('/api/users', async(req, res) =>{
+// app.post('/api/users', async(req, res) =>{
     
-    try{
-        const {id, name, email, password} = req.body
+//     try{
+//         const {id, name, email, password} = req.body
 
-        if (!id || !name || !email || !password){
-            return res.status(400).json({
-                message:"iNVALID INPUTS"
-            })
-        }
+//         if (!id || !name || !email || !password){
+//             return res.status(400).json({
+//                 message:"Invalid Inputs"
+//             })
+//         }
 
-        const connection = await pool.getConnection();
-        const result = await connection.execute(
-            "INSERT INTO users (id, fullName, email, password) VALUES(?,?,?,?)",
-            [id, name, email, password]
-        );
-        connection.release()
+//         const connection = await pool.getConnection();
+//         const result = await connection.execute(
+//             "INSERT INTO users (id, fullName, email, password) VALUES(?,?,?,?)",
+//             [id, name, email, password]
+//         );
+//         connection.release()
 
-        res.status(201).json({
-            message:'User created successfully',
-            userId: result[0].insertId,
-            user: {id: result[0].insertId, name, email }
-        })
-    }
-    catch(error){
-        console.log(error);
-        res.status(500).json({message: 'User was not registered :('})
-    }
+//         res.status(201).json({
+//             message:'User created successfully',
+//             userId: result[0].insertId,
+//             user: {id: result[0].insertId, name, email }
+//         })
+//     }
+//     catch(error){
+//         console.log(error);
+//         res.status(500).json({message: 'User was not registered :('})
+//     }
 
-})
+// })
+
+// app.get('/api/users', async(req, res) => {
+
+//     try{
+//         const connection = await pool.getConnection()
+//         const [rows] = await connection.execute(
+//             "SELECT * FROM users"
+//         )
+//         connection.release()
+
+//         res.json({
+//             message: "Users retrieved successfully",
+//             count: rows.length,
+//             users: rows
+//         })
+//     }
+//     catch(error){
+//         console.log(error);
+//         res.status(500).json({message: 'Failed to get the user'})
+//     }
+// })
+
+*/
 
 
-
-app.get('/api/users', async(req, res) => {
-
-    try{
-        const connection = await pool.getConnection()
-        const [rows] = await connection.execute(
-            "SELECT * FROM users"
-        )
-        connection.release()
-
-        res.json({
-            message: "Users retrieved successfully",
-            count: rows.length,
-            users: rows
-        })
-    }
-    catch(error){
-        console.log(error);
-        res.status(500).json({message: 'Failed to get the user'})
-    }
-})
-
+app.use('/api/auth', authRoutes)
 
 
 
