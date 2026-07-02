@@ -81,8 +81,23 @@ app.use('/api/auth', authRoutes)
 // protected route
 app.get('/api/profile', verifyToken, async (req, res) => {
     try{
-        pass
+        const connection = await pool.getConnection()
+        const [rows] = await connection.execute(
+            'select id, name, email from users where id = ?',
+            [req.user.id]
+        )
+        connection.release()
+
+        if (rows.length === 0) {
+            return res.status(404).json({message: "User not found"})
+        }
+
+        res.json({
+            message: "Profile Retrieved",
+            user: rows[0]
+        })
     }
+    
     catch(error){
         console.log(error)
     }
