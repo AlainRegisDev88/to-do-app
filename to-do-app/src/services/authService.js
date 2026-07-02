@@ -43,6 +43,14 @@ const authService = {
 
     //logout
     logout: () => {
+        localStorage.removeItem('token');
+    }, 
 
-    }
+    // Get Token
+    getToken: () =>{
+        return localStorage.getItem('token')
+    },
+
+    // check if the user is logged in
+
 }
