@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "./api"
 
 const API_URL = '/api/auth'
 
@@ -7,7 +7,7 @@ const authService = {
     //signup
     signup: async ({name, email, password}) => {
         try {
-            const response = await axios.post(`${API_URL}/signup`, {
+            const response = await api.post(`${API_URL}/signup`, {
                 name,
                 email,
                 password
@@ -26,7 +26,7 @@ const authService = {
     // Login
     login: async(email, password) => {
         try{
-            const response = await axios.post(`${API_URL}/login`, {
+            const response = await api.post(`${API_URL}/login`, {
                 email,
                 password
             })
