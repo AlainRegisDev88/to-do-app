@@ -16,10 +16,6 @@ api.interceptors.request.use(
     (error) => Promise.reject(error)
 );
 
-api.interceptors.response.use({
-
-})
-
 // handle 401 errors(expired token)
 api.interceptors.response.use(
     (response) => response,
