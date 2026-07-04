@@ -3,12 +3,12 @@
 
 <head>
   <meta http-equiv="Content-Security-Policy" content="
-  default-src 'self'; 
+  default-src 'self';
   script-src 'self' 'unsafe-inline' 'unsafe-eval';
-  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; 
-  font-src 'self' data: https://fonts.gstatic.com; 
+  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+  font-src 'self' data: https://fonts.gstatic.com;
   worker-src 'self' blob:;
-  connect-src 'self' http://localhost:4000 ws://localhost:5175;
+  connect-src 'self' http://localhost:4000 http://localhost:5000 ws://localhost:5175;
 ">
 <base href="/" />
 

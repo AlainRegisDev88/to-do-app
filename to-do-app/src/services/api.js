@@ -1,5 +1,4 @@
 import axios from "axios";
-import authService from "./authService";
 
 const api = axios.create({
     baseURL: 'http://localhost:5000/api'
@@ -7,7 +6,7 @@ const api = axios.create({
 
 api.interceptors.request.use(
     (config) => {
-        const token = authService.getToken();
+        const token = localStorage.getItem('token');
         if(token) {
             config.headers.Authorization = `Bearer ${token}`;
         }
@@ -21,9 +20,9 @@ api.interceptors.response.use(
     (response) => response,
     (error) => {
         if (error.response?.status === 401) {
-            //token expired or invalid
-            authService.logout()
-            window.location.href = '/login';
+            // token expired or invalid
+            localStorage.removeItem('token');
+            window.location.href = '/auth/login';
         }
 
         return Promise.reject(error)

@@ -22,12 +22,16 @@ const Login = () => {
         try {
             const result = await authService.login(email, password );
             console.log('Login Successful', result.user)
-            const user =  result.user
-            const message = result.user.message
+            const user = result.user
+            const message = result.message
             navigate('/', {state: {message, name: user?.name || user?.email}})
         } catch (error) {
-            setError(error.toString() || 'Wrong credentials')
-        }finally{
+            setError(
+                typeof error === 'string'
+                    ? error
+                    : error.response?.data?.message || error.message || 'Wrong credentials'
+            )
+        } finally {
             setLoading(false)
         }
     }

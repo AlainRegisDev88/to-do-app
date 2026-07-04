@@ -32,7 +32,9 @@ const Signup = () => {
             const response = await authService.signup(newUser)
             navigate('/auth/login', {state: {successMessage: response.message, name: response.user.name}})
         } catch (error) {
-            setError(error.response?.data?.message || 'Error signing you up!')
+            setError(typeof error === 'string' ? error : error.response?.data?.message || error.message || 'Error signing you up!')
+        } finally {
+            setLoading(false)
         }
     }
 
