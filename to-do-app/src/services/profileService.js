@@ -1,15 +1,16 @@
-import axios from "axios";
 import api from "./api";
 
-const profileServices = {
+const profileService = {
 
     getPersonalData: async () => {
         try {
             const response = await api.get(`/profile`)
-            return response.user
+            return response.data
         } catch (error) {
             throw error.response?.data?.message || "Failed to get the info"
         }
     },
 
 }
+
+export default profileService;
