@@ -5,7 +5,7 @@ const profileService = {
     getPersonalData: async () => {
         try {
             const response = await api.get(`/profile`)
-            return response.data
+            return response.data.user
         } catch (error) {
             throw error.response?.data?.message || "Failed to get the info"
         }

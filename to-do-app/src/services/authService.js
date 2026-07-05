@@ -1,5 +1,4 @@
 import api from "./api"
-import axios from "axios"
 
 const API_URL = '/auth'
 
