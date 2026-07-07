@@ -3,6 +3,7 @@ const cors = require('cors')
 const path = require('path')
 const authRoutes = require('./routes/auth.cjs')
 const verifyToken = require('./middleware/auth.cjs')
+const pool = require('./db.cjs')
 
 const app = express()
 
@@ -83,7 +84,7 @@ app.get('/api/profile', verifyToken, async (req, res) => {
     try{
         const connection = await pool.getConnection()
         const [rows] = await connection.execute(
-            'select id, name, email from users where id = ?',
+            'select id, fullName as name, email from users where id = ?',
             [req.user.id]
         )
         connection.release()
