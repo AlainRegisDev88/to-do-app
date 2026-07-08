@@ -58,7 +58,7 @@ const Signup = () => {
                                 className='input-box'
                                 type="text"
                                 name="email"
-                                placeholder=''
+                                placeholder='Enter your full name'
                                 value={fullName}
                                 onChange={(e) => setFullName(e.target.value)}
                                 required
@@ -84,6 +84,7 @@ const Signup = () => {
                                 className='input-box'
                                 type="password"
                                 name="password"
+                                placeholder='Enter your password'
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 required
@@ -96,6 +97,7 @@ const Signup = () => {
                                 className='input-box'
                                 type="password"
                                 name="confirmPassword"
+                                placeholder='Confirm your password'
                                 value={confirmPassword}
                                 onChange={(e) => setConfirmPassword(e.target.value)}
                                 required
@@ -104,7 +106,7 @@ const Signup = () => {
                         <div className="message">{error && (error)}</div>
 
                         <div className="class-item">
-                            <button type="submit" className="submit-button">Submit</button>
+                            <button type="submit" className="submit-button">Signup</button>
                         </div>
                     </div>
                 </form>
