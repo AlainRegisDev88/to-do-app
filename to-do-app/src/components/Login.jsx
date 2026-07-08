@@ -4,17 +4,18 @@ import { useNavigate, useLocation } from 'react-router-dom'
 import authService from "../services/authService";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 
 
 const Login = () => {
     const navigate = useNavigate()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [error, setError ] = useState('')
+    const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
 
     const location = useLocation()
-    const {successMessage, name} = location.state || {}
+    const { successMessage, name } = location.state || {}
 
     const handleData = async (e) => {
         e.preventDefault()
@@ -22,11 +23,11 @@ const Login = () => {
         setError('')
 
         try {
-            const result = await authService.login(email, password );
+            const result = await authService.login(email, password);
             console.log('Login Successful', result.user)
             const user = result.user
             const message = result.message
-            navigate('/', {state: {message, name: user?.name || user?.email}})
+            navigate('/', { state: { message, name: user?.name || user?.email } })
         } catch (error) {
             setError(
                 typeof error === 'string'
@@ -42,7 +43,7 @@ const Login = () => {
         <div className="login-page">
 
             <div className="login-form">
-                <div className="logo-section"><div className="tick-icon"><FontAwesomeIcon icon={faCheck} style={{color: "#0C447C"}}/></div><div className="logo-text">tasklist</div></div>
+                <div className="logo-section"><div className="tick-icon"><FontAwesomeIcon icon={faCheck} style={{ color: "#0C447C" }} /></div><div className="logo-text">tasklist</div></div>
                 <div className="form-headline">
                     <p className="main-headline">Welcome back</p>
                     <p className="subtext">Log in to see your tasks</p>
@@ -56,6 +57,7 @@ const Login = () => {
                                 className='input-box'
                                 type="text"
                                 name="email"
+                                placeholder="name@email.com"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 required
@@ -68,13 +70,27 @@ const Login = () => {
                                 className='input-box'
                                 type="password"
                                 name="password"
+                                placeholder="Enter your password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 required
                             />
                         </div>
+                        <div className="forgot-password">
+                            Forgot password?
+                        </div>
                         <div className="class-item">
                             <button type="submit" className="submit-button">Submit</button>
+                        </div>
+
+                        <div className="class-item divider-section">
+                            <span className="divider-line"></span>
+                            <span className="divider-text">or</span>
+                            <span className="divider-line"></span>
+                        </div>
+
+                        <div className="class-item continue-with-google">
+                            <div className="icon"><FontAwesomeIcon icon={faGoogle} /></div><p>Continue with Google</p>
                         </div>
                         <div>{error}{successMessage && (`${successMessage}, You Can now login ${name}`)}</div>
                     </div>
