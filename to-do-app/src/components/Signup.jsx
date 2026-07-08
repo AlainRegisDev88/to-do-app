@@ -2,13 +2,15 @@ import { useState } from 'react'
 import authService from '../services/authService'
 import './Signup.css'
 import { useNavigate } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCheck } from '@fortawesome/free-solid-svg-icons'
 
 const Signup = () => {
     const [fullName, setFullName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
-    const navigate  = useNavigate()
+    const navigate = useNavigate()
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
 
@@ -30,7 +32,7 @@ const Signup = () => {
             }
 
             const response = await authService.signup(newUser)
-            navigate('/auth/login', {state: {successMessage: response.message, name: response.user.name}})
+            navigate('/auth/login', { state: { successMessage: response.message, name: response.user.name } })
         } catch (error) {
             setError(typeof error === 'string' ? error : error.response?.data?.message || error.message || 'Error signing you up!')
         } finally {
@@ -42,7 +44,11 @@ const Signup = () => {
         <div className="login-page">
 
             <div className="login-form">
-                <h2>Login</h2>
+                <div className="logo-section"><div className="tick-icon"><FontAwesomeIcon icon={faCheck} style={{ color: "#0C447C" }} /></div><div className="logo-text">tasklist</div></div>
+                <div className="form-headline">
+                    <p className="main-headline">Join us</p>
+                    <p className="subtext">Sign up to work with us</p>
+                </div>
                 <form onSubmit={handleData} action='post'>
                     <div className="form-items">
 
@@ -52,6 +58,7 @@ const Signup = () => {
                                 className='input-box'
                                 type="text"
                                 name="email"
+                                placeholder=''
                                 value={fullName}
                                 onChange={(e) => setFullName(e.target.value)}
                                 required
@@ -64,6 +71,7 @@ const Signup = () => {
                                 className='input-box'
                                 type="text"
                                 name="email"
+                                placeholder="name@email.com"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 required
@@ -74,8 +82,8 @@ const Signup = () => {
                             <label htmlFor="email">Password</label>
                             <input
                                 className='input-box'
-                                type="text"
-                                name="email"
+                                type="password"
+                                name="password"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 required
@@ -87,13 +95,13 @@ const Signup = () => {
                             <input
                                 className='input-box'
                                 type="password"
-                                name="password"
+                                name="confirmPassword"
                                 value={confirmPassword}
                                 onChange={(e) => setConfirmPassword(e.target.value)}
                                 required
                             />
                         </div>
-                        <div className="message">{error&&(error)}</div>
+                        <div className="message">{error && (error)}</div>
 
                         <div className="class-item">
                             <button type="submit" className="submit-button">Submit</button>
