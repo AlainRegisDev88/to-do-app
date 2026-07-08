@@ -2,6 +2,8 @@ import { useState } from "react";
 import './Login.css'
 import { useNavigate, useLocation } from 'react-router-dom'
 import authService from "../services/authService";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 const Login = () => {
@@ -40,7 +42,7 @@ const Login = () => {
         <div className="login-page">
 
             <div className="login-form">
-                <h2>Login</h2>
+                <div className="logo-section"><div className="tick-icon"><FontAwesomeIcon icon={faCheck} style={{color: "#0C447C"}}/></div><div className="logo-text">tasklist</div></div>
                 <form onSubmit={handleData} action='post'>
                     <div className="form-items">
 
