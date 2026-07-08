@@ -182,3 +182,14 @@
 .continue-with-google .icon{
     width: 16px;
 }
+
+/* box footer */
+.box-footer{
+    font-size: 13px;
+    margin-top: 24px;
+    text-align: center;
+    width: 100%;
+}
+.box-footer Link{
+    color: var(--text-accent);
+}

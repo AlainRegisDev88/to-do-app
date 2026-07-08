@@ -3,8 +3,9 @@ import './Login.css'
 import { useNavigate, useLocation } from 'react-router-dom'
 import authService from "../services/authService";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 
 
 const Login = () => {
@@ -91,6 +92,9 @@ const Login = () => {
 
                         <div className="class-item continue-with-google">
                             <div className="icon"><FontAwesomeIcon icon={faGoogle} /></div><p>Continue with Google</p>
+                        </div>
+                        <div className="box-footer">
+                            <p>Don't have an account? <Link to="/auth/signup">Signup</Link></p>
                         </div>
                         <div>{error}{successMessage && (`${successMessage}, You Can now login ${name}`)}</div>
                     </div>

@@ -19,14 +19,7 @@ const AuthenticationPage = () => {
 
                 </div>
                 <Outlet />
-                <div className="auth-link-container">
-
-                    {currentPath === '/auth/login'
-                        ? <Link className='auth-link' to='/auth/signup'>Go to Signup</Link>
-                        : <Link className='auth-link' to='/auth/login'>Go to Login</Link>
-
-                    }
-                </div>
+                
             </div>
 
 
