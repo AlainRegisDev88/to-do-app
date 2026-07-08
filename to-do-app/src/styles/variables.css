@@ -1,0 +1,41 @@
+:root {
+  /* surfaces */
+  --surface-0: #F7F7F5;
+  --surface-1: #FAFAF9;
+  --surface-2: #FFFFFF;
+
+  /* text */
+  --text-primary: #1A1A18;
+  --text-secondary: #6B6A65;
+  --text-muted: #9B9A94;
+
+  /* borders */
+  --border: #E5E4E0;
+  --border-strong: #D1D0CA;
+
+  /* accent (blue) */
+  --bg-accent: #E6F1FB;
+  --text-accent: #0C447C;
+  --fill-accent: #378ADD;
+
+  /* danger (red) */
+  --bg-danger: #FCEBEB;
+  --text-danger: #791F1F;
+
+  /* warning (amber) */
+  --bg-warning: #FAEEDA;
+  --text-warning: #854F0B;
+
+  /* success (green) */
+  --bg-success: #EAF3DE;
+  --text-success: #27500A;
+
+  /* buttons */
+  --fill-primary: #1A1A18;
+  --on-primary: #FFFFFF;
+
+  /* layout */
+  --radius: 8px;
+  --pad-md: 1rem;
+  --gap-sm: 8px;
+}
