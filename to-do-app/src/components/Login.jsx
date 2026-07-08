@@ -96,7 +96,7 @@ const Login = () => {
                         <div className="box-footer">
                             <p>Don't have an account? <Link to="/auth/signup">Signup</Link></p>
                         </div>
-                        <div>{error}{successMessage && (`${successMessage}, You Can now login ${name}`)}</div>
+                        <div>{error && (error)}{successMessage && (`${successMessage}, You Can now login ${name}`)}</div>
                     </div>
                 </form>
             </div>

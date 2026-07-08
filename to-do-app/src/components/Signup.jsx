@@ -4,6 +4,8 @@ import './Signup.css'
 import { useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
+import { faGoogle } from '@fortawesome/free-brands-svg-icons'
+import { Link } from 'react-router-dom'
 
 const Signup = () => {
     const [fullName, setFullName] = useState('')
@@ -107,6 +109,20 @@ const Signup = () => {
 
                         <div className="class-item">
                             <button type="submit" className="submit-button">Signup</button>
+                        </div>
+
+                        <div className="class-item divider-section">
+                            <div className="divider-line"></div>
+                            <div className="divider-text">or</div>
+                            <div className="divider-line"></div>
+                        </div>
+
+                        <div className="class-item continue-with-google">
+                            <div className="icon"><FontAwesomeIcon icon={faGoogle} /></div><p>Continue with Google</p>
+                        </div>
+
+                        <div className="box-footer">
+                            <p>Already have an account? <Link to="/auth/login">Login</Link></p>
                         </div>
                     </div>
                 </form>
