@@ -16,7 +16,7 @@ const HomePage = () => {
                 setUser(fetchedUser)
                 console.log(fetchedUser)
                 console.log(fetchedUser, "Here")
-                // setRandom(Math.random())
+                setRandom(Math.random())
             } catch (error) {
                 console.error('Failed to load profile', error)
             }
@@ -25,15 +25,20 @@ const HomePage = () => {
         fetchUserInfo()
     }, [])
 
+    console.log(user)
+
     return (
         <div className="user-info">
             <p><strong>{message}, Hello {name}</strong></p>
+            <p>how are you?</p>
             {user && (
                 <div>
                     <p>User email: {user.email}</p>
                     <p>User id: {user.id}</p>
                     <p>Random Score /100: {random}</p>
                 </div>
+
+            
             )}
         </div>
     );
