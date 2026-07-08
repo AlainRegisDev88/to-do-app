@@ -43,6 +43,10 @@ const Login = () => {
 
             <div className="login-form">
                 <div className="logo-section"><div className="tick-icon"><FontAwesomeIcon icon={faCheck} style={{color: "#0C447C"}}/></div><div className="logo-text">tasklist</div></div>
+                <div className="form-headline">
+                    <p className="main-headline">Welcome back</p>
+                    <p className="subtext">Log in to see your tasks</p>
+                </div>
                 <form onSubmit={handleData} action='post'>
                     <div className="form-items">
 
