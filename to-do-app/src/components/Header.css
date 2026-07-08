@@ -1,5 +1,5 @@
 .header{
     height: 50px;
     width: 100%;
-    background: #b3b3b33c;
+    background: var(--surface-2);
 }
