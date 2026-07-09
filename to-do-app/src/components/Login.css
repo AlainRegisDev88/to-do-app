@@ -123,11 +123,14 @@
 /* forgot password */
 
 .forgot-password{
-    color: var(--text-accent);
     font-size: 13px;
     font-weight: 400;
     text-align: right;
     width: 100%;
+}
+.forgot-password .link{
+    text-decoration-line: none;
+    color: var(--text-accent);
 }
 
 
@@ -190,6 +193,7 @@
     text-align: center;
     width: 100%;
 }
-.box-footer Link{
+.box-footer .link{
     color: var(--text-accent);
+    text-decoration: none;
 }
