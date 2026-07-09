@@ -122,7 +122,7 @@ const Signup = () => {
                         </div>
 
                         <div className="box-footer">
-                            <p>Already have an account? <Link to="/auth/login">Login</Link></p>
+                            <p>Already have an account? <Link style={{textDecoration:"none", color:"var(--text-accent)"}} className="link" to="/auth/login">Login</Link></p>
                         </div>
                     </div>
                 </form>
