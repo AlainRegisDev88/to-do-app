@@ -11,3 +11,27 @@
 
 }
 
+.search{
+    min-width: 280px;
+    max-width: 320px;
+    height: 36px;
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 0px 8px;
+}
+
+.search:hover{
+    margin: 0.5px solid var(--border-strong);
+}
+
+.search::placeholder{
+    color: var(--text-muted);
+    font-size: 14px;
+}
+.search:focus{
+    outline: none;
+    border: 0.5px solid var(--text-accent);
+    box-shadow: 0 0 0 2px rgba(55,138,221,0.25);
+}
+
+
