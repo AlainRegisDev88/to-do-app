@@ -62,6 +62,9 @@
 
 /* side nav */
 
+.right-nav-bar{
+    display: flex;
+}
 
 /* button */
 .add-task-button{
@@ -80,3 +83,17 @@
     color: #E0AA3E;
     width: 20px;
 }
+
+.avatar{
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background-color: var(--bg-accent);
+    color: var(--text-accent);
+    font-size: 12px;
+    font-weight: 600;
+}
+

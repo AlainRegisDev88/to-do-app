@@ -23,6 +23,7 @@ const Header = () => {
             <div className="right-nav-bar">
                 <Link className="add-task-button">+ New Task</Link>
                 <Link to='/notifications'><FontAwesomeIcon className="bell-icon" icon={faBell} /></Link>
+                <div className="avatar">RU</div>
             </div>
         </section>
     );
