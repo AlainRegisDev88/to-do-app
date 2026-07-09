@@ -94,7 +94,7 @@ const Login = () => {
                             <div className="icon"><FontAwesomeIcon icon={faGoogle} /></div><p>Continue with Google</p>
                         </div>
                         <div className="box-footer">
-                            <p>Don't have an account? <Link className="link" to="/auth/signup">Signup</Link></p>
+                            <p>Don't have an account? <Link className="link" to="/auth/signup">Sign up</Link></p>
                         </div>
                         <div>{error}{successMessage && (`${successMessage}, You Can now login ${name}`)}</div>
                     </div>
