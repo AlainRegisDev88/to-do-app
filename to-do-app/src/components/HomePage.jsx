@@ -1,6 +1,7 @@
 import { useLocation } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import profileService from '../services/profileService'
+import Header from './Header'
 
 
 const HomePage = () => {
@@ -28,6 +29,8 @@ const HomePage = () => {
     console.log(user)
 
     return (
+        <>
+        <Header />
         <div className="user-info">
             <p><strong>{message}, Hello {name}</strong></p>
             <p>how are you?</p>
@@ -41,6 +44,7 @@ const HomePage = () => {
             
             )}
         </div>
+        </>
     );
 }
 

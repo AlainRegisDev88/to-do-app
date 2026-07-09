@@ -1,17 +1,22 @@
 import { Link } from "react-router-dom";
-
+import './Header.css'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 const Header = () => {
-    return ( 
-        <div className="header">
-            <div className="logo">
-                TASK MANAGER
+    return (
+        <section className="header">
+            <div className="logo-section"><div className="tick-icon"><FontAwesomeIcon icon={faCheck} style={{ color: "#0C447C" }} /></div><div className="logo-text">tasklist</div></div>
+
+            <div className="search-section">
+                <input type="text" name="search" id="search-box" placeholder="Search tasks" className="search"/>
             </div>
+
             <div className="nav">
                 <Link to='/'>Home</Link>
-                <Link to='/tasks'></Link>
+                <Link to='/tasks'>Tasks</Link>
             </div>
-        </div>
-     );
+        </section>
+    );
 }
- 
+
 export default Header;
