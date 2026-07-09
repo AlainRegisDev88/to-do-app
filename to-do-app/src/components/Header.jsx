@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import './Header.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { faBell } from "@fortawesome/free-solid-svg-icons";
 const Header = () => {
     return (
         <section className="header">
@@ -20,8 +21,8 @@ const Header = () => {
 
 
             <div className="right-nav-bar">
-                <Link className="add-task-button">+ Add Task</Link>
-                <Link to='/tasks'>Tasks</Link>
+                <Link className="add-task-button">+ New Task</Link>
+                <Link to='/notifications'><FontAwesomeIcon className="bell-icon" icon={faBell} /></Link>
             </div>
         </section>
     );
