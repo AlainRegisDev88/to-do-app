@@ -46,6 +46,15 @@ const HomePage = () => {
                             <p className='page-title'>Today</p>
                             <p className="page-subtitle">Wednesday, 8 July <FontAwesomeIcon icon={faArrowAltCircleRight} /> 4 tasks</p>
                         </div>
+
+                        <section className="tasks-section">
+                            <div className="task card">
+                                <div className="checkbox checked"></div>
+                                <div className="task-title task-active"></div>
+                                <div className="priority-tag priority-high">High</div>
+                            </div>
+                        </section>
+
                     </div>
                 </div>
 
