@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import profileService from '../services/profileService'
 import Header from './Header'
 import Sidebar from './Sidebar/Sidebar'
+import Footer from './Footer/Footer'
 
 
 const HomePage = () => {
@@ -35,6 +36,8 @@ const HomePage = () => {
 
         <section className="home">
             <Sidebar />
+
+            <Footer />
         </section>
         {/* <div className="user-info">
             <p><strong>{message}, Hello {name}</strong></p>
