@@ -53,7 +53,7 @@
     cursor: pointer; 
 }
 
-.task-card .checked{
+.active-task .checkbox{
     background-color: var(--fill-success);
     border: none;
     cursor: default;
