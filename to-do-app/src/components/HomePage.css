@@ -1,0 +1,86 @@
+.main{
+    display: flex;
+    flex-direction: row;
+}
+
+.content-area{
+    background-color: var(--surface-0);
+    padding: 24px 28px;
+}
+
+/* page heading */
+
+.page-heading{
+    margin-bottom: 18px;
+}
+
+.page-heading .page-title{
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.page-heading .page-subtitle{
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+/* task section */
+
+.tasks-section{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.task-card{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    background-color: var(--surface-2);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+    width: 100%;
+}
+
+/* checkbox */
+
+.task-card .checkbox{
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border-strong);   
+    cursor: pointer; 
+}
+
+.task-card .checked{
+    background-color: var(--fill-success);
+    border: none;
+    cursor: default;
+}
+
+/* task title */
+
+.task-card .task-title{
+    font-size: 14px;
+    color: var(--text-primary);
+}
+
+.task-card .title-done{
+    color: var(--text-muted);
+    text-decoration: line-through;
+}
+
+/* 
+<section className="tasks-section">
+<div className="task card">
+<div className="checkbox checked"></div>
+<div className="task-title task-active"></div>
+<div className="priority-tag priority-high">High</div>
+
+
+Task title (done)	14px / #9B9A94, strikethrough
+Priority tag — high	bg #FCEBEB, text #791F1F, 11px weight 500, padding 2px 8px, radius 8px
+Priority tag — medium	bg #FAEEDA, text #854F0B
+Priority tag — low	bg #EAF3DE, text #27500A */
