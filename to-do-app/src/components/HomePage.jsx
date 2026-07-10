@@ -50,14 +50,14 @@ const HomePage = () => {
                         <section className="tasks-section">
                             <div className="task-card active-task">
                                 <div className="checkbox"></div>
-                                <div className="task-title"></div>
-                                <div className="priority-tag priority-high">High</div>
+                                <div className="task-title title-active"></div>
+                                <div className="task-tag priority-high-tag">High</div>
                             </div>
 
                             <div className="task-card done-task">
                                 <div className="checkbox checked"></div>
-                                <div className="task-title task-active"></div>
-                                <div className="priority-tag priority-high">High</div>
+                                <div className="task-title title-done"></div>
+                                <div className="task-tag donetag">done</div>
                             </div>
 
                         </section>

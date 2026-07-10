@@ -6,7 +6,6 @@
 .content-area{
     background-color: var(--surface-0);
     padding: 24px 28px;
-
 }
 
 /* page heading */
@@ -28,9 +27,9 @@
 
 /* task section */
 
-.task-section{
+.tasks-section{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 8px;
 }
 
@@ -45,6 +44,8 @@
     width: 100%;
 }
 
+/* checkbox */
+
 .task-card .checkbox{
     width: 16px;
     height: 16px;
@@ -53,13 +54,23 @@
     cursor: pointer; 
 }
 
-.active-task .checkbox{
+.task-card .checked{
     background-color: var(--fill-success);
     border: none;
     cursor: default;
 }
 
+/* task title */
 
+.task-card .task-title{
+    font-size: 14px;
+    color: var(--text-primary);
+}
+
+.done-task .task-title{
+    color: var(--text-muted);
+    text-decoration: line-through;
+}
 
 /* 
 <section className="tasks-section">
@@ -69,7 +80,6 @@
 <div className="priority-tag priority-high">High</div>
 
 
-Task title (active)	14px / #1A1A18
 Task title (done)	14px / #9B9A94, strikethrough
 Priority tag — high	bg #FCEBEB, text #791F1F, 11px weight 500, padding 2px 8px, radius 8px
 Priority tag — medium	bg #FAEEDA, text #854F0B
