@@ -5,6 +5,25 @@
     padding: 20px 14px;     
 }
 
+.nav-item{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-direction: row;
+    height: 36px;
+    padding: 9px 12px;
+    border-radius: var(--border-sm);    
+    text-decoration: none;
+    font-size: 14px;
+    color: var(--text-secondary)
+
+}
+
+.nav-item .navlink-text{
+    color: ;
+}
+
+
 /* 
 Nav item height	~36px (9px vertical padding + 14px text)
 Nav item padding	9px 12px
