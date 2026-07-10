@@ -5,6 +5,8 @@ import Header from './Header'
 import Sidebar from './Sidebar/Sidebar'
 import Footer from './Footer/Footer'
 import './HomePage.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowAltCircleRight } from '@fortawesome/free-regular-svg-icons'
 
 
 const HomePage = () => {
@@ -42,7 +44,7 @@ const HomePage = () => {
                     <div className="content-area">
                         <div className="page-heading">
                             <p className='page-title'>Today</p>
-                            <p className="page-subtitle">Wednesday, 8, July : 4 tasks</p>
+                            <p className="page-subtitle">Wednesday, 8 July <FontAwesomeIcon icon={faArrowAltCircleRight} /> 4 tasks</p>
                         </div>
                     </div>
                 </div>
