@@ -67,7 +67,7 @@
     color: var(--text-primary);
 }
 
-.done-task .task-title{
+.task-card .title-done{
     color: var(--text-muted);
     text-decoration: line-through;
 }
