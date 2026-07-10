@@ -36,7 +36,7 @@ const HomePage = () => {
         <section className="home">
             <Sidebar />
         </section>
-        <div className="user-info">
+        {/* <div className="user-info">
             <p><strong>{message}, Hello {name}</strong></p>
             <p>how are you?</p>
             {user && (
@@ -48,7 +48,7 @@ const HomePage = () => {
 
             
             )}
-        </div>
+        </div> */}
         </>
     );
 }

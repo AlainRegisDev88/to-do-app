@@ -5,7 +5,8 @@
     background-color: var(--surface-1);
     border-right: 0.5px solid var(--border);
     padding: 20px 14px; 
-    gap: 4px;    
+    gap: 4px;  
+    height: calc(100vh - 108px);  
 }
 
 .nav-item{
@@ -20,7 +21,7 @@
     font-size: 14px;
     color: var(--text-secondary);
     background: transparent;
-    height: calc(100vh - (44+64)px)px;
+    
 }
 
 .nav-item .active-link{
