@@ -1,0 +1,29 @@
+.main{
+    display: flex;
+    flex-direction: row;
+}
+
+.content-area{
+    background-color: var(--surface-0);
+    padding: 24px 28px;
+
+}
+
+/* page heading */
+
+.page-heading{
+    margin-bottom: 18px;
+}
+
+.page-heading .page-title{
+    font-size: 20px;
+    font-weight: 600px;
+    color: var(--text-primary);
+}
+
+.page-heading .page-subtitle{
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+Page title	20px / weight 600 / #1A1A18
+Page subtitle	13px / #6B6A65, margin-bottom 18px

@@ -4,6 +4,7 @@ import profileService from '../services/profileService'
 import Header from './Header'
 import Sidebar from './Sidebar/Sidebar'
 import Footer from './Footer/Footer'
+import './HomePage.css'
 
 
 const HomePage = () => {
@@ -32,14 +33,23 @@ const HomePage = () => {
 
     return (
         <>
-        <Header />
+            <Header />
 
-        <section className="home">
-            <Sidebar />
+            <div className="home">
 
-            <Footer />
-        </section>
-        {/* <div className="user-info">
+                <div className="main">
+                    <Sidebar />
+                    <div className="content-area">
+                        <div className="page-heading">
+                            <p className='page-title'>Today</p>
+                            <p className="page-subtitle">Wednesday, 8, July : 4 tasks</p>
+                        </div>
+                    </div>
+                </div>
+
+                <Footer />
+            </div>
+            {/* <div className="user-info">
             <p><strong>{message}, Hello {name}</strong></p>
             <p>how are you?</p>
             {user && (
