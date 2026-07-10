@@ -2,6 +2,7 @@ import { useLocation } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import profileService from '../services/profileService'
 import Header from './Header'
+import Sidebar from './Sidebar/Sidebar'
 
 
 const HomePage = () => {
@@ -31,7 +32,11 @@ const HomePage = () => {
     return (
         <>
         <Header />
-        <div className="user-info">
+
+        <section className="home">
+            <Sidebar />
+        </section>
+        {/* <div className="user-info">
             <p><strong>{message}, Hello {name}</strong></p>
             <p>how are you?</p>
             {user && (
@@ -43,7 +48,7 @@ const HomePage = () => {
 
             
             )}
-        </div>
+        </div> */}
         </>
     );
 }
