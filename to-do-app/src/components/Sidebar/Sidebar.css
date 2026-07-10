@@ -24,7 +24,7 @@
     
 }
 
-.nav-item .active-link{
+.active-link{
     color: var(--text-accent);
     background-color: var(--bg-accent);
 }
