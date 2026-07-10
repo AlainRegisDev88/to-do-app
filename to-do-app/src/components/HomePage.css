@@ -28,7 +28,36 @@
 
 /* task section */
 
-.task-
+.task-section{
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+.task-card{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    background-color: var(--surface-2);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+    width: 100%;
+}
+
+.task-card .checkbox{
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border-strong);   
+    cursor: pointer; 
+}
+
+.task-card .checked{
+    background-color: var(--fill-success);
+    border: none;
+    cursor: default;
+}
 
 /* 
 <section className="tasks-section">
@@ -37,13 +66,7 @@
 <div className="task-title task-active"></div>
 <div className="priority-tag priority-high">High</div>
 
-Background	#FFFFFF
-Border	0.5px solid #E5E4E0 (plain — not border-strong)
-Radius	8px
-Padding	12px 14px
-Gap between cards	8px vertical
-Checkbox (unchecked)	16×16px circle, border 1.5px solid #D1D0CA (this IS border-strong, deliberately heavier so the empty state is visible)
-Checkbox (checked)	16×16px circle, filled #639922, no border
+
 Task title (active)	14px / #1A1A18
 Task title (done)	14px / #9B9A94, strikethrough
 Priority tag — high	bg #FCEBEB, text #791F1F, 11px weight 500, padding 2px 8px, radius 8px
