@@ -1,8 +1,11 @@
 .sidebar{
+    display: flex;
+    flex-direction: column;
     width: 200px;
     background-color: var(--surface-1);
     border-right: 0.5px solid var(--border);
-    padding: 20px 14px;     
+    padding: 20px 14px; 
+    gap: 4px;    
 }
 
 .nav-item{
@@ -12,23 +15,20 @@
     flex-direction: row;
     height: 36px;
     padding: 9px 12px;
-    border-radius: var(--border-sm);    
+    border-radius:var(--radius-sm);    
     text-decoration: none;
     font-size: 14px;
-    color: var(--text-secondary)
-
+    color: var(--text-secondary);
+    background: transparent;
+    height: calc(100vh - (44+64)px)px;
 }
 
-.nav-item .navlink-text{
-    color: ;
+.nav-item .active-link{
+    color: var(--text-accent);
+    background-color: var(--bg-accent);
 }
 
+.nav-item:hover{
+    background-color: var(--fill-secondary-hover-bg);
+}
 
-/* 
-Nav item height	~36px (9px vertical padding + 14px text)
-Nav item padding	9px 12px
-Nav item radius	8px
-Nav item default	text/icon #6B6A65, bg transparent
-Nav item active	bg #E6F1FB, text/icon #0C447C
-Nav item hover	bg #F1F0ED
-Gap between items	4px */
