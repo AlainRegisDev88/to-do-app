@@ -8,9 +8,9 @@ const Footer = () => {
                 <p>tasklist v1.0</p>
             </div>
             <div className="dot"></div>
-            <Link to="help-page">Help</Link>
+            <Link className="footer-nav" to="help-page">Help</Link>
             <div className="dot"></div>
-            <Link to="privacy-content">Privacy</Link>
+            <Link className="footer-nav" to="privacy-content">Privacy</Link>
 
         </section>
      );
