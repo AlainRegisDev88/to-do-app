@@ -1,4 +1,15 @@
 .sidebar{
     width: 200px;
-    
+    background-color: var(--surface-1);
+    border-right: 0.5px solid var(--border);
+    padding: 20px 14px;     
 }
+
+/* 
+Nav item height	~36px (9px vertical padding + 14px text)
+Nav item padding	9px 12px
+Nav item radius	8px
+Nav item default	text/icon #6B6A65, bg transparent
+Nav item active	bg #E6F1FB, text/icon #0C447C
+Nav item hover	bg #F1F0ED
+Gap between items	4px */
