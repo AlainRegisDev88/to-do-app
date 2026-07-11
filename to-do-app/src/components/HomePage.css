@@ -162,20 +162,3 @@
     color: var(--text-secondary);
     margin-bottom: 10px;
 }
-
-
-<div className="right-panel">
-<div className="upcoming-tasks">
-<div className="upcoming-header">
-Upcoming
-</div>
-<div className="upcoming-body">
-<p className="upcoming">Tomorrow - 2 tasks</p>
-<p className="upcoming">This Week - 5 tasks</p>
-</div>
-</div>
-</div>
-
-Stat card	bg #FFFFFF, radius 8px, padding 12px, no border
-Stat number	24px / weight 600
-Stat label	12px / #6B6A65
