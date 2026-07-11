@@ -40,7 +40,7 @@
 .search{
     width: min(100%, 320px);
     min-width: 220px;
-    height: 36px;
+    height: var(--control-height);
     border: 0.5px solid var(--border);
     border-radius: var(--radius-sm);
     padding: 0px 8px;
@@ -71,7 +71,7 @@
     text-decoration: none;
     color: var(--on-primary);
     background: var(--fill-primary);
-    height: 36px;
+    height: var(--control-height);
     border-radius: var(--radius-sm);
     padding: 0 16px;
     display: flex;

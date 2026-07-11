@@ -14,7 +14,7 @@
     align-items: center;
     gap: 10px;
     flex-direction: row;
-    height: 36px;
+    height: var(--control-height);
     padding: 9px 12px;
     border-radius:var(--radius-sm);    
     text-decoration: none;
