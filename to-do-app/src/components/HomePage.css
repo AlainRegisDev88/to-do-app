@@ -90,18 +90,6 @@
 }
 
 .task-tag.low-priority-tag{
-    
-
+    background-color: var(--bg-success);
+    color: var(--text-success);
 }
-/* 
-<section className="tasks-section">
-<div className="task card">
-<div className="checkbox checked"></div>
-<div className="task-title task-active"></div>
-<div className="priority-tag priority-high">High</div>
-
-
-Task title (done)	14px / #9B9A94, strikethrough
-Priority tag — high	bg #FCEBEB, text #791F1F, 11px weight 500, padding 2px 8px, radius 8px
-Priority tag — medium	bg #FAEEDA, text #854F0B
-Priority tag — low	bg #EAF3DE, text #27500A */
