@@ -5,6 +5,7 @@ import Login from './components/Login'
 import Signup from './components/Signup'
 import NotFound from './components/NotFound'
 import HomePage from './components/HomePage'
+import NewTask from './components/NewTask'
 
 function App() {
 
@@ -13,9 +14,10 @@ function App() {
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/auth' element={<AuthenticationPage />}>
-        <Route path='login' element={<Login />} />
-        <Route path='signup' element={<Signup />} />
+          <Route path='login' element={<Login />} />
+          <Route path='signup' element={<Signup />} />
         </Route>
+        <Route path='/new-task' element={<NewTask />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </>
