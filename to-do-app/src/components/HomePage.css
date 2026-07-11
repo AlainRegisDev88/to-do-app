@@ -107,6 +107,9 @@
 /* right panel */
 
 .right-panel{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
     width: var(--right-panel-width);
     background-color: var(--surface-1);
     border-left: 0.5px solid var(--border);
@@ -143,16 +146,25 @@
     color: var(--text-secondary);
 }
 
+.upcoming-tasks{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.upcoming-tasks .upcoming-header{
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.upcoming-tasks .upcoming{
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+}
+
 
 <div className="right-panel">
-<div className="right-panel-header">
-<p>Progress</p>
-<div className="statc-card">
-<div className="stat number">1/4</div>
-<div className="stat label">Completed Today</div>
-</div>
-</div>
-
 <div className="upcoming-tasks">
 <div className="upcoming-header">
 Upcoming
