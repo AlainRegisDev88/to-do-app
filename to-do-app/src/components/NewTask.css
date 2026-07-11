@@ -12,17 +12,18 @@
 }
 
 .new-task-card{
+    position: relative;
     width: 420px;
     background-color: var(--surface-2);
     border-radius: var(--radius-lg);
     padding: 24px;
 }
 
+.close-icon{
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    width: 18px;
+    color: var(--text-secondary);
+}
 
-
-Width	420px
-Background	#FFFFFF
-Border	none — the dark overlay behind it provides all the contrast needed
-Radius	12px
-Padding	24px
-Close icon	18px, #6B6A65, top right
