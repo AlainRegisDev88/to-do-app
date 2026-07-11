@@ -115,6 +115,34 @@
     height: calc(100vh - (var(--header-height) + var(--footer-height)));  ;
 }
 
+.right-panel-header{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.right-panel-header p{
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.right-panel-header .stat-card{
+    background-color: var(--surface-2);
+    border: var(--radius-sm);
+    padding: 12px;
+}
+
+.right-panel-header .stat-number{
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.right-panel-header .stat-label{
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
 
 <div className="right-panel">
 <div className="right-panel-header">
@@ -135,3 +163,7 @@ Upcoming
 </div>
 </div>
 </div>
+
+Stat card	bg #FFFFFF, radius 8px, padding 12px, no border
+Stat number	24px / weight 600
+Stat label	12px / #6B6A65

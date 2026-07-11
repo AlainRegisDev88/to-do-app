@@ -74,9 +74,9 @@ const HomePage = () => {
                         <div className="right-panel">
                             <div className="right-panel-header">
                                 <p>Progress</p>
-                                <div className="statc-card">
-                                    <div className="stat number">1/4</div>
-                                    <div className="stat label">Completed Today</div>
+                                <div className="stat-card">
+                                    <div className="stat-number">1/4</div>
+                                    <div className="stat-label">Completed Today</div>
                                 </div>
                             </div>
 
