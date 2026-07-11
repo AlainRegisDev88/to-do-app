@@ -72,7 +72,23 @@ const HomePage = () => {
                         </div>
 
                         <div className="right-panel">
-                            
+                            <div className="right-panel-header">
+                                <p>Progress</p>
+                                <div className="statc-card">
+                                    <div className="stat number">1/4</div>
+                                    <div className="stat label">Completed Today</div>
+                                </div>
+                            </div>
+
+                            <div className="upcoming-tasks">
+                                <div className="upcoming-header">
+                                    Upcoming
+                                </div>
+                                <div className="upcoming-body">
+                                    <p className="upcoming">Tomorrow - 2 tasks</p>
+                                    <p className="upcoming">This Week - 5 tasks</p>
+                                </div>
+                            </div>
                         </div>
 
                     </div>

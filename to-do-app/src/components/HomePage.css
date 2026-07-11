@@ -4,6 +4,7 @@
 }
 
 .content-area{
+    display: flex;
     background-color: var(--surface-0);
     padding: 24px 28px;
 }
@@ -96,3 +97,4 @@
 .task-tag.done-tag{
     color: var(--fill-disabled-text);
 }
+
