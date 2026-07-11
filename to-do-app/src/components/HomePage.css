@@ -98,3 +98,32 @@
     color: var(--fill-disabled-text);
 }
 
+/* right panel */
+
+.right-panel{
+    width: var(--right-panel-width);
+    background-color: var(--surface-1);
+    border-left: 0.5px solid var(--border);
+    padding: 24px 18px;
+}
+
+
+<div className="right-panel">
+<div className="right-panel-header">
+<p>Progress</p>
+<div className="statc-card">
+<div className="stat number">1/4</div>
+<div className="stat label">Completed Today</div>
+</div>
+</div>
+
+<div className="upcoming-tasks">
+<div className="upcoming-header">
+Upcoming
+</div>
+<div className="upcoming-body">
+<p className="upcoming">Tomorrow - 2 tasks</p>
+<p className="upcoming">This Week - 5 tasks</p>
+</div>
+</div>
+</div>
