@@ -1,0 +1,28 @@
+.new-task-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    /* The overlay color */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.new-task-card{
+    width: 420px;
+    background-color: var(--surface-2);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+}
+
+
+
+Width	420px
+Background	#FFFFFF
+Border	none — the dark overlay behind it provides all the contrast needed
+Radius	12px
+Padding	24px
+Close icon	18px, #6B6A65, top right
