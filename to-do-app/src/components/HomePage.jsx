@@ -57,7 +57,7 @@ const HomePage = () => {
                             <div className="task-card done-task">
                                 <div className="checkbox checked"></div>
                                 <div className="task-title title-done">Task 2 title</div>
-                                <div className="task-tag donetag">Done</div>
+                                <div className="task-tag done-tag">Done</div>
                             </div>
 
                         </section>
