@@ -51,12 +51,30 @@ const HomePage = () => {
                             <div className="task-card active-task">
                                 <div className="checkbox"></div>
                                 <div className="task-title">Task 1 title</div>
-                                <div className="task-tag priority-high-tag">High</div>
+                                <div className="task-tag high-priority-tag">High</div>
+                            </div>
+
+                            <div className="task-card active-task">
+                                <div className="checkbox"></div>
+                                <div className="task-title">Task 2 title</div>
+                                <div className="task-tag high-priority-tag">High</div>
+                            </div>
+
+                            <div className="task-card active-task">
+                                <div className="checkbox"></div>
+                                <div className="task-title">Task 3 title</div>
+                                <div className="task-tag low-priority-tag">High</div>
+                            </div>
+
+                            <div className="task-card active-task">
+                                <div className="checkbox"></div>
+                                <div className="task-title">Task 4 title</div>
+                                <div className="task-tag medium-priority-tag">High</div>
                             </div>
 
                             <div className="task-card done-task">
                                 <div className="checkbox checked"></div>
-                                <div className="task-title title-done">Task 2 title</div>
+                                <div className="task-title title-done">Task 5 title</div>
                                 <div className="task-tag done-tag">Done</div>
                             </div>
 
