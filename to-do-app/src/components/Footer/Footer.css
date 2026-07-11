@@ -3,7 +3,7 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
-    height: 44px;
+    height: var(--footer-height);
     background-color: var(--surface-2);
     border-top: 0.5px solid var(--border);
     color: var(--text-muted);
