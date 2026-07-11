@@ -93,3 +93,6 @@
     background-color: var(--bg-success);
     color: var(--text-success);
 }
+.task-tag.done-tag{
+    color: var(--fill-disabled-text);
+}
