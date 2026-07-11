@@ -80,7 +80,8 @@
 }
 
 .task-tag.priority-high-tag{
-    
+    background-color: var(--bg-danger);
+    color: var(--text-danger);
 }
 /* 
 <section className="tasks-section">
