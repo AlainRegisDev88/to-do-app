@@ -6,7 +6,7 @@
 .content-area{
     display: flex;
     background-color: var(--surface-0);
-    padding: 24px 28px;
+    
 }
 
 /* page heading */
@@ -61,6 +61,12 @@
     cursor: default;
 }
 
+/* middle section */
+.middle-section{
+    width: calc(100vw - 420px);
+    padding: 24px 28px;
+}
+
 /* task title */
 
 .task-card .task-title{
@@ -105,6 +111,8 @@
     background-color: var(--surface-1);
     border-left: 0.5px solid var(--border);
     padding: 24px 18px;
+    margin: 0   ;
+    height: calc(100vh - (var(--header-height) + var(--footer-height)));  ;
 }
 
 

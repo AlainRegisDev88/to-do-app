@@ -42,7 +42,7 @@ const HomePage = () => {
                 <div className="main">
                     <Sidebar />
                     <div className="content-area">
-                        <div className="middle section">
+                        <div className="middle-section">
                             <div className="page-heading">
                                 <p className='page-title'>Today</p>
                                 <p className="page-subtitle">Wednesday, 8 July <FontAwesomeIcon icon={faArrowAltCircleRight} /> 4 tasks</p>
