@@ -28,7 +28,11 @@
 }
 
 /* form */
-
+.add-task-form{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
 .add-task-form-item{
     display: flex;
     flex-direction: column;

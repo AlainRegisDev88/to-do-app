@@ -11,7 +11,7 @@ const NewTask = () => {
         <section className="new-task-page">
             <div className="new-task-card">
                 <div className="close-icon"><FontAwesomeIcon icon={faClose} /></div>
-                <form onSubmit={addNewTask} method="post">
+                <form className="add-task-form" onSubmit={addNewTask} method="post">
 
                     <div className="add-task-form-item">
                         <label className="form-label" htmlFor="title">Title</label>
