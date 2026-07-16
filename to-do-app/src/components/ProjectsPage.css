@@ -3,6 +3,13 @@
     background: var(--surface-0);
 }
 
+.projects-header{
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 18px;
+}
+
 .projects-container{
     max-width: calc(100vw - var(--sidebar-width));
     display: grid;
@@ -18,17 +25,11 @@
 
 
 
-/* Header / sidebar / footer
-Spec	identical to dashboard — see section 2
 
-
-Project grid
-Columns	auto-fit, minmax(160px, 1fr)
-Gap	14px
 Project card
 Background	#FFFFFF
 Border	0.5px solid #E5E4E0
 Radius	12px (larger than task cards — signals "container" vs "row")
 Padding	16px
 Title	14px / weight 600
-Subtitle	12px / #6B6A65 */
+Subtitle	12px / #6B6A65
