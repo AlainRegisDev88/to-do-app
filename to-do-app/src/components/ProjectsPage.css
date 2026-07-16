@@ -25,6 +25,21 @@
     border-radius: var(--radius-lg);
     padding: 16px;
 }
+.project-card .project-header{
+    display: flex;
+    align-items: center;    
+    gap: 5px;
+}
+.project-card.add-new-task-card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    color: var(--text-muted);
+    flex-direction: row !important;
+}
+
 
 
 

@@ -1,5 +1,6 @@
 import { faAdd, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 import './ProjectsPage.css'
 
 const ProjectsPage = () => {
@@ -49,10 +50,10 @@ const ProjectsPage = () => {
                     </p>
                 </div>
 
-                <div className="project-card add-new-task-card">
+                <Link to="/new-project" className="project-card add-new-task-card">
                     <FontAwesomeIcon icon={faAdd} />
                     <p>Add new project</p>
-                </div>
+                </Link>
             </div>
         </section>
     );
