@@ -27,3 +27,35 @@
     color: var(--text-secondary);
 }
 
+/* form */
+
+.add-task-form-item{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-label{
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.tasks-input-box{
+    height: 36px;
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    width: 100%;
+    padding: 0 8px;
+}
+.date-input{
+    height: 36px;
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-sm);
+}
+
+
+Text/date input	height 36px, border 0.5px #E5E4E0, radius 8px
+Textarea	height 60px, same border, padding 8px 12px, resize vertical
+Two-col row (date+priority)	12px gap between columns
+Vertical gap between fields	12px
+Action row

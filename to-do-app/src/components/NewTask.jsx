@@ -14,22 +14,22 @@ const NewTask = () => {
                 <form onSubmit={addNewTask} method="post">
 
                     <div className="add-task-form-item">
-                        <label htmlFor="title">Title</label>
+                        <label className="form-label" htmlFor="title">Title</label>
                         <input className='tasks-input-box' type="text" name="title" placeholder='What needs to get done?'/>
                     </div>
 
                     <div className="add-task-form-item">
-                        <label htmlFor="description">Description</label>
-                        <textarea className="tasks-input-box" name="description" placeholder='Add more details(optional)'></textarea>
+                        <label className="form-label" htmlFor="description">Description</label>
+                        <textarea className="desc-input-box" name="description" placeholder='Add more details(optional)'></textarea>
                     </div>
 
                     <div className="add-task-form-item">
                         <div className="due-date-field">
-                            <label htmlFor="task-date">Due date</label>
-                            <input type="date" name="task-date" />
+                            <label className="form-label" htmlFor="task-date">Due date</label>
+                            <input className='date-input' type="date" name="task-date" />
                         </div>
                         <div className="priority-field">
-                            <label htmlFor="task-priority">Priority</label>
+                            <label className="form-label" htmlFor="task-priority">Priority</label>
                             <select name="task-priority">
                                 <option value="high">High</option>
                                 <option value="medium">Medium</option>
@@ -39,7 +39,7 @@ const NewTask = () => {
                     </div>
 
                     <div className="add-task-form-item">
-                        <label htmlFor="project-selection"> Project</label>
+                        <label className="form-label" htmlFor="project-selection"> Project</label>
                         <select name="project-selection">
                             <option value="None">None</option>
                             <option value="Project 1">Project 1</option>
