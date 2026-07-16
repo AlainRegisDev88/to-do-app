@@ -50,16 +50,3 @@
     color: var(--text-muted);
     flex-direction: row !important;
 }
-
-
-
-
-
-
-Project card
-Background	#FFFFFF
-Border	0.5px solid #E5E4E0
-Radius	12px (larger than task cards — signals "container" vs "row")
-Padding	16px
-Title	14px / weight 600
-Subtitle	12px / #6B6A65
