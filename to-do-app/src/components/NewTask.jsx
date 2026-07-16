@@ -49,7 +49,7 @@ const NewTask = () => {
                         </select>
                     </div>
 
-                    <div className="add-task-form-item">
+                    <div className="add-task-form-item action-section">
                         <div className="cancel-button">Cancel</div>
                         <div className="create-task-button">Create task</div>
                     </div>

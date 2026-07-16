@@ -121,6 +121,9 @@
     box-sizing: border-box;
 }
 
-Two-col row (date+priority)	12px gap between columns
-Vertical gap between fields	12px
-Action row
+.
+
+
+Alignment	right-aligned, 8px gap
+Cancel button	secondary style — transparent bg, 1px #D1D0CA border
+Create button	primary style — #1A1A18 bg, #FFFFFF text
