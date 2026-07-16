@@ -27,3 +27,126 @@
     color: var(--text-secondary);
 }
 
+/* form */
+.add-task-form{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.form-header p{
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.add-task-form-item{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-label{
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.tasks-input-box{
+    height: 36px;
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    width: 100%;
+    padding: 0 8px;
+}
+
+.tasks-input-box:hover, .date-input:hover{
+    border: 0.5px solid var(--border-strong);
+}
+
+.tasks-input-box:focus{
+    outline: none;
+    border: 0.5px solid var(--border-accent);
+    box-shadow: 0 0 0 2px rgba(55,138,221,0.25);
+}
+
+
+/* desc area */
+
+.desc-input-box{
+    height: 60px;
+    min-height: 40px;
+    border: 0.5px solid var(--border);
+    padding: 8px 12px;
+    resize: vertical;
+    font-size: 13px;
+    border-radius: var(--radius-sm);
+}
+
+.desc-input-box:hover{
+    border: 0.5px solid var(--border-strong);
+}
+.desc-input-box:focus{
+    outline: none;
+    border: 0.5px solid var(--border-strong);
+}
+
+.date-priority-row{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+/* due date and priority section */
+
+.due-date-field, .priority-field{
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.date-input{
+    height: 36px;
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 0 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.task-priority{
+    height: 36px;
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 0 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.action-section{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    gap: 8px;
+}
+
+.action-section .cancel-button{
+    display: flex;
+    align-items: center;
+    background-color: var(--fill-secondary-bg);
+    border: 1px solid var(--fill-secondary-border);
+    color: var(--text-primary);
+    height: var(--control-height);
+    padding: 0 15px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+}
+
+.action-section .create-task-button{
+    display: flex;
+    align-items: center;
+    background-color: var(--fill-primary);
+    color: var(--on-primary);
+    height: var(--control-height);
+    padding: 0 15px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+}
