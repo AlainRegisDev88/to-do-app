@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './NewTask.css'
-import { faClose, faCross, faX } from '@fortawesome/free-solid-svg-icons';
+import { faClose} from '@fortawesome/free-solid-svg-icons';
 
 const NewTask = () => {
     return ( 
