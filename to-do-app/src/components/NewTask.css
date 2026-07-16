@@ -33,6 +33,11 @@
     flex-direction: column;
     gap: 12px;
 }
+.form-header p{
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
 .add-task-form-item{
     display: flex;
     flex-direction: column;
@@ -51,10 +56,24 @@
     width: 100%;
     padding: 0 8px;
 }
+
+.tasks-input-box:hover, .date-input:hover{
+    border: 0.5px solid var(--border-strong);
+}
+
+.tasks-input-box:focus, date{
+    outline: none;
+    border: 0.5px solid var(--border-accent);
+    box-shadow: 0 0 0 2px rgba(55,138,221,0.25);
+}
+
+
+
 .date-input{
     height: 36px;
     border: 0.5px solid var(--border);
     border-radius: var(--radius-sm);
+    padding: 0 8px;
 }
 
 

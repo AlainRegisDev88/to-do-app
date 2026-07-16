@@ -1,21 +1,24 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './NewTask.css'
-import { faClose} from '@fortawesome/free-solid-svg-icons';
+import { faClose } from '@fortawesome/free-solid-svg-icons';
 
 const NewTask = () => {
 
-    const addNewTask = () =>{
+    const addNewTask = () => {
 
     }
-    return ( 
+    return (
         <section className="new-task-page">
             <div className="new-task-card">
                 <div className="close-icon"><FontAwesomeIcon icon={faClose} /></div>
-                <form className="add-task-form" onSubmit={addNewTask} method="post">
 
+                <form className="add-task-form" onSubmit={addNewTask} method="post">
+                    <div className="form-header">
+                        <p>New task</p>
+                    </div>
                     <div className="add-task-form-item">
                         <label className="form-label" htmlFor="title">Title</label>
-                        <input className='tasks-input-box' type="text" name="title" placeholder='What needs to get done?'/>
+                        <input className='tasks-input-box' type="text" name="title" placeholder='What needs to get done?' />
                     </div>
 
                     <div className="add-task-form-item">
@@ -53,7 +56,7 @@ const NewTask = () => {
                 </form>
             </div>
         </section>
-     );
+    );
 }
- 
+
 export default NewTask;
