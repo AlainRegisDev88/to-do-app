@@ -26,14 +26,14 @@ const NewTask = () => {
                         <textarea className="desc-input-box" name="description" placeholder='Add more details(optional)'></textarea>
                     </div>
 
-                    <div className="add-task-form-item">
+                    <div className="date-priority-row">
                         <div className="due-date-field">
                             <label className="form-label" htmlFor="task-date">Due date</label>
                             <input className='date-input' type="date" name="task-date" />
                         </div>
                         <div className="priority-field">
                             <label className="form-label" htmlFor="task-priority">Priority</label>
-                            <select name="task-priority">
+                            <select name="task-priority" className='task-priority'>
                                 <option value="high">High</option>
                                 <option value="medium">Medium</option>
                                 <option value="low">Low</option>
@@ -43,7 +43,7 @@ const NewTask = () => {
 
                     <div className="add-task-form-item">
                         <label className="form-label" htmlFor="project-selection"> Project</label>
-                        <select name="project-selection">
+                        <select name="project-selection" className='tasks-input-box'>
                             <option value="None">None</option>
                             <option value="Project 1">Project 1</option>
                         </select>

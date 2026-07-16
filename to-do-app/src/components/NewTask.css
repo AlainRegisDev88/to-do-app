@@ -68,13 +68,6 @@
 }
 
 
-.date-input{
-    height: 36px;
-    border: 0.5px solid var(--border);
-    border-radius: var(--radius-sm);
-    padding: 0 8px;
-}
-
 /* desc area */
 
 .desc-input-box{
@@ -94,6 +87,40 @@
     outline: none;
     border: 0.5px solid var(--border-strong);
 }
+
+.date-priority-row{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+/* due date and priority section */
+
+.due-date-field, .priority-field{
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.date-input{
+    height: 36px;
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 0 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.task-priority{
+    height: 36px;
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 0 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
 Two-col row (date+priority)	12px gap between columns
 Vertical gap between fields	12px
 Action row
