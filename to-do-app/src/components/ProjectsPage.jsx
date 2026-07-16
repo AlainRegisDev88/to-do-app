@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const ProjectsPage = () => {
     return ( 
         <section className="projects-page">
+            
             <div className="projects-container">
                 <div className="projects-header projects-item">
                     <p>Projects</p>
@@ -25,5 +26,4 @@ const ProjectsPage = () => {
         </section>
      );
 }
- 
 export default ProjectsPage;

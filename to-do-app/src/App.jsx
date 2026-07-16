@@ -6,6 +6,7 @@ import Signup from './components/Signup'
 import NotFound from './components/NotFound'
 import HomePage from './components/HomePage'
 import NewTask from './components/NewTask'
+import ProjectsPage from './components/projectsPage'
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
           <Route path='signup' element={<Signup />} />
         </Route>
         <Route path='/new-task' element={<NewTask />} />
+        <Route path='/projects' element={<ProjectsPage />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </>
