@@ -121,9 +121,32 @@
     box-sizing: border-box;
 }
 
-.
+.action-section{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    gap: 8px;
+}
 
+.action-section .cancel-button{
+    display: flex;
+    align-items: center;
+    background-color: var(--fill-secondary-bg);
+    border: 1px solid var(--fill-secondary-border);
+    color: var(--text-primary);
+    height: var(--control-height);
+    padding: 0 15px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+}
 
-Alignment	right-aligned, 8px gap
-Cancel button	secondary style — transparent bg, 1px #D1D0CA border
-Create button	primary style — #1A1A18 bg, #FFFFFF text
+.action-section .create-task-button{
+    display: flex;
+    align-items: center;
+    background-color: var(--fill-primary);
+    color: var(--on-primary);
+    height: var(--control-height);
+    padding: 0 15px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+}
