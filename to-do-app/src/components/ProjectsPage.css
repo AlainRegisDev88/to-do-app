@@ -25,6 +25,17 @@
     border-radius: var(--radius-lg);
     padding: 16px;
 }
+
+.project-card .open-tasks-count{
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.project-header .project-title{
+    font-weight: 600;
+    font-size: 14px;
+}
+
 .project-card .project-header{
     display: flex;
     align-items: center;    
