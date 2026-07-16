@@ -20,6 +20,7 @@
     gap: 8px;
     flex-shrink: 0;
     width: auto;
+    text-decoration: none;
 }
 
 .header .search-section{
