@@ -25,6 +25,7 @@
     right: 24px;
     width: 18px;
     color: var(--text-secondary);
+    cursor: pointer;
 }
 
 /* form */
