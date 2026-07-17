@@ -1,0 +1,15 @@
+.page-header{
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 18px;
+}
+
+.button-secondary{
+    height: var(--control-height);
+    border: 0.5px solid var(--fill-secondary-border);
+    background-color: var(--fill-secondary-bg);
+    border-radius: var(--radius-sm);
+    padding: 0 12px;
+    cursor: pointer;
+}
