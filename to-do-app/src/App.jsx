@@ -8,6 +8,7 @@ import HomePage from './components/HomePage'
 import NewTask from './components/NewTask'
 import ProjectsPage from './components/projectsPage'
 import HomeLayout from './components/HomeLayout'
+import SettingsPage from './components/SettingsPage'
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
         <Route path='/' element={<HomeLayout />}>
         <Route index element={<HomePage />}></Route>
         <Route path='/projects' element={<ProjectsPage />} />
+        <Route path='/settings' element={<SettingsPage />} />
         </Route>
 
         <Route path='/auth' element={<AuthenticationPage />}>
