@@ -14,12 +14,12 @@ const SettingsPage = () => {
                     <div className="profile-info">
                         <div className="avatar">RU</div>
                         <div className="personal-info">
-                            <p className="name settings-row">Regis Udahemuka</p>
-                            <p className="email settings-row">regis@gmail.com</p>
+                            <p className="name settings-card-heading">Regis Udahemuka</p>
+                            <p className="email">regis@gmail.com</p>
                         </div>
                     </div>
                     <div className="edit-profile">
-                        <button className="edit-profile">Edit Profile</button>
+                        <button className="edit-profile button-secondary">Edit Profile</button>
                     </div>
                 </div>
 
@@ -44,11 +44,11 @@ const SettingsPage = () => {
                     </div>
                     <div className="setting change-password">
                         <p className="settings-row">Change password</p>
-                        <FontAwesomeIcon icon={faChevronRight} />
+                        <FontAwesomeIcon className="chevron-icon" icon={faChevronRight} />
                     </div>
                     <div className="setting delete-account">
                         <p className="settings-row delete-row">Delete Account</p>
-                        <FontAwesomeIcon icon={faChevronRight} />
+                        <FontAwesomeIcon className="chevron-icon" icon={faChevronRight} />
                     </div>
                 </div>
             </div>

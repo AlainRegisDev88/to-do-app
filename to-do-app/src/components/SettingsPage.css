@@ -14,6 +14,9 @@
     background-color: var(--surface-2);
     border-radius: var(--radius-lg);
     padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 .avatar{
     width: 44px;
@@ -21,10 +24,43 @@
     border-radius: 50%;
 }
 
+.profile-info{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
 
 
-Max width	480–520px (capped so form rows don't stretch full width)
+.email{
+    font-size: 13px;
+    color: var(--text-secondary);
+}
 
-Row padding	6px vertical, 0 horizontal
-Destructive row text	#791F1F (text-danger)
-Chevron icon	16px, #9B9A94
+.settings-card-heading{
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.settings-row{
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+.preference, .setting{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+.setting .chevron-icon{
+    width: 6px;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+.delete-row{
+    color: var(--text-danger);
+}
