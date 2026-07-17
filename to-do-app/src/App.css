@@ -1,0 +1,6 @@
+.page-header{
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 18px;
+}
