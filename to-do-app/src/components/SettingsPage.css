@@ -1,0 +1,30 @@
+.settings-page{
+    padding: 24px 28px;
+    width: 520px;
+}
+
+.settings-cards{
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.settings-card{
+    border: 0.5px solid var(--border);
+    background-color: var(--surface-2);
+    border-radius: var(--radius-lg);
+    padding: 16px 20px;
+}
+.avatar{
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+}
+
+
+
+Max width	480–520px (capped so form rows don't stretch full width)
+
+Row padding	6px vertical, 0 horizontal
+Destructive row text	#791F1F (text-danger)
+Chevron icon	16px, #9B9A94

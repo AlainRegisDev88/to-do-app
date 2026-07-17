@@ -14,8 +14,8 @@ const SettingsPage = () => {
                     <div className="profile-info">
                         <div className="avatar">RU</div>
                         <div className="personal-info">
-                            <p className="name">Regis Udahemuka</p>
-                            <p className="email">regis@gmail.com</p>
+                            <p className="name settings-row">Regis Udahemuka</p>
+                            <p className="email settings-row">regis@gmail.com</p>
                         </div>
                     </div>
                     <div className="edit-profile">
@@ -28,12 +28,12 @@ const SettingsPage = () => {
                         <p>Preferences</p>
                     </div>
                     <div className="preference">
-                        <p>Dark mode</p>
+                        <p className="settings-row">Dark mode</p>
                         <input type="checkbox" name="dark-mode"/>
                     </div>
 
                     <div className="preference">
-                        <p>Email reminders</p>
+                        <p className="settings-row">Email reminders</p>
                         <input type="checkbox" name="email-messages"/>
                     </div>
                 </div>
@@ -43,11 +43,11 @@ const SettingsPage = () => {
                         <p>Account</p>
                     </div>
                     <div className="setting change-password">
-                        <p>Change password</p>
+                        <p className="settings-row">Change password</p>
                         <FontAwesomeIcon icon={faChevronRight} />
                     </div>
                     <div className="setting delete-account">
-                        <p>Change password</p>
+                        <p className="settings-row delete-row">Delete Account</p>
                         <FontAwesomeIcon icon={faChevronRight} />
                     </div>
                 </div>
