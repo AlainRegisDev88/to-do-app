@@ -1,10 +1,11 @@
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import './SettingsPage.css'
 
 const SettingsPage = () => {
     return ( 
         <section className="settings-page">
-            <div className="settings-header">
+            <div className="settings-header page-header">
                 <p>Settings</p>
             </div>
 
