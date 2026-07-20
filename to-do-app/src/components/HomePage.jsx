@@ -42,37 +42,37 @@ const HomePage = () => {
                     <div className="filter-bar">
 
                         <div className="filter-buttons">
-                            <div className="filter-button">
+                            <button className="filter-button">
                                 All
-                            </div>
+                            </button>
 
-                            <div className="filter-button">
+                            <button className="filter-button">
                                 Today
-                            </div>
+                            </button>
 
-                            <div className="filter-button">
+                            <button className="filter-button">
                                 This week
-                            </div>
+                            </button>
 
-                            <div className="filter-button">
+                            <button className="filter-button">
                                 Active
-                            </div>
+                            </button>
 
-                            <div className="filter-button">
+                            <button className="filter-button">
                                 Done
-                            </div>
+                            </button>
 
-                            <div className="filter-button">
+                            <button className="filter-button">
                                 High priority
-                            </div>
+                            </button>
 
-                            <div className="filter-button">
+                            <button className="filter-button">
                                 Medium priority
-                            </div>
+                            </button>
 
-                            <div className="filter-button">
+                            <button className="filter-button">
                                 Low priority
-                            </div>
+                            </button>
 
                         </div>
 
