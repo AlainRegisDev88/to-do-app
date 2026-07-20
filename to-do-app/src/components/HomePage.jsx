@@ -35,9 +35,16 @@ const HomePage = () => {
             <div className="content-area">
                 <div className="middle-section">
                     <div className="page-heading">
-                        <p className='page-title'>Today</p>
+                        <p className='page-title'>Tasks</p>
                         <p className="page-subtitle">Wednesday, 8 July <FontAwesomeIcon icon={faArrowAltCircleRight} /> 4 tasks</p>
                     </div>
+                    
+                    <div className="filter-bar">
+                        <div className="filter-button">
+                            All
+                        </div>
+                    </div>
+
                     <section className="tasks-section">
                         <div className="task-card active-task">
                             <div className="task-card-right">
