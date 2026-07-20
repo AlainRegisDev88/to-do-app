@@ -8,7 +8,7 @@ import './Sidebar.css'
 const Sidebar = () => {
     return ( 
         <section className="sidebar">
-            <NavLink className={({ isActive }) => isActive ? 'nav-item active-link' : 'nav-item'} to="/"><FontAwesomeIcon icon={faSun} /><p className="navlink-text">Today</p></NavLink>
+            <NavLink className={({ isActive }) => isActive ? 'nav-item active-link' : 'nav-item'} to="/"><FontAwesomeIcon icon={faSun} /><p className="navlink-text">Tasks</p></NavLink>
             <NavLink className={({ isActive }) => isActive ? 'nav-item active-link' : 'nav-item'} to="/upcoming-tasks"><FontAwesomeIcon icon={faCalendar} /><p className="navlink-text">Upcoming</p></NavLink>
             <NavLink className={({ isActive }) => isActive ? 'nav-item active-link' : 'nav-item'} to="/projects"><FontAwesomeIcon icon={faFolder} /><p className="navlink-text">Projects</p></NavLink>
             <NavLink className={({ isActive }) => isActive ? 'nav-item active-link' : 'nav-item'} to="/completed-tasks"><FontAwesomeIcon icon={faCheck} /><p className="navlink-text">completed</p></NavLink>
