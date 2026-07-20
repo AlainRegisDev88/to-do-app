@@ -35,9 +35,49 @@ const HomePage = () => {
             <div className="content-area">
                 <div className="middle-section">
                     <div className="page-heading">
-                        <p className='page-title'>Today</p>
+                        <p className='page-title'>Tasks</p>
                         <p className="page-subtitle">Wednesday, 8 July <FontAwesomeIcon icon={faArrowAltCircleRight} /> 4 tasks</p>
                     </div>
+
+                    <div className="filter-bar">
+
+                        <div className="filter-buttons">
+                            <button className="filter-button">
+                                All
+                            </button>
+
+                            <button className="filter-button">
+                                Today
+                            </button>
+
+                            <button className="filter-button">
+                                This week
+                            </button>
+
+                            <button className="filter-button">
+                                Active
+                            </button>
+
+                            <button className="filter-button">
+                                Done
+                            </button>
+
+                            <button className="filter-button">
+                                High priority
+                            </button>
+
+                            <button className="filter-button">
+                                Medium priority
+                            </button>
+
+                            <button className="filter-button">
+                                Low priority
+                            </button>
+
+                        </div>
+
+                    </div>
+
                     <section className="tasks-section">
                         <div className="task-card active-task">
                             <div className="task-card-right">
