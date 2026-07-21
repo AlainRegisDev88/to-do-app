@@ -46,7 +46,11 @@
     cursor: pointer;
 
 }
-
+.active-filter{
+    border: none;
+    color: var(--text-accent);
+    background-color: var(--bg-accent);
+}
 
 /* task section */
 

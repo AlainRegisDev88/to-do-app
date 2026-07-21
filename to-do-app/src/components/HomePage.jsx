@@ -11,6 +11,7 @@ const HomePage = () => {
     const { message, name } = location.state || {}
     const [user, setUser] = useState(null)
     const [random, setRandom] = useState(0)
+    const [activeFilter, setActiveFilter] = useState('')
 
     useEffect(() => {
         const fetchUserInfo = async () => {
@@ -28,7 +29,10 @@ const HomePage = () => {
         fetchUserInfo()
     }, [])
 
-    console.log(user)
+
+    const filters = ["All", "Today", "This week", "Active", "Done", "High priority", "Medium priority", "Low priority"]
+
+
 
     return (
         <div className="main">
@@ -42,38 +46,17 @@ const HomePage = () => {
                     <div className="filter-bar">
 
                         <div className="filter-buttons">
-                            <button className="filter-button">
-                                All
-                            </button>
-
-                            <button className="filter-button">
-                                Today
-                            </button>
-
-                            <button className="filter-button">
-                                This week
-                            </button>
-
-                            <button className="filter-button">
-                                Active
-                            </button>
-
-                            <button className="filter-button">
-                                Done
-                            </button>
-
-                            <button className="filter-button">
-                                High priority
-                            </button>
-
-                            <button className="filter-button">
-                                Medium priority
-                            </button>
-
-                            <button className="filter-button">
-                                Low priority
-                            </button>
-
+                            {filters.map(filter => {
+                                return (
+                                    <button
+                                        key={filter}
+                                        className={`filter-button ${activeFilter === filter ? "active-filter" : ""} ${activeFilter ==="" && filter==="All" ? "active-filter" :""}`}
+                                        onClick={() => setActiveFilter(filter)}
+                                    >
+                                        {filter}
+                                    </button>
+                                )
+                            })}
                         </div>
 
                     </div>
