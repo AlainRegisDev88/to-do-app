@@ -50,7 +50,7 @@ const HomePage = () => {
                                 return (
                                     <button
                                         key={filter}
-                                        className={`filter-button ${activeFilter === filter ? "active-filter" : ""}`}
+                                        className={`filter-button ${activeFilter === filter ? "active-filter" : ""} ${activeFilter ==="" && filter==="All" ? "active-filter" :""}`}
                                         onClick={() => setActiveFilter(filter)}
                                     >
                                         {filter}
