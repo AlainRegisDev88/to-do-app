@@ -11,6 +11,7 @@ const HomePage = () => {
     const { message, name } = location.state || {}
     const [user, setUser] = useState(null)
     const [random, setRandom] = useState(0)
+    const [activeFilter, setActiveFilter] = useState('')
 
     useEffect(() => {
         const fetchUserInfo = async () => {
@@ -29,7 +30,7 @@ const HomePage = () => {
     }, [])
 
 
-    const filters = ["All", "Today","This week", "Active", "Done", "High priority", "Medium priority", "Low priority"]
+    const filters = ["All", "Today", "This week", "Active", "Done", "High priority", "Medium priority", "Low priority"]
 
 
 
@@ -46,14 +47,16 @@ const HomePage = () => {
 
                         <div className="filter-buttons">
                             {filters.map(filter => {
-                                    return(
-                                        <button 
-                                        key={filter} 
-                                        className='filter-button'>
-                                            {filter}
-                                        </button>
-                                    )
-                                })}
+                                return (
+                                    <button
+                                        key={filter}
+                                        className={`filter-button ${activeFilter === filter ? "active-filter" : ""}`}
+                                        onClick={setActiveFilter(filter)}
+                                    >
+                                        {filter}
+                                    </button>
+                                )
+                            })}
                         </div>
 
                     </div>
