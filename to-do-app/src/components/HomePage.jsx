@@ -51,7 +51,7 @@ const HomePage = () => {
                                     <button
                                         key={filter}
                                         className={`filter-button ${activeFilter === filter ? "active-filter" : ""}`}
-                                        onClick={setActiveFilter(filter)}
+                                        onClick={() => setActiveFilter(filter)}
                                     >
                                         {filter}
                                     </button>
