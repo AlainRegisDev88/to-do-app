@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { useState } from 'react';
 import taskService from '../services/tasksService';
+import delay from '../helpers/delay';
 
 const NewTask = () => {
     const [loading, setLoading] = useState(false)
@@ -40,6 +41,7 @@ const NewTask = () => {
             setError("Unable to create a task: ", error)
         }
         finally {
+            await delay(1000);
             setLoading(false)
         }
 
