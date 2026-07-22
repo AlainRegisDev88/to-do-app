@@ -141,6 +141,27 @@ app.post('/api/tasks', verifyToken, async (req, res) => {
     }
 });
 
+app.post('/api/projects/', verifyToken, async (req, res) =>{
+    try{
+        const connection = await pool.getConnection();
+        const [rows] = await connection.execute(
+            "Select * from projects"
+        )
+        connection.close();
+
+        if (rows){
+            res.status(201).jsonS({
+                message: "Projects retrived successfully",
+                projects: rows
+            })
+        }
+    }
+    catch(error){
+        console.log(error),
+        res.status(401).json({message: "Unable to load the projects"})
+    }
+})
+
 app.listen(PORT, () => {
     console.log(`server running on port http://localhost:${PORT}`)
 })
