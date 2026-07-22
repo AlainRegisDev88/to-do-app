@@ -3,7 +3,7 @@ import authService from '../services/authService'
 import './Signup.css'
 import { useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCheck } from '@fortawesome/free-solid-svg-icons'
+import { faCheck, faSpinner } from '@fortawesome/free-solid-svg-icons'
 import { faGoogle } from '@fortawesome/free-brands-svg-icons'
 import { Link } from 'react-router-dom'
 
@@ -44,13 +44,17 @@ const Signup = () => {
 
     return (
         <div className="login-page">
-
+            {loading && (
+                <span class="spinner-container">
+                    <FontAwesomeIcon className='loading-spinner' icon={faSpinner} />
+                </span>)}
             <div className="login-form">
                 <div className="logo-section"><div className="tick-icon"><FontAwesomeIcon icon={faCheck} style={{ color: "#0C447C" }} /></div><div className="logo-text">tasklist</div></div>
                 <div className="form-headline">
                     <p className="main-headline">Join us</p>
                     <p className="subtext">Sign up to work with us</p>
                 </div>
+
                 <form onSubmit={handleData} action='post'>
                     <div className="form-items">
 
@@ -122,7 +126,7 @@ const Signup = () => {
                         </div>
 
                         <div className="box-footer">
-                            <p>Already have an account? <Link style={{textDecoration:"none", color:"var(--text-accent)"}} className="link" to="/auth/login">Login</Link></p>
+                            <p>Already have an account? <Link style={{ textDecoration: "none", color: "var(--text-accent)" }} className="link" to="/auth/login">Login</Link></p>
                         </div>
                     </div>
                 </form>

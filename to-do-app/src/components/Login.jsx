@@ -2,7 +2,7 @@ import { useState } from "react";
 import './Login.css'
 import { useNavigate, useLocation } from 'react-router-dom'
 import authService from "../services/authService";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
@@ -42,7 +42,10 @@ const Login = () => {
 
     return (
         <div className="login-page">
-
+            {loading && (
+                <span class="spinner-container">
+                    <FontAwesomeIcon className='loading-spinner' icon={faSpinner} />
+                </span>)}
             <div className="login-form">
                 <div className="logo-section"><div className="tick-icon"><FontAwesomeIcon icon={faCheck} style={{ color: "#0C447C" }} /></div><div className="logo-text">tasklist</div></div>
                 <div className="form-headline">
