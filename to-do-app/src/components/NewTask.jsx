@@ -32,7 +32,9 @@ const NewTask = () => {
                 project
             }
             const result = taskService.saveTask(newTask);
+            console.log(result)
             navigate('/')
+            
         }
         catch (error){
             setError("Unable to create a task: ", error)
