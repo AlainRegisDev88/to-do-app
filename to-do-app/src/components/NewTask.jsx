@@ -1,12 +1,14 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './NewTask.css'
 import { faClose } from '@fortawesome/free-solid-svg-icons';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 import { useState } from 'react';
 
 const NewTask = () => {
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState('')
+    const navigate =  useNavigate();
 
     // new task elements
 
@@ -29,11 +31,11 @@ const NewTask = () => {
             project
         }
     }
-
+    console.log(priority)
     return (
         <section className="new-task-page">
             <div className="new-task-card">
-                <div className="close-icon"><FontAwesomeIcon icon={faClose} /></div>
+                <div onClick={() => navigate(-1)} className="close-icon"><FontAwesomeIcon icon={faClose} /></div>
 
                 <form className="add-task-form" onSubmit={addNewTask} method="post">
                     <div className="form-header">
@@ -65,11 +67,22 @@ const NewTask = () => {
                     <div className="date-priority-row">
                         <div className="due-date-field">
                             <label className="form-label" htmlFor="task-date">Due date</label>
-                            <input className='date-input' type="date" name="task-date" />
+                            <input
+                                className='date-input'
+                                type="date"
+                                name="task-date"
+                                value={dueDate}
+                                onChange={(e) => setDueDate(e.target.value)}
+                            />
                         </div>
                         <div className="priority-field">
                             <label className="form-label" htmlFor="task-priority">Priority</label>
-                            <select name="task-priority" className='task-priority'>
+                            <select
+                                name="task-priority"
+                                className='task-priority'
+                                value={priority}
+                                onChange={(e) => setPriority(e.target.value)}
+                            >
                                 <option value="high">High</option>
                                 <option value="medium">Medium</option>
                                 <option value="low">Low</option>
@@ -79,15 +92,20 @@ const NewTask = () => {
 
                     <div className="add-task-form-item">
                         <label className="form-label" htmlFor="project-selection"> Project</label>
-                        <select name="project-selection" className='tasks-input-box'>
+                        <select
+                            name="project-selection"
+                            className='tasks-input-box'
+                            value={project}
+                            onChange={(e) => setProject(e.target.value)}
+                        >
                             <option value="None">None</option>
                             <option value="Project 1">Project 1</option>
                         </select>
                     </div>
 
                     <div className="add-task-form-item action-section">
-                        <div className="cancel-button">Cancel</div>
-                        <div className="create-task-button">Create task</div>
+                        <button type="button" onClick={() => navigate(-1)} className="cancel-button">Cancel</button>
+                        <button type="submit" onClick={() => addNewTask} className="create-task-button">Create task</button>
                     </div>
                 </form>
             </div>
