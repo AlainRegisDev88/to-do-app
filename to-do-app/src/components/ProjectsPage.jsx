@@ -8,12 +8,15 @@ import projectsServices from "../services/projectsServices";
 
 
 const ProjectsPage = () => {
+
+    console.log("ProjectsPage rendered");
     const[projects, setProjects] =  useState([])
 
     useEffect(() => {
         const getProjects = async () => {
+            console.log('calling the projects')
             const results = await projectsServices.fetchProjects()
-            console.log(results)
+            console.log("returned" ,results)
             setProjects(results.projects)
         }
 
