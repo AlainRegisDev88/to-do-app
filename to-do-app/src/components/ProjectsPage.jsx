@@ -8,7 +8,7 @@ import projectsServices from "../services/projectsServices";
 
 
 const ProjectsPage = () => {
-    const[projects, setProjects] =  useState(null)
+    const[projects, setProjects] =  useState([])
 
     useEffect(() => {
         const getProjects = async () => {
@@ -19,7 +19,7 @@ const ProjectsPage = () => {
 
         getProjects()
         console.log(projects)
-    }, [projects])
+    }, [])
 
     return (
         <section className="projects-page">
