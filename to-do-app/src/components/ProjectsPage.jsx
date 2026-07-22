@@ -2,28 +2,35 @@ import { faAdd, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import './ProjectsPage.css'
-import { useState } from "react";
+import { useEffect } from "react";
+import projectsServices from "../services/projectsServices";
+
 
 
 const ProjectsPage = () => {
 
-    const [projects, setProjeacts] = useState([]);
+    useEffect(() => {
+        const getProjects = async () => {
+            const results = await projectsServices.fetchProjects()
+            console.log(results)
+            return results.projects
+        }
 
-    const getProjects = async () =>{
-        const results =  await api.get('/projects')
-    }
-    
+        const projects = getProjects();
+    }, [])
 
-    
+
+
+
     return (
         <section className="projects-page">
             <div className="projects-header">
-                    <p>Projects</p>
-                </div>
+                <p>Projects</p>
+            </div>
             <div className="projects-container">
                 <div className="project-card">
                     <div className="project-header">
-                        <FontAwesomeIcon icon={faUser} style={{color:"darkgreen"}}/>
+                        <FontAwesomeIcon icon={faUser} style={{ color: "darkgreen" }} />
                         <p className="project-title">Personal</p>
                     </div>
                     <p className="open-tasks-count">
