@@ -7,7 +7,7 @@ import { useState } from 'react';
 const NewTask = () => {
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState('')
-    
+
     // new task elements
 
     const [title, setTitle] = useState('');
@@ -28,10 +28,8 @@ const NewTask = () => {
             priority,
             project
         }
-
-
-
     }
+
     return (
         <section className="new-task-page">
             <div className="new-task-card">
@@ -43,12 +41,25 @@ const NewTask = () => {
                     </div>
                     <div className="add-task-form-item">
                         <label className="form-label" htmlFor="title">Title</label>
-                        <input className='tasks-input-box' type="text" name="title" placeholder='What needs to get done?' />
+                        <input
+                            className='tasks-input-box'
+                            type="text" name="title"
+                            placeholder='What needs to get done?'
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
+                            required
+                        />
                     </div>
 
                     <div className="add-task-form-item">
                         <label className="form-label" htmlFor="description">Description</label>
-                        <textarea className="desc-input-box" name="description" placeholder='Add more details(optional)'></textarea>
+                        <textarea
+                            className="desc-input-box"
+                            name="description"
+                            placeholder='Add more details(optional)'
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
+                        />
                     </div>
 
                     <div className="date-priority-row">
