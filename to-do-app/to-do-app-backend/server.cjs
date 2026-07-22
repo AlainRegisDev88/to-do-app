@@ -105,44 +105,41 @@ app.get('/api/profile', verifyToken, async (req, res) => {
     }
 })
 
-app.post('api/tasks', verifyToken, async (req, res) => {
+app.post('/api/tasks', verifyToken, async (req, res) => {
     try {
-        const { title, description, priority, task_status, due_date, project_id } = req.body;
+        const payload = req.body.taskData || req.body;
+        const { title, description, priority, task_status, due_date, project_id } = payload;
 
-        if (title && prioority && task_status && due_date && project_id) {
-
-            user_id = req.user.id
-
-            const conn = await pool.getConnection();
-
-            const result = conn.execute(
-                "INSERT INTO tasks (user_id, title, description, priority, task_status, due_date, project_id) values (?, ?, ?, ?, ?, ?, ?)"
-                [title, description, priority, task_status, due_date, project_id]
-            )
-            conn.close();
-            const newTaskId = result.insertId;
-
-            res.status(201).json({
-                message: "task added successfully",
-                task: {
-                    id: newTaskId,
-                    title
-                }
-            })
-        }else{
-            res.status(501).json({
-                message: "Fill all the required fields!"
-            })
+        if (!title || !priority || !task_status) {
+            return res.status(400).json({
+                message: 'Fill all the required fields!'
+            });
         }
-    }
-    catch (err) {
-        console.log(err),
-            res.status(500).json({
-                message: "Error creating the user!"
-            })
-    }
 
-})
+        const userId = req.user.id;
+        const connection = await pool.getConnection();
+
+        const [result] = await connection.execute(
+            'INSERT INTO tasks (user_id, title, description, priority, task_status, due_date, project_id) VALUES (?, ?, ?, ?, ?, ?, ?)',
+            [userId, title, description || '', priority, task_status, due_date, project_id]
+        );
+
+        connection.release();
+
+        res.status(201).json({
+            message: 'Task added successfully',
+            task: {
+                id: result.insertId,
+                title
+            }
+        });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({
+            message: 'Error creating the task!'
+        });
+    }
+});
 
 app.listen(PORT, () => {
     console.log(`server running on port http://localhost:${PORT}`)
