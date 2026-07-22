@@ -2,9 +2,34 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './NewTask.css'
 import { faClose } from '@fortawesome/free-solid-svg-icons';
 
-const NewTask = () => {
+import { useState } from 'react';
 
-    const addNewTask = () => {
+const NewTask = () => {
+    const [isLoading, setIsLoading] = useState(false)
+    const [error, setError] = useState('')
+    
+    // new task elements
+
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
+    const [dueDate, setDueDate] = useState('');
+    const [priority, setPriority] = useState('');
+    const [project, setProject] = useState('');
+
+    const addNewTask = (e) => {
+        e.preventDefault();
+        setIsLoading(true)
+        setError('')
+
+        const newTask = {
+            title,
+            description,
+            dueDate,
+            priority,
+            project
+        }
+
+
 
     }
     return (
