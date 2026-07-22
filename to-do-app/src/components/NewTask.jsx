@@ -1,14 +1,15 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './NewTask.css'
 import { faClose } from '@fortawesome/free-solid-svg-icons';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { useState } from 'react';
+import taskService from '../services/tasksService';
 
 const NewTask = () => {
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState('')
-    const navigate =  useNavigate();
+    const navigate = useNavigate();
 
     // new task elements
 
@@ -22,14 +23,25 @@ const NewTask = () => {
         e.preventDefault();
         setIsLoading(true)
         setError('')
-
-        const newTask = {
-            title,
-            description,
-            dueDate,
-            priority,
-            project
+        try {
+            const newTask = {
+                title,
+                description,
+                dueDate,
+                priority,
+                project
+            }
+            const result = taskService.saveTask(newTask);
+            navigate('/')
         }
+        catch (error){
+            setError("Unable to create a task: ", error)
+        }
+        finally {
+            setIsLoading(false)
+        }
+
+
     }
     console.log(priority)
     return (
@@ -107,6 +119,7 @@ const NewTask = () => {
                         <button type="button" onClick={() => navigate(-1)} className="cancel-button">Cancel</button>
                         <button type="submit" onClick={() => addNewTask} className="create-task-button">Create task</button>
                     </div>
+                    <center><span>{error && error}</span></center>
                 </form>
             </div>
         </section>
