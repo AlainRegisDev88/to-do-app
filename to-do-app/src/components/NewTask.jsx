@@ -1,13 +1,13 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './NewTask.css'
-import { faClose } from '@fortawesome/free-solid-svg-icons';
+import { faClose, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 
 import { useState } from 'react';
 import taskService from '../services/tasksService';
 
 const NewTask = () => {
-    const [isLoading, setIsLoading] = useState(false)
+    const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
     const navigate = useNavigate();
 
@@ -19,9 +19,9 @@ const NewTask = () => {
     const [priority, setPriority] = useState('');
     const [project, setProject] = useState('');
 
-    const addNewTask = (e) => {
+    const addNewTask = async (e) => {
         e.preventDefault();
-        setIsLoading(true)
+        setLoading(true)
         setError('')
         try {
             const newTask = {
@@ -31,23 +31,26 @@ const NewTask = () => {
                 priority,
                 project
             }
-            const result = taskService.saveTask(newTask);
-            console.log(result)
+            const response = await taskService.saveTask(newTask);
+            console.log(response.task)
             navigate('/')
-            
+
         }
-        catch (error){
+        catch (error) {
             setError("Unable to create a task: ", error)
         }
         finally {
-            setIsLoading(false)
+            setLoading(false)
         }
 
 
     }
-    console.log(priority)
     return (
         <section className="new-task-page">
+            {loading && (
+                <span class="spinner-container">
+                    <FontAwesomeIcon className='loading-spinner' icon={faSpinner} />
+                </span>)}
             <div className="new-task-card">
                 <div onClick={() => navigate(-1)} className="close-icon"><FontAwesomeIcon icon={faClose} /></div>
 
