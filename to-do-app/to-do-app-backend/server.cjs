@@ -3,7 +3,8 @@ const cors = require('cors')
 const path = require('path')
 const authRoutes = require('./routes/auth.cjs')
 const verifyToken = require('./middleware/auth.cjs')
-const pool = require('./db.cjs')
+const pool = require('./db.cjs');
+const { verify } = require('jsonwebtoken');
 
 const app = express()
 
@@ -102,6 +103,38 @@ app.get('/api/profile', verifyToken, async (req, res) => {
     catch(error){
         console.log(error)
     }
+})
+
+app.post('api/tasks', verifyToken, async (req, res)=>{
+    try{
+        const {title, description, priority, task_status, due_date, project_id} =  req.body;
+
+        user_id = req.user.id
+
+        const conn = await pool.getConnection();
+
+        const result = conn.execute(
+            "INSERT INTO tasks (user_id, title, description, priority, task_status, due_date, project_id) values (?, ?, ?, ?, ?, ?, ?)"
+            [title, description, priority, task_status, due_date, project_id]
+        )
+        conn.close();
+        const newTaskId = result.insertId;
+
+        res.status(201).json({
+            message:"task added successfully",
+            task:{
+                id: newTaskId,
+                title
+            }
+        })
+    }
+    catch(err){
+        console.log(err),
+        res.status(500).json({
+            message: "Error creating the user!"
+        })
+    }
+
 })
 
 app.listen(PORT, () => {
