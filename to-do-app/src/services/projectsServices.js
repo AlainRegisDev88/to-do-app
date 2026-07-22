@@ -5,7 +5,7 @@ const projectsServices = {
     fetchProjects: () =>{
         try{
             const response = api.get('/projects');
-        return response;
+        return response.data;
 
         }
         catch(error){
