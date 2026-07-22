@@ -1,3 +1,12 @@
-/* .link{
-    text-decoration:"none";
-    color:--var(--text-accent)"} */
+/* .loading-cover{
+    height: 100dvh;
+    width: 100dvw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+ */
+
