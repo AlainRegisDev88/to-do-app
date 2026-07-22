@@ -141,7 +141,7 @@ app.post('/api/tasks', verifyToken, async (req, res) => {
     }
 });
 
-app.post('/api/projects/', verifyToken, async (req, res) =>{
+app.get('/api/projects/', verifyToken, async (req, res) =>{
     try{
         const connection = await pool.getConnection();
         const [rows] = await connection.execute(
