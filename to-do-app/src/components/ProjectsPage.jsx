@@ -2,8 +2,19 @@ import { faAdd, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import './ProjectsPage.css'
+import { useState } from "react";
+
 
 const ProjectsPage = () => {
+
+    const [projects, setProjeacts] = useState([]);
+
+    const getProjects = async () =>{
+        const results =  await api.get('/projects')
+    }
+    
+
+    
     return (
         <section className="projects-page">
             <div className="projects-header">

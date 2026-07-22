@@ -150,7 +150,7 @@ app.get('/api/projects/', verifyToken, async (req, res) =>{
         connection.close();
 
         if (rows){
-            res.status(201).jsonS({
+            res.status(201).json({
                 message: "Projects retrived successfully",
                 projects: rows
             })
