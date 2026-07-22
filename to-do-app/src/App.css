@@ -13,3 +13,33 @@
     padding: 0 12px;
     cursor: pointer;
 }
+
+/* spinner */
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100dvh;
+  width: 100dvw;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: rgba(175, 240, 242, 0.395);
+  z-index: 999;
+}
+
+.loading-spinner {
+  width: 30px;
+  height: 30px;
+  border: none; /* Light grey base */
+  /* border-top: 6px solid #3498db; Blue accent */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

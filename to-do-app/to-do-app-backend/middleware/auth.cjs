@@ -27,7 +27,7 @@ const verifyToken = (req, res, next) =>{
             })
         }
 
-        res.status(401).json({message: "Inveali token"})
+        res.status(401).json({message: "Invalid token"})
 
     }
 }
