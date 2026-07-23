@@ -4,10 +4,10 @@ import Footer from "./Footer/Footer";
 import './HomeLayout.css'
 import Sidebar from "./Sidebar/Sidebar";
 
-const HomeLayout = () => {
+const HomeLayout = ({user}) => {
     return ( 
         <>
-            <Header />
+            <Header user={user} />
             <div className="main">
                 <Sidebar />
                 <Outlet />

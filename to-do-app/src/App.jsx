@@ -1,6 +1,8 @@
 import './App.css'
 import AuthenticationPage from './components/AuthenticationPage'
 import { Route, Routes } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import profileService from './services/profileService'
 import Login from './components/Login'
 import Signup from './components/Signup'
 import NotFound from './components/NotFound'
@@ -12,14 +14,29 @@ import SettingsPage from './components/SettingsPage'
 import Empty from './components/Empty'
 
 function App() {
+  const [user, setUser] = useState([])
+
+      useEffect(() => {
+        const fetchUserInfo = async () => {
+            try {
+                const fetchedUser = await profileService.getPersonalData()
+                setUser(fetchedUser)
+                // setRandom(Math.random())
+            } catch (error) {
+                console.error('Failed to load profile', error)
+            }
+        }
+
+        fetchUserInfo()
+    }, [])
 
   return (
     <>
       <Routes>
 
 
-        <Route path='/' element={<HomeLayout />}>
-        <Route index element={<HomePage />}></Route>
+        <Route path='/' element={<HomeLayout user={user} />}>
+        <Route index element={<HomePage user={user} />}></Route>
         <Route path='/projects' element={<ProjectsPage />} />
         <Route path='/settings' element={<SettingsPage />} />
         <Route path='/upcoming-tasks' element={<Empty />} />

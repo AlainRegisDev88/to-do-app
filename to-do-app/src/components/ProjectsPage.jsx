@@ -28,7 +28,7 @@ const ProjectsPage = () => {
     return (
         <section className="projects-page">
             {loading &&
-                (<span class="spinner-container">
+                (<span className="spinner-container">
                     <FontAwesomeIcon className='loading-spinner' icon={faSpinner} />
                 </span>)}
             <div className="projects-header">

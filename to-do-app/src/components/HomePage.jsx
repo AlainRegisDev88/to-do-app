@@ -1,33 +1,34 @@
-import { useLocation } from 'react-router-dom'
-import { useState, useEffect } from 'react'
-import profileService from '../services/profileService'
+// import { useLocation } from 'react-router-dom'
+import { useState } from 'react'
+// import profileService from '../services/profileService'
 import './HomePage.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowAltCircleRight } from '@fortawesome/free-regular-svg-icons'
 
 
-const HomePage = () => {
-    const location = useLocation()
-    const { message, name } = location.state || {}
-    const [user, setUser] = useState(null)
-    const [random, setRandom] = useState(0)
+const HomePage = ({user}) => {
+    // const location = useLocation()
+    // const { message, name } = location.state || {}
+    // const [user, setUser] = useState([])
+    // const [random, setRandom] = useState(0)
     const [activeFilter, setActiveFilter] = useState('')
 
-    useEffect(() => {
-        const fetchUserInfo = async () => {
-            try {
-                const fetchedUser = await profileService.getPersonalData()
-                setUser(fetchedUser)
-                console.log(fetchedUser)
-                console.log(fetchedUser, "Here")
-                setRandom(Math.random())
-            } catch (error) {
-                console.error('Failed to load profile', error)
-            }
-        }
+    // useEffect(() => {
+    //     const fetchUserInfo = async () => {
+    //         try {
+    //             const fetchedUser = await profileService.getPersonalData()
+    //             setUser(fetchedUser)
+    //             console.log(user)
+    //             // setRandom(Math.random())
+    //         } catch (error) {
+    //             console.error('Failed to load profile', error)
+    //         }
+    //     }
 
-        fetchUserInfo()
-    }, [])
+    //     fetchUserInfo()
+    // }, [])
+
+    console.log(user)
 
 
     const filters = ["All", "Today", "This week", "Active", "Done", "High priority", "Medium priority", "Low priority"]
@@ -114,7 +115,7 @@ const HomePage = () => {
                 </div>
 
             </div>
-
+<div>selector</div>
         </div>
     );
 }
