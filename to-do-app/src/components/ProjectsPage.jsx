@@ -30,13 +30,14 @@ const ProjectsPage = () => {
                 <p>Projects</p>
             </div>
             <div className="projects-container">
+                
 
                 {projects.map((project) => {
                     return (
-                        <div className="project-card">
+                        <div key={project.project_id} className="project-card">
                             <div className="project-header">
                                 <FontAwesomeIcon icon={faUser} style={{ color: "darkgreen" }} />
-                                <p className="project-title">Personal</p>
+                                <p className="project-title">{project.project_name}</p>
                             </div>
                             <p className="open-tasks-count">
                                 6 open tasks
@@ -45,36 +46,6 @@ const ProjectsPage = () => {
 
                     )
                 })}
-
-                <div className="project-card">
-                    <div className="project-header">
-                        <FontAwesomeIcon icon={faUser} />
-                        <p className="project-title">School Activity</p>
-                    </div>
-                    <p className="open-tasks-count">
-                        6 open tasks
-                    </p>
-                </div>
-
-                <div className="project-card">
-                    <div className="project-header">
-                        <FontAwesomeIcon icon={faUser} />
-                        <p className="project-title">Coding</p>
-                    </div>
-                    <p className="open-tasks-count">
-                        6 open tasks
-                    </p>
-                </div>
-
-                <div className="project-card">
-                    <div className="project-header">
-                        <FontAwesomeIcon icon={faUser} />
-                        <p className="project-title">Gym</p>
-                    </div>
-                    <p className="open-tasks-count">
-                        6 open tasks
-                    </p>
-                </div>
 
                 <Link to="/" className="project-card add-new-task-card">
                     <FontAwesomeIcon icon={faAdd} />
