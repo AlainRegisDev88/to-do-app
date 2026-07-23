@@ -3,7 +3,7 @@ import './Header.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { faBell } from "@fortawesome/free-solid-svg-icons";
-const Header = () => {
+const Header = ({user}) => {
     return (
         <section className="header">
             <Link to="/" className="logo-section">
@@ -23,7 +23,8 @@ const Header = () => {
             <div className="right-nav-bar">
                 <Link className="add-task-button" to='/new-task'>+ New Task</Link>
                 <Link to='/notifications'><FontAwesomeIcon className="bell-icon" icon={faBell} /></Link>
-                <div className="avatar">RU</div>
+                <div className="user-name">{user?.name?.charAt(0).toUpperCase() + user?.name?.slice(1)}</div>
+                <div className="avatar">{user?.name?.charAt(0).toUpperCase()}</div>
             </div>
         </section>
     );
