@@ -63,6 +63,7 @@ function App() {
         </Route>
 
         <Route path='/new-task' element={<NewTask projects={projects} />} />
+        <Route path='/new-project' element={<NewProject />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </>
