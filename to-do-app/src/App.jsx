@@ -13,6 +13,7 @@ import HomeLayout from './components/HomeLayout'
 import SettingsPage from './components/SettingsPage'
 import Empty from './components/Empty'
 import projectsServices from './services/projectsServices'
+import NewProject from './components/Pages/NewProject/NewProject'
 
 function App() {
   const [user, setUser] = useState([])
