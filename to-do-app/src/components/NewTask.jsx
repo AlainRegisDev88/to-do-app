@@ -7,7 +7,8 @@ import { useState } from 'react';
 import taskService from '../services/tasksService';
 import delay from '../helpers/delay';
 
-const NewTask = () => {
+
+const NewTask = ({ projects }) => {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
     const navigate = useNavigate();
@@ -18,7 +19,7 @@ const NewTask = () => {
     const [description, setDescription] = useState('');
     const [dueDate, setDueDate] = useState('');
     const [priority, setPriority] = useState('');
-    const [project, setProject] = useState('');
+    const [project, setProject] = useState('Select a project');
 
     const addNewTask = async (e) => {
         e.preventDefault();
@@ -44,9 +45,20 @@ const NewTask = () => {
             await delay(1000);
             setLoading(false)
         }
+    }
 
+    const handleProjectChange = (e) => {
+        const value = e.target.value;
+
+        if (value === "add-project") {
+            navigate("/new-project")
+            console.log("gone")
+        } else {
+            setProject(value)
+        }
 
     }
+
     return (
         <section className="new-task-page">
             {loading && (
@@ -111,14 +123,21 @@ const NewTask = () => {
 
                     <div className="add-task-form-item">
                         <label className="form-label" htmlFor="project-selection"> Project</label>
-                        <select
+                        <select re
                             name="project-selection"
                             className='tasks-input-box'
                             value={project}
-                            onChange={(e) => setProject(e.target.value)}
+                            onChange={handleProjectChange}
+                            required
                         >
+                            <option value="Select a project" disabled>Select a project</option>
                             <option value="None">None</option>
-                            <option value="Project 1">Project 1</option>
+                            <option value="add-project">+ Add a new project</option>
+                            {projects?.map((project) => {
+                                return (
+                                    <option key={project?.project_id} value={project.project_name}>{project.project_name}</option>
+                                )
+                            })}
                         </select>
                     </div>
 

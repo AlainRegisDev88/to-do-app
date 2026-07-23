@@ -2,28 +2,26 @@ import { faAdd, faSpinner, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import './ProjectsPage.css'
-import { useEffect, useState } from "react";
-import projectsServices from "../services/projectsServices";
+// import { useEffect, useState } from "react";
+// import projectsServices from "../services/projectsServices";
 
 
 
-const ProjectsPage = () => {
+const ProjectsPage = ({projects, loading}) => {
+    // const [projects, setProjects] = useState([])
+    // const [loading, setLoading] = useState(false)
 
-    console.log("ProjectsPage rendered");
-    const [projects, setProjects] = useState([])
-    const [loading, setLoading] = useState(false)
+    // useEffect(() => {
+    //     const getProjects = async () => {
+    //         setLoading(true)
+    //         const results = await projectsServices.fetchProjects()
+    //         setLoading(false)
+    //         setProjects(results.projects)
+    //     }
 
-    useEffect(() => {
-        const getProjects = async () => {
-            setLoading(true)
-            const results = await projectsServices.fetchProjects()
-            setLoading(false)
-            setProjects(results.projects)
-        }
-
-        getProjects()
-        console.log(projects)
-    }, [])
+    //     getProjects()
+    //     console.log(projects)
+    // }, [])
 
     return (
         <section className="projects-page">

@@ -12,9 +12,12 @@ import ProjectsPage from './components/projectsPage'
 import HomeLayout from './components/HomeLayout'
 import SettingsPage from './components/SettingsPage'
 import Empty from './components/Empty'
+import projectsServices from './services/projectsServices'
 
 function App() {
   const [user, setUser] = useState([])
+  const [projects, setProjects] = useState([])
+  const [loading, setLoading] = useState(false)
 
       useEffect(() => {
         const fetchUserInfo = async () => {
@@ -30,6 +33,17 @@ function App() {
         fetchUserInfo()
     }, [])
 
+    useEffect(() => {
+        const getProjects = async () => {
+            setLoading(true)
+            const results = await projectsServices.fetchProjects()
+            setLoading(false)
+            setProjects(results.projects)
+        }
+
+        getProjects()
+    }, [])
+
   return (
     <>
       <Routes>
@@ -37,7 +51,7 @@ function App() {
 
         <Route path='/' element={<HomeLayout user={user} />}>
         <Route index element={<HomePage user={user} />}></Route>
-        <Route path='/projects' element={<ProjectsPage />} />
+        <Route path='/projects' element={<ProjectsPage loading = {loading} projects={projects}/>} />
         <Route path='/settings' element={<SettingsPage />} />
         <Route path='/upcoming-tasks' element={<Empty />} />
         <Route path='/completed-tasks' element={<Empty />} />
@@ -48,7 +62,7 @@ function App() {
           <Route path='signup' element={<Signup />} />
         </Route>
 
-        <Route path='/new-task' element={<NewTask />} />
+        <Route path='/new-task' element={<NewTask projects={projects} />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </>
