@@ -7,8 +7,10 @@ const NewProject = () => {
     const[projectName, setProjectName] = useState("")
     const [projectDescription, setProjectDescription] = useState('')
 
-    const nandleProjectSubmission = (e) => {
+    const handleProjectSubmission = (e) => {
         e.preventDefeult()
+
+        
 
 
     }
@@ -21,7 +23,7 @@ console.log(projectName)
                 <div className="form-header">
                     <p>Add a project</p>
                 </div>
-                <form className='add-project-form' onSubmit={nandleProjectSubmission}>
+                <form className='add-project-form' onSubmit={handleProjectSubmission}>
                     <div className="form-item">
                         <label htmlFor="project-name">Project name</label>
                         <input
@@ -43,7 +45,7 @@ console.log(projectName)
                         />
                     </div>
                     <div className="form-item submit">
-                        <button type="submit" className='button-primary'>+ Add project</button>
+                        <button onClick={()=>handleProjectSubmission} type="submit" className='button-primary'>+ Add project</button>
                     </div>
                     
                 </form>
