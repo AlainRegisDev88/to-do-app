@@ -2,9 +2,9 @@ import api from './api'
 
 const projectsServices = {
 
-    fetchProjects: () =>{
+    fetchProjects: async () =>{
         try{
-            const response = api.get('/projects');
+            const response = await api.get('/projects');
         return response.data;
 
         }
