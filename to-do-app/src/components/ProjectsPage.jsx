@@ -1,4 +1,4 @@
-import { faAdd, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faAdd, faSpinner, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import './ProjectsPage.css'
@@ -10,13 +10,14 @@ import projectsServices from "../services/projectsServices";
 const ProjectsPage = () => {
 
     console.log("ProjectsPage rendered");
-    const[projects, setProjects] =  useState([])
+    const [projects, setProjects] = useState([])
+    const [ loading, setLoading ] = useState(false)
 
     useEffect(() => {
         const getProjects = async () => {
-            console.log('calling the projects')
+            setLoading(true)
             const results = await projectsServices.fetchProjects()
-            console.log("returned" ,results)
+            setLoading(false)
             setProjects(results.projects)
         }
 
@@ -26,11 +27,14 @@ const ProjectsPage = () => {
 
     return (
         <section className="projects-page">
+            {loading && (<span class="spinner-container">
+                <FontAwesomeIcon className='loading-spinner' icon={faSpinner} />
+            </span>)}
             <div className="projects-header">
                 <p>Projects</p>
             </div>
             <div className="projects-container">
-                
+
 
                 {projects.map((project) => {
                     return (
