@@ -7,7 +7,7 @@ import { useState } from 'react';
 import taskService from '../services/tasksService';
 import delay from '../helpers/delay';
 
-const NewTask = ({projects}) => {
+const NewTask = ({ projects }) => {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
     const navigate = useNavigate();
@@ -44,9 +44,8 @@ const NewTask = ({projects}) => {
             await delay(1000);
             setLoading(false)
         }
-
-
     }
+    console.log(projects)
     return (
         <section className="new-task-page">
             {loading && (
@@ -118,7 +117,11 @@ const NewTask = ({projects}) => {
                             onChange={(e) => setProject(e.target.value)}
                         >
                             <option value="None">None</option>
-                            <option value="Project 1">Project 1</option>
+                            {projects?.map((project) => {
+                                return (
+                                    <option value={project.project_name}>{project.project_name}</option>
+                                )
+                            })}
                         </select>
                     </div>
 
