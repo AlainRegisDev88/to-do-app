@@ -7,7 +7,7 @@ import { useState } from 'react';
 import taskService from '../services/tasksService';
 import delay from '../helpers/delay';
 
-const NewTask = () => {
+const NewTask = ({projects}) => {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
     const navigate = useNavigate();
