@@ -1,0 +1,422 @@
+{
+    "type": "MySQLNotebook",
+    "version": "1.0",
+    "caption": "DB Notebook",
+    "content": "\\about\nuse task_manager_db;\nselect * from users;\nselect * from tasks;\nALTER TABLE tasks add column project_id int not null;\ndesc tasks;\n\n\n\ncreate table projects(\nproject_id int AUTO_INCREMENT not null PRIMARY KEY,\nproject_name VARCHAR(250) not null,\ndescription text,\ncreated_at timestamp DEFAULT current_timestamp,\nupdated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP);\n\ndesc projects;\nalter table tasks  \nmodify column project_id int not null,\nadd constraint fk_task_project_id\nforeign key tasks(project_id) REFERENCES projects(project_id);\n\n\ndesc projects;\ninsert into projects(project_name, description) values(\"Task manager\", \"A simpke task manager\"), \n(\"Coding\", \"general coding tasks are daved in here\"),\n(\"Academics\", \"My academic tasks\");\n\n\nselect * from tasks;\n\n\n\n\n\n\n\n",
+    "options": {
+        "tabSize": 4,
+        "indentSize": 4,
+        "insertSpaces": true,
+        "defaultEOL": "LF",
+        "trimAutoWhitespace": true
+    },
+    "viewState": {
+        "cursorState": [
+            {
+                "inSelectionMode": false,
+                "selectionStart": {
+                    "lineNumber": 30,
+                    "column": 1
+                },
+                "position": {
+                    "lineNumber": 30,
+                    "column": 1
+                }
+            }
+        ],
+        "viewState": {
+            "scrollLeft": 0,
+            "firstPosition": {
+                "lineNumber": 22,
+                "column": 1
+            },
+            "firstPositionDeltaTop": -8
+        },
+        "contributionsState": {
+            "editor.contrib.folding": {},
+            "editor.contrib.wordHighlighter": false
+        }
+    },
+    "contexts": [
+        {
+            "state": {
+                "start": 1,
+                "end": 1,
+                "language": "mysql",
+                "result": {
+                    "type": "text",
+                    "text": [
+                        {
+                            "type": 2,
+                            "content": "Welcome to the MySQL Shell - DB Notebook.\n\nPress Ctrl+Enter to execute the code block.\n\nExecute \\sql to switch to SQL, \\js to JavaScript and \\ts to TypeScript mode.\nExecute \\help or \\? for help;Welcome to the MySQL Shell - DB Notebook.\n\nPress Ctrl+Enter to execute the code block.\n\nExecute \\sql to switch to SQL, \\js to JavaScript and \\ts to TypeScript mode.\nExecute \\help or \\? for help;",
+                            "language": "ansi"
+                        }
+                    ]
+                },
+                "currentHeight": 28,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 6
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 2,
+                "end": 3,
+                "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "cfa8d81c-25d8-4520-b8c7-f745083fa08f",
+                        "fd1d9505-d38f-4c89-b187-729677c797c8"
+                    ]
+                },
+                "currentHeight": 36,
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 20
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 20,
+                            "length": 21
+                        },
+                        "contentStart": 21,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 41,
+                            "length": 0
+                        },
+                        "contentStart": 40,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": [
+                {
+                    "tabId": "1c895e7e-e513-40bd-d165-8c0235cbde47",
+                    "resultId": "cfa8d81c-25d8-4520-b8c7-f745083fa08f",
+                    "rows": [
+                        {
+                            "0": "3e696654-6d7d-476b-bc0e-ed7612cb1857",
+                            "1": "Test User",
+                            "2": "testuser@example.com",
+                            "3": "$2b$10$yjz3iKZGq.CuApTh0owdlOhEGMczzACnKMjZSLNYoihs1B6e9dOa6",
+                            "4": "2026-07-03 16:51:47"
+                        },
+                        {
+                            "0": "8dab63a8-7a52-4686-817f-247de8660e71",
+                            "1": "Test",
+                            "2": "test@example.com",
+                            "3": "$2b$10$IuWrtXUQy52RGypCX3N76O6Gi/MgvSiedL3Zx7aRYOjNyWlpuHjza",
+                            "4": "2026-07-02 09:51:29"
+                        },
+                        {
+                            "0": "907c700e-b90e-4121-a287-9b9eefc96a96",
+                            "1": "alain",
+                            "2": "test@gmail.com",
+                            "3": "$2b$10$gqGYvNoqvXRAqlOoBJrID.11yfw4XQIHfCynaqBDa1E6TSJqHsZLe",
+                            "4": "2026-07-02 23:49:17"
+                        },
+                        {
+                            "0": "aba41cab-9a17-4d84-9d5a-a92c55899612",
+                            "1": "regis",
+                            "2": "email@gmail.com",
+                            "3": "pass",
+                            "4": "2026-06-30 12:22:01"
+                        },
+                        {
+                            "0": "ae8b05fa-1e6e-422f-8410-2b29c8a733b6",
+                            "1": "regis",
+                            "2": "rex@gmail.com",
+                            "3": "$2b$10$PUic2/kHEV6Mdzn9mqWg3uNtz235MSg.HUe.Y1.Rf9xqkprBRernq",
+                            "4": "2026-07-04 11:56:26"
+                        },
+                        {
+                            "0": "e2bd63ba-c6e1-49c6-9c38-373241b1f74f",
+                            "1": "alain",
+                            "2": "alain@gmail.com",
+                            "3": "$2b$10$VOYhodd7JeZcikWslOuY8u3GKJKR0jEJ5KSQlYS2pzLmcy7ERD0B2",
+                            "4": "2026-07-02 09:52:45"
+                        },
+                        {
+                            "0": "user1",
+                            "1": "regis",
+                            "2": "regis@gmail.com",
+                            "3": "pass",
+                            "4": "2026-06-28 23:42:11"
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "id",
+                            "field": "0",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": true,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "fullName",
+                            "field": "1",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "email",
+                            "field": "2",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "password",
+                            "field": "3",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": null
+                        },
+                        {
+                            "title": "created_at",
+                            "field": "4",
+                            "dataType": {
+                                "type": 26,
+                                "dateTimePrecision": 8,
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": true,
+                            "autoIncrement": false,
+                            "default": "CURRENT_TIMESTAMP"
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 7 records retrieved in 7.374ms"
+                    },
+                    "totalRowCount": 7,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 1,
+                    "sql": "\nselect * from users",
+                    "updatable": true,
+                    "fullTableName": "users"
+                },
+                {
+                    "tabId": "1c895e7e-e513-40bd-d165-8c0235cbde47",
+                    "resultId": "fd1d9505-d38f-4c89-b187-729677c797c8",
+                    "rows": [],
+                    "columns": [
+                        {
+                            "title": "*",
+                            "field": "0",
+                            "dataType": {
+                                "type": 0
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 0 records retrieved in 2.813ms"
+                    },
+                    "totalRowCount": 0,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "use task_manager_db",
+                    "updatable": false
+                }
+            ]
+        },
+        {
+            "state": {
+                "start": 4,
+                "end": 37,
+                "language": "mysql",
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 20
+                        },
+                        "contentStart": 0,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 20,
+                            "length": 54
+                        },
+                        "contentStart": 21,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 74,
+                            "length": 12
+                        },
+                        "contentStart": 76,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 86,
+                            "length": 257
+                        },
+                        "contentStart": 90,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 343,
+                            "length": 16
+                        },
+                        "contentStart": 346,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 359,
+                            "length": 156
+                        },
+                        "contentStart": 360,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 515,
+                            "length": 17
+                        },
+                        "contentStart": 519,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 532,
+                            "length": 188
+                        },
+                        "contentStart": 533,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 720,
+                            "length": 23
+                        },
+                        "contentStart": 723,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 743,
+                            "length": 7
+                        },
+                        "contentStart": 742,
+                        "state": 3
+                    }
+                ]
+            },
+            "data": []
+        },
+        {
+            "state": {
+                "start": 38,
+                "end": 38,
+                "language": "mysql",
+                "currentSet": 1,
+                "statements": [
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 0,
+                            "length": 0
+                        },
+                        "contentStart": 0,
+                        "state": 2
+                    }
+                ]
+            },
+            "data": []
+        }
+    ]
+}
