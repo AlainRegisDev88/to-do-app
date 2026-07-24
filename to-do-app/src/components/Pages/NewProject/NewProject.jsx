@@ -3,11 +3,13 @@ import './NewProject.css'
 import { faClose, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
 import projectsServices from '../../../services/projectsServices';
+import { useNavigate } from 'react-router-dom';
 
 const NewProject = () => {
     const [projectName, setProjectName] = useState("")
     const [projectDescription, setProjectDescription] = useState('')
     const [loading, setLoading] = useState(false)
+    const navigate = useNavigate()
 
     const handleProjectSubmission = async (e) => {
         e.preventDefault()
@@ -19,7 +21,8 @@ const NewProject = () => {
         try {
             setLoading(true)
             const response = await projectsServices.addProject(newProject);
-            console.log(response)
+            
+            navigate(-1, {state: {response: response}})
 
         } catch (error) {
             console.log(error)
