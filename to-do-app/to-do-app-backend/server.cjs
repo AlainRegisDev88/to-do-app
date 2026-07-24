@@ -180,8 +180,10 @@ app.post('/api/add-project', verifyToken, async (req, res) => {
 
         connection.close()
 
+        const projectId = result.insertId
+
         if(result){
-            res.status(201).json({message: "Project added successfully", data: {projectName, userId}})
+            res.status(201).json({message: "Project added successfully", data: {projectName, userId, projectId}})
 
         }
     } catch (error) {
