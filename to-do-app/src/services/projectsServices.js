@@ -11,8 +11,18 @@ const projectsServices = {
         catch(error){
             console.log(error)
             throw error
+        } 
+    },
+
+    addProject: async ({newProject}) =>{
+        try{
+            const response = await api.post('/add-project', newProject)
+            return response
+
+        }catch(error){
+            console.log(error)
+            throw error
         }
-        
     }
 
 }
