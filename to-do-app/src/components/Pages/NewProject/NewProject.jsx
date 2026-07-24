@@ -2,17 +2,28 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './NewProject.css'
 import { faClose } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
+import projectsServices from '../../../services/projectsServices';
 
 const NewProject = () => {
     const[projectName, setProjectName] = useState("")
     const [projectDescription, setProjectDescription] = useState('')
+    const [loading, setLoading] = useState(false)
 
-    const handleProjectSubmission = (e) => {
+    const handleProjectSubmission = async (e) => {
         e.preventDefeult()
+        const newProject = {projectName, projectDescription}
 
-        
+        try{
+            setLoading(true)
+            const response =  await projectsServices.addProject(newProject);
+            console.log(response)
 
-
+        }catch(error){
+            console.log(error)
+        }
+        finally{
+            setLoading(false)
+        }
     }
 console.log(projectName)
     return (
