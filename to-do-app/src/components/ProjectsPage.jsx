@@ -50,7 +50,7 @@ const ProjectsPage = ({projects, loading}) => {
                     )
                 })}
 
-                <Link to="/" className="project-card add-new-task-card">
+                <Link to="/new-project" className="project-card add-new-task-card">
                     <FontAwesomeIcon icon={faAdd} />
                     <p>Add new project</p>
                 </Link>
