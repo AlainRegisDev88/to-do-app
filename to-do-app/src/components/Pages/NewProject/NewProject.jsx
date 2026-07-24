@@ -10,8 +10,11 @@ const NewProject = () => {
     const [loading, setLoading] = useState(false)
 
     const handleProjectSubmission = async (e) => {
-        e.preventDefeult()
-        const newProject = { projectName, projectDescription }
+        e.preventDefault()
+        const newProject = {
+            projectName: projectName, 
+            projectDescription: projectDescription
+        }
 
         try {
             setLoading(true)
