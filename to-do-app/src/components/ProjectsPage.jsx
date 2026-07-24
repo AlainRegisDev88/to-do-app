@@ -1,4 +1,4 @@
-import { faAdd, faSpinner, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faAdd, faSpinner, faTasks } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import './ProjectsPage.css'
@@ -36,11 +36,13 @@ const ProjectsPage = ({projects, loading}) => {
 
 
                 {projects.map((project) => {
+                    console.log(project.project_icon)
                     return (
                         <div key={project.project_id} className="project-card">
                             <div className="project-header">
-                                <FontAwesomeIcon icon={faUser} style={{ color: "darkgreen" }} />
-                                <p className="project-title">{project.project_name}</p>
+                                <FontAwesomeIcon icon={faTasks} />
+                                <p className="project-title">{project.project_name}</p> 
+                                {/* {doesnt load the icons :( } */}
                             </div>
                             <p className="open-tasks-count">
                                 6 open tasks
