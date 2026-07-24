@@ -141,25 +141,59 @@ app.post('/api/tasks', verifyToken, async (req, res) => {
     }
 });
 
-app.get('/api/projects/', verifyToken, async (req, res) =>{
-    try{
+app.get('/api/projects/', verifyToken, async (req, res) => {
+    try {
         const connection = await pool.getConnection();
         const [rows] = await connection.execute(
             "Select * from projects"
         )
         connection.close();
 
-        if (rows){
+        if (rows) {
             res.status(201).json({
                 message: "Projects retrived successfully",
                 projects: rows
             })
         }
     }
-    catch(error){
+    catch (error) {
         console.log(error),
-        res.status(401).json({message: "Unable to load the projects"})
+            res.status(401).json({ message: "Unable to load the projects" })
     }
+})
+
+app.post('/api/add-project', verifyToken, async (req, res) => {
+
+    const { projectName, projectDescription } = req.body
+    console.log(req.body + "nothing")
+    
+    const userId = req.user.id
+
+    if (!projectName || !projectDescription) {
+        res.status(400).json({ message: "Fill all required fields!" })
+    }
+
+    try {
+        const connection = await pool.getConnection();
+        const [result] = await connection.execute(
+            "insert into projects (project_name, description, user_id) values (?, ? ,?)",
+            [projectName, projectDescription, userId]
+        )
+
+        connection.close()
+
+        const projectId = result.insertId
+
+        if(result){
+            res.status(201).json({message: "Project added successfully", data: {projectName, userId, projectId}})
+
+        }
+    } catch (error) {
+        console.log(error),
+            res.status(400).json({ message: "unable to save the new project" })
+    }
+
+
 })
 
 app.listen(PORT, () => {

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import './Login.css'
 import { useNavigate, useLocation } from 'react-router-dom'
 import authService from "../services/authService";
@@ -14,6 +14,13 @@ const Login = () => {
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
+
+    useEffect(() => {
+        const token = localStorage.getItem('token'); // Replace with your auth state
+        if (token) {
+            navigate('/')
+        }
+    })
 
     const location = useLocation()
     const { successMessage, name } = location.state || {}
