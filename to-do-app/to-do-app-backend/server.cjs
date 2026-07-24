@@ -165,6 +165,8 @@ app.get('/api/projects/', verifyToken, async (req, res) => {
 app.post('/api/add-project', verifyToken, async (req, res) => {
 
     const { projectName, projectDescription } = req.body
+    console.log(req.body + "nothing")
+    
     const userId = req.user.id
 
     if (!projectName || !projectDescription) {
@@ -174,8 +176,8 @@ app.post('/api/add-project', verifyToken, async (req, res) => {
     try {
         const connection = await pool.getConnection();
         const [result] = await connection.execute(
-            "insert into projects (project_name, description, user_id) values (?, ? ,?)"
-            [projectName, projectDescription, user_id]
+            "insert into projects (project_name, description, user_id) values (?, ? ,?)",
+            [projectName, projectDescription, userId]
         )
 
         connection.close()
