@@ -1,33 +1,37 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './NewProject.css'
-import { faClose } from '@fortawesome/free-solid-svg-icons';
+import { faClose, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
 import projectsServices from '../../../services/projectsServices';
 
 const NewProject = () => {
-    const[projectName, setProjectName] = useState("")
+    const [projectName, setProjectName] = useState("")
     const [projectDescription, setProjectDescription] = useState('')
     const [loading, setLoading] = useState(false)
 
     const handleProjectSubmission = async (e) => {
         e.preventDefeult()
-        const newProject = {projectName, projectDescription}
+        const newProject = { projectName, projectDescription }
 
-        try{
+        try {
             setLoading(true)
-            const response =  await projectsServices.addProject(newProject);
+            const response = await projectsServices.addProject(newProject);
             console.log(response)
 
-        }catch(error){
+        } catch (error) {
             console.log(error)
         }
-        finally{
+        finally {
             setLoading(false)
         }
     }
-console.log(projectName)
+    console.log(projectName)
     return (
         <div className="new-project-page">
+            {loading &&
+                (<span className="spinner-container">
+                    <FontAwesomeIcon className='loading-spinner' icon={faSpinner} />
+                </span>)}
             <div className="new-project-card">
                 <FontAwesomeIcon className="close-icon" icon={faClose} />
 
@@ -42,7 +46,7 @@ console.log(projectName)
                             className='input-box'
                             name="project-name"
                             value={projectName}
-                            onChange={(e)=> setProjectName(e.target.value)}
+                            onChange={(e) => setProjectName(e.target.value)}
                         />
                     </div>
                     <div className="form-item">
@@ -52,13 +56,13 @@ console.log(projectName)
                             name="project-desc"
                             className='desc-input-box'
                             value={projectDescription}
-                            onChange={(e)=> setProjectDescription(e.target.value)}
+                            onChange={(e) => setProjectDescription(e.target.value)}
                         />
                     </div>
                     <div className="form-item submit">
-                        <button onClick={()=>handleProjectSubmission} type="submit" className='button-primary'>+ Add project</button>
+                        <button onClick={() => handleProjectSubmission} type="submit" className='button-primary'>+ Add project</button>
                     </div>
-                    
+
                 </form>
             </div>
         </div>
