@@ -203,7 +203,8 @@ app.get('/api/tasks', verifyToken, async (req, res) =>{
     try{
         const conn = await pool.getConnection();
         const [rows] = await conn.execute(
-            "select * from tasks where user_id = 'user_id'"
+            "select * from tasks where user_id = ?",
+            [userId]
         )
         conn.release()
 
