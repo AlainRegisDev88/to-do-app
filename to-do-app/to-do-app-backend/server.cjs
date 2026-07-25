@@ -202,10 +202,10 @@ app.get('/api/tasks', verifyToken, async (req, res) =>{
 
     try{
         const conn = await pool.getConnection();
-        const [rows] = (await conn).execute(
+        const [rows] = await conn.execute(
             "select * from tasks where user_id = 'user_id'"
         )
-        conn.close()
+        conn.release()
 
         if (rows){
             res.status(201).json({

@@ -1,12 +1,13 @@
 // import { useLocation } from 'react-router-dom'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 // import profileService from '../services/profileService'
 import './HomePage.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowAltCircleRight } from '@fortawesome/free-regular-svg-icons'
+import taskService from '../services/tasksService'
 
 
-const HomePage = ({user}) => {
+const HomePage = ({ user }) => {
     // const location = useLocation()
     // const { message, name } = location.state || {}
     // const [user, setUser] = useState([])
@@ -28,7 +29,19 @@ const HomePage = ({user}) => {
     //     fetchUserInfo()
     // }, [])
 
-    console.log(user)
+    useEffect(() => {
+        const fetchTasks = async() => {
+            try {
+                const response = await taskService.retrieveTasks()
+                console.log(response)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+
+        fetchTasks()
+
+    }, [])
 
 
     const filters = ["All", "Today", "This week", "Active", "Done", "High priority", "Medium priority", "Low priority"]
@@ -51,7 +64,7 @@ const HomePage = ({user}) => {
                                 return (
                                     <button
                                         key={filter}
-                                        className={`filter-button ${activeFilter === filter ? "active-filter" : ""} ${activeFilter ==="" && filter==="All" ? "active-filter" :""}`}
+                                        className={`filter-button ${activeFilter === filter ? "active-filter" : ""} ${activeFilter === "" && filter === "All" ? "active-filter" : ""}`}
                                         onClick={() => setActiveFilter(filter)}
                                     >
                                         {filter}
@@ -115,7 +128,6 @@ const HomePage = ({user}) => {
                 </div>
 
             </div>
-<div>selector</div>
         </div>
     );
 }
