@@ -5,6 +5,7 @@ import './HomePage.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowAltCircleRight } from '@fortawesome/free-regular-svg-icons'
 import taskService from '../services/tasksService'
+import Skeleton from './Skeleton/AvatarSkeleton'
 
 
 const HomePage = ({ user }) => {
@@ -14,6 +15,7 @@ const HomePage = ({ user }) => {
     // const [user, setUser] = useState([])
     // const [random, setRandom] = useState(0)
     const [activeFilter, setActiveFilter] = useState('')
+    const [loading, setLoading] = useState(false)
 
     // useEffect(() => {
     //     const fetchUserInfo = async () => {
@@ -33,7 +35,9 @@ const HomePage = ({ user }) => {
     useEffect(() => {
         const fetchTasks = async () => {
             try {
+                setLoading(true)
                 const response = await taskService.retrieveTasks()
+                setLoading(false)
                 setTasks(response.data.tasks)
             } catch (error) {
                 console.log(error)

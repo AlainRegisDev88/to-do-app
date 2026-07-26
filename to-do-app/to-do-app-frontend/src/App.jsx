@@ -14,17 +14,22 @@ import SettingsPage from './components/SettingsPage'
 import Empty from './components/Empty'
 import projectsServices from './services/projectsServices'
 import NewProject from './components/Pages/NewProject/NewProject'
+import delay from './helpers/delay'
 
 function App() {
   const [user, setUser] = useState([])
   const [projects, setProjects] = useState([])
   const [loading, setLoading] = useState(false)
+  const [ loadingUser, setLoadingUser ] = useState(false) 
 
       useEffect(() => {
         const fetchUserInfo = async () => {
             try {
+                setLoadingUser(true)
                 const fetchedUser = await profileService.getPersonalData()
                 setUser(fetchedUser)
+                await delay(1000); 
+                setLoadingUser(false)
                 // setRandom(Math.random())
             } catch (error) {
                 console.error('Failed to load profile', error)
@@ -34,23 +39,24 @@ function App() {
         fetchUserInfo()
     }, [])
 
-    useEffect(() => {
-        const getProjects = async () => {
-            setLoading(true)
-            const results = await projectsServices.fetchProjects()
-            setLoading(false)
-            setProjects(results.projects)
-        }
+useEffect(() => {
+    const getProjects = async () => {
+        setLoading(true);
+        
+        const results = await projectsServices.fetchProjects();       
+        setProjects(results.projects);
+        setLoading(false);
+    };
 
-        getProjects()
-    }, [])
+    getProjects();
+}, []);
 
   return (
     <>
       <Routes>
 
 
-        <Route path='/' element={<HomeLayout user={user} />}>
+        <Route path='/' element={<HomeLayout user={user} loadingUser={loadingUser} />}>
         <Route index element={<HomePage user={user} />}></Route>
         <Route path='/projects' element={<ProjectsPage loading = {loading} projects={projects}/>} />
         <Route path='/settings' element={<SettingsPage />} />
