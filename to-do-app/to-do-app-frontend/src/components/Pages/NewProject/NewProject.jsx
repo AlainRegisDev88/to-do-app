@@ -5,7 +5,7 @@ import { useState } from 'react';
 import projectsServices from '../../../services/projectsServices';
 import { useNavigate } from 'react-router-dom';
 
-const NewProject = () => {
+const NewProject = ({projects, setProjects, getProjects}) => {
     const [projectName, setProjectName] = useState("")
     const [projectDescription, setProjectDescription] = useState('')
     const [loading, setLoading] = useState(false)
@@ -21,7 +21,8 @@ const NewProject = () => {
         try {
             setLoading(true)
             const response = await projectsServices.addProject(newProject);
-            
+            getProjects();
+            setProjects(projects)            
             navigate(-1, {state: {response: response}})
 
         } catch (error) {

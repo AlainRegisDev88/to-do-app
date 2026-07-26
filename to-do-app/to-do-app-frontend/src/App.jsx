@@ -1,7 +1,7 @@
 import './App.css'
 import AuthenticationPage from './components/AuthenticationPage'
 import { Route, Routes } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import profileService from './services/profileService'
 import Login from './components/Login'
 import Signup from './components/Signup'
@@ -20,36 +20,36 @@ function App() {
   const [user, setUser] = useState([])
   const [projects, setProjects] = useState([])
   const [loading, setLoading] = useState(false)
-  const [ loadingUser, setLoadingUser ] = useState(false) 
+  const [loadingUser, setLoadingUser] = useState(false)
 
-      useEffect(() => {
-        const fetchUserInfo = async () => {
-            try {
-                setLoadingUser(true)
-                const fetchedUser = await profileService.getPersonalData()
-                setUser(fetchedUser)
-                await delay(1000); 
-                setLoadingUser(false)
-                // setRandom(Math.random())
-            } catch (error) {
-                console.error('Failed to load profile', error)
-            }
-        }
+  useEffect(() => {
+    const fetchUserInfo = async () => {
+      try {
+        setLoadingUser(true)
+        const fetchedUser = await profileService.getPersonalData()
+        setUser(fetchedUser)
+        await delay(1000);
+        setLoadingUser(false)
+        // setRandom(Math.random())
+      } catch (error) {
+        console.error('Failed to load profile', error)
+      }
+    }
 
-        fetchUserInfo()
-    }, [])
+    fetchUserInfo()
+  }, [])
 
-useEffect(() => {
-    const getProjects = async () => {
-        setLoading(true);
-        
-        const results = await projectsServices.fetchProjects();       
-        setProjects(results.projects);
-        setLoading(false);
-    };
+  const getProjects = useCallback(async () => {
+    setLoading(true);
 
+    const results = await projectsServices.fetchProjects();
+    setProjects(results.projects);
+    setLoading(false);
+  }, []);
+
+  useEffect(() => {
     getProjects();
-}, []);
+  }, []);
 
   return (
     <>
@@ -57,11 +57,11 @@ useEffect(() => {
 
 
         <Route path='/' element={<HomeLayout user={user} loadingUser={loadingUser} />}>
-        <Route index element={<HomePage user={user} />}></Route>
-        <Route path='/projects' element={<ProjectsPage loading = {loading} projects={projects}/>} />
-        <Route path='/settings' element={<SettingsPage />} />
-        <Route path='/upcoming-tasks' element={<Empty />} />
-        <Route path='/completed-tasks' element={<Empty />} />
+          <Route index element={<HomePage user={user} />}></Route>
+          <Route path='/projects' element={<ProjectsPage loading={loading} projects={projects} />} />
+          <Route path='/settings' element={<SettingsPage />} />
+          <Route path='/upcoming-tasks' element={<Empty />} />
+          <Route path='/completed-tasks' element={<Empty />} />
         </Route>
 
         <Route path='/auth' element={<AuthenticationPage />}>
@@ -70,7 +70,7 @@ useEffect(() => {
         </Route>
 
         <Route path='/new-task' element={<NewTask projects={projects} />} />
-        <Route path='/new-project' element={<NewProject />} />
+        <Route path='/new-project' element={<NewProject projects={projects} setProjects={setProjects} getProjects={getProjects} />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </>

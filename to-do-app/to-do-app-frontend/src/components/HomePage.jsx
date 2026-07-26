@@ -32,6 +32,14 @@ const HomePage = ({ user }) => {
     //     fetchUserInfo()
     // }, [])
 
+    const now = new Date()
+    const todaysDate = now.toDateString()
+
+    const endOfToday = new Date();
+    endOfToday.setHours(23, 59, 59, 999);
+
+
+
     useEffect(() => {
         const fetchTasks = async () => {
             try {
@@ -48,6 +56,9 @@ const HomePage = ({ user }) => {
 
     }, [])
 
+    const todayTasks = tasks.filter(task => task.title === "new task")
+    console.log(todayTasks.title)
+
 
     const filters = ["All", "Today", "This week", "Active", "Done", "High priority", "Medium priority", "Low priority"]
 
@@ -59,7 +70,7 @@ const HomePage = ({ user }) => {
                 <div className="middle-section">
                     <div className="page-heading">
                         <p className='page-title'>Tasks</p>
-                        <p className="page-subtitle">Wednesday, 8 July <FontAwesomeIcon icon={faArrowAltCircleRight} /> 4 tasks</p>
+                        <p className="page-subtitle">{todaysDate} <FontAwesomeIcon icon={faArrowAltCircleRight} /> {tasks.length} tasks</p>
                     </div>
 
                     <div className="filter-bar">
@@ -89,7 +100,7 @@ const HomePage = ({ user }) => {
                                         <div className={`task-title ${task.task_status === 'Completed' ? "title-done" : ""}`}>{task.title}</div>
                                     </div>
                                     <div className={`task-tag ${task.task_status !== "Completed" ? `${task.priority?.charAt(0).toLowerCase()}${task.priority?.slice(1)}-priority-tag` : ""} ${task.task_status === 'Completed' ? "done-tag" : ""}`}>
-                                        {task?.task_status === "Completed"? "Done" : task.priority}
+                                        {task?.task_status === "Completed" ? "Done" : task.priority}
                                     </div>
 
                                 </div>

@@ -2,7 +2,7 @@
     "type": "MySQLNotebook",
     "version": "1.0",
     "caption": "DB Notebook",
-    "content": "\\about\nuse task_manager_db;\nselect * from users;\nselect * from tasks;\nALTER TABLE tasks add column project_id int not null;\ndesc tasks;\n\n\n\ncreate table projects(\nproject_id int AUTO_INCREMENT not null PRIMARY KEY,\nproject_name VARCHAR(250) not null,\ndescription text,\ncreated_at timestamp DEFAULT current_timestamp,\nupdated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP);\n\ndesc projects;\nalter table tasks  \nmodify column project_id int not null,\nadd constraint fk_task_project_id\nforeign key tasks(project_id) REFERENCES projects(project_id);\n\n\ndesc projects;\ninsert into projects(project_name, description) values(\"Task manager\", \"A simpke task manager\"), \n(\"Coding\", \"general coding tasks are daved in here\"),\n(\"Academics\", \"My academic tasks\");\n\n\nselect * from tasks;\n\n\n\n\n\n\n\n",
+    "content": "\\about\nuse task_manager_db;\nselect * from users;\nselect * from tasks;\nALTER TABLE tasks add column project_id int not null;\ndesc tasks;\n\n\n\ncreate table projects(\nproject_id int AUTO_INCREMENT not null PRIMARY KEY,\nproject_name VARCHAR(250) not null,\ndescription text,\ncreated_at timestamp DEFAULT current_timestamp,\nupdated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP);\n\ndesc projects;\nalter table tasks  \nmodify column project_id int not null,\nadd constraint fk_task_project_id\nforeign key tasks(project_id) REFERENCES projects(project_id);\n\n\ndesc projects;\ninsert into projects(project_name, description) values(\"Task manager\", \"A simpke task manager\"), \n(\"Coding\", \"general coding tasks are daved in here\"),\n(\"Academics\", \"My academic tasks\");\n\n\nselect * from tasks;\nuse task_manager_db;\n\ndesc tasks;\n\n",
     "options": {
         "tabSize": 4,
         "indentSize": 4,
@@ -15,11 +15,11 @@
             {
                 "inSelectionMode": false,
                 "selectionStart": {
-                    "lineNumber": 30,
+                    "lineNumber": 33,
                     "column": 1
                 },
                 "position": {
-                    "lineNumber": 30,
+                    "lineNumber": 33,
                     "column": 1
                 }
             }
@@ -27,14 +27,14 @@
         "viewState": {
             "scrollLeft": 0,
             "firstPosition": {
-                "lineNumber": 22,
+                "lineNumber": 23,
                 "column": 1
             },
-            "firstPositionDeltaTop": -8
+            "firstPositionDeltaTop": -15
         },
         "contributionsState": {
             "editor.contrib.folding": {},
-            "editor.contrib.wordHighlighter": false
+            "editor.contrib.wordHighlighter": true
         }
     },
     "contexts": [
@@ -77,8 +77,7 @@
                 "result": {
                     "type": "resultIds",
                     "list": [
-                        "cfa8d81c-25d8-4520-b8c7-f745083fa08f",
-                        "fd1d9505-d38f-4c89-b187-729677c797c8"
+                        "ced69b16-9983-44f0-d23f-10a9bb845a46"
                     ]
                 },
                 "currentHeight": 36,
@@ -115,8 +114,8 @@
             },
             "data": [
                 {
-                    "tabId": "1c895e7e-e513-40bd-d165-8c0235cbde47",
-                    "resultId": "cfa8d81c-25d8-4520-b8c7-f745083fa08f",
+                    "tabId": "44c63f3d-7e9a-45ee-d3f1-8d70ed456ebc",
+                    "resultId": "ced69b16-9983-44f0-d23f-10a9bb845a46",
                     "rows": [
                         {
                             "0": "3e696654-6d7d-476b-bc0e-ed7612cb1857",
@@ -268,39 +267,13 @@
                     "sql": "\nselect * from users",
                     "updatable": true,
                     "fullTableName": "users"
-                },
-                {
-                    "tabId": "1c895e7e-e513-40bd-d165-8c0235cbde47",
-                    "resultId": "fd1d9505-d38f-4c89-b187-729677c797c8",
-                    "rows": [],
-                    "columns": [
-                        {
-                            "title": "*",
-                            "field": "0",
-                            "dataType": {
-                                "type": 0
-                            },
-                            "inPK": false,
-                            "nullable": false,
-                            "autoIncrement": false
-                        }
-                    ],
-                    "executionInfo": {
-                        "text": "OK, 0 records retrieved in 2.813ms"
-                    },
-                    "totalRowCount": 0,
-                    "hasMoreRows": false,
-                    "currentPage": 0,
-                    "index": 0,
-                    "sql": "use task_manager_db",
-                    "updatable": false
                 }
             ]
         },
         {
             "state": {
                 "start": 4,
-                "end": 37,
+                "end": 30,
                 "language": "mysql",
                 "currentSet": 1,
                 "statements": [
@@ -389,7 +362,7 @@
                         "delimiter": ";",
                         "span": {
                             "start": 743,
-                            "length": 7
+                            "length": 0
                         },
                         "contentStart": 742,
                         "state": 3
@@ -400,23 +373,247 @@
         },
         {
             "state": {
-                "start": 38,
-                "end": 38,
+                "start": 31,
+                "end": 35,
                 "language": "mysql",
+                "result": {
+                    "type": "resultIds",
+                    "list": [
+                        "5a055b2f-a3b2-42ac-deeb-ee4838c04b64"
+                    ]
+                },
+                "currentHeight": 326.1875,
                 "currentSet": 1,
                 "statements": [
                     {
                         "delimiter": ";",
                         "span": {
                             "start": 0,
-                            "length": 0
+                            "length": 20
                         },
                         "contentStart": 0,
-                        "state": 2
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 20,
+                            "length": 13
+                        },
+                        "contentStart": 23,
+                        "state": 0
+                    },
+                    {
+                        "delimiter": ";",
+                        "span": {
+                            "start": 33,
+                            "length": 2
+                        },
+                        "contentStart": 32,
+                        "state": 3
                     }
                 ]
             },
-            "data": []
+            "data": [
+                {
+                    "tabId": "44c63f3d-7e9a-45ee-d3f1-8d70ed456ebc",
+                    "resultId": "5a055b2f-a3b2-42ac-deeb-ee4838c04b64",
+                    "rows": [
+                        {
+                            "0": "task_id",
+                            "1": "int",
+                            "2": "NO",
+                            "3": "PRI",
+                            "4": null,
+                            "5": "auto_increment"
+                        },
+                        {
+                            "0": "user_id",
+                            "1": "varchar(100)",
+                            "2": "YES",
+                            "3": "MUL",
+                            "4": null,
+                            "5": ""
+                        },
+                        {
+                            "0": "title",
+                            "1": "varchar(255)",
+                            "2": "NO",
+                            "3": "",
+                            "4": null,
+                            "5": ""
+                        },
+                        {
+                            "0": "description",
+                            "1": "text",
+                            "2": "YES",
+                            "3": "",
+                            "4": null,
+                            "5": ""
+                        },
+                        {
+                            "0": "priority",
+                            "1": "enum('Low','Medium','High')",
+                            "2": "YES",
+                            "3": "",
+                            "4": "Medium",
+                            "5": ""
+                        },
+                        {
+                            "0": "task_status",
+                            "1": "enum('Pending','In Progress','Completed','Archived')",
+                            "2": "YES",
+                            "3": "",
+                            "4": "Pending",
+                            "5": ""
+                        },
+                        {
+                            "0": "due_date",
+                            "1": "date",
+                            "2": "YES",
+                            "3": "",
+                            "4": null,
+                            "5": ""
+                        },
+                        {
+                            "0": "created_at",
+                            "1": "timestamp",
+                            "2": "YES",
+                            "3": "",
+                            "4": "CURRENT_TIMESTAMP",
+                            "5": "DEFAULT_GENERATED"
+                        },
+                        {
+                            "0": "updated_at",
+                            "1": "timestamp",
+                            "2": "YES",
+                            "3": "",
+                            "4": "CURRENT_TIMESTAMP",
+                            "5": "DEFAULT_GENERATED on update CURRENT_TIMESTAMP"
+                        },
+                        {
+                            "0": "project_id",
+                            "1": "int",
+                            "2": "NO",
+                            "3": "MUL",
+                            "4": null,
+                            "5": ""
+                        }
+                    ],
+                    "columns": [
+                        {
+                            "title": "Field",
+                            "field": "0",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "Type",
+                            "field": "1",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "Null",
+                            "field": "2",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "Key",
+                            "field": "3",
+                            "dataType": {
+                                "type": 43,
+                                "needsQuotes": true
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "Default",
+                            "field": "4",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        },
+                        {
+                            "title": "Extra",
+                            "field": "5",
+                            "dataType": {
+                                "type": 17,
+                                "characterMaximumLength": 65535,
+                                "flags": [
+                                    "BINARY",
+                                    "ASCII",
+                                    "UNICODE"
+                                ],
+                                "needsQuotes": true,
+                                "parameterFormatType": "OneOrZero"
+                            },
+                            "inPK": false,
+                            "nullable": false,
+                            "autoIncrement": false
+                        }
+                    ],
+                    "executionInfo": {
+                        "text": "OK, 10 records retrieved in 21.101ms"
+                    },
+                    "totalRowCount": 10,
+                    "hasMoreRows": false,
+                    "currentPage": 0,
+                    "index": 0,
+                    "sql": "\n\ndesc tasks;",
+                    "updatable": false
+                }
+            ]
         }
     ]
 }
