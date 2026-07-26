@@ -35,7 +35,6 @@ const HomePage = ({ user }) => {
             try {
                 const response = await taskService.retrieveTasks()
                 setTasks(response.data.tasks)
-                console.log(tasks)
             } catch (error) {
                 console.log(error)
             }
@@ -79,7 +78,6 @@ const HomePage = ({ user }) => {
 
                     <section className="tasks-section">
                         {tasks.map((task) => {
-                            console.log(task.title)
                             return (
                                 <div key={task.title} className="task-card active-task">
                                     <div className="task-card-right">
