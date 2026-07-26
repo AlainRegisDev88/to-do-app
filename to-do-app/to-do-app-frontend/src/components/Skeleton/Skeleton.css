@@ -1,0 +1,23 @@
+.skeleton-loader {
+  background-color: #e6e6e6;
+  animation: skeleton-pulse 1.5s infinite ease-in-out;
+  border: 0 !important;
+  border-width: 0 !important;
+  border-style: none !important;
+  outline: none;
+  box-shadow: none;
+}
+
+@keyframes skeleton-pulse {
+  0% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.4;
+  }
+}
