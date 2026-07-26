@@ -5,7 +5,7 @@ import './HomeLayout.css'
 import Sidebar from "./Sidebar/Sidebar";
 import { Navigate } from "react-router-dom";
 
-const HomeLayout = ({ user }) => {
+const HomeLayout = ({ user, loadingUser }) => {
 
     const token = localStorage.getItem('token'); // Replace with your auth state
 
@@ -16,7 +16,7 @@ const HomeLayout = ({ user }) => {
 
     else{return (
         <>
-            <Header user={user} />
+            <Header user={user} loadingUser={loadingUser} />
             <div className="main">
                 <Sidebar />
                 <Outlet />
