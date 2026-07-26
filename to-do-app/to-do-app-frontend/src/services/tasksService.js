@@ -20,6 +20,18 @@ const taskService = {
             console.log(error)
             throw error
         }
+    },
+
+    retrieveTasks: async () => {
+        try {
+            const response = await api.get('/tasks');
+            return response
+        } catch (error) {
+            console.log(error)
+            throw error
+        }
+
+
     }
 }
 

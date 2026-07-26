@@ -196,6 +196,30 @@ app.post('/api/add-project', verifyToken, async (req, res) => {
 
 })
 
+app.get('/api/tasks', verifyToken, async (req, res) =>{
+
+    const userId = req.user.id;
+
+    try{
+        const conn = await pool.getConnection();
+        const [rows] = await conn.execute(
+            "select * from tasks where user_id = ?",
+            [userId]
+        )
+        conn.release()
+
+        if (rows){
+            res.status(201).json({
+                message:"tasks retrieved successfully",
+                tasks: rows
+            })
+        }
+    }catch(error){
+        console.log(error),
+        res.status(500).json({message: "unable to fetch the tasks"})
+    }
+})
+
 app.listen(PORT, () => {
     console.log(`server running on port http://localhost:${PORT}`)
 })
