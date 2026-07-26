@@ -8,6 +8,7 @@ import taskService from '../services/tasksService'
 
 
 const HomePage = ({ user }) => {
+    const [tasks, setTasks] = useState([])
     // const location = useLocation()
     // const { message, name } = location.state || {}
     // const [user, setUser] = useState([])
@@ -30,10 +31,11 @@ const HomePage = ({ user }) => {
     // }, [])
 
     useEffect(() => {
-        const fetchTasks = async() => {
+        const fetchTasks = async () => {
             try {
                 const response = await taskService.retrieveTasks()
-                console.log(response)
+                setTasks(response.data.tasks)
+                console.log(tasks)
             } catch (error) {
                 console.log(error)
             }
@@ -76,34 +78,53 @@ const HomePage = ({ user }) => {
                     </div>
 
                     <section className="tasks-section">
-                        <div className="task-card active-task">
-                            <div className="task-card-right">
-                                <div className="checkbox"></div>
-                                <div className="task-title">Task 1 title</div>
+                        {tasks.map((task) => {
+                            console.log(task.title)
+                            return (
+                                <div key={task.title} className="task-card active-task">
+                                    <div className="task-card-right">
+                                        <div className={`checkbox ${task.task_status === 'Completed' ? "checked" : ""}`}></div>
+                                        <div className={`task-title ${task.task_status === 'Completed' ? "title-done" : ""}`}>{task.title}</div>
+                                    </div>
+                                    <div className={`task-tag ${task.task_status !== "Completed" ? `${task.priority?.charAt(0).toLowerCase()}${task.priority?.slice(1)}-priority-tag` : ""} ${task.task_status === 'Completed' ? "done-tag" : ""}`}>
+                                        {task?.task_status === "Completed"? "Done" : task.priority}
+                                    </div>
+
+                                </div>
+                            )
+                        })}
+
+
+                        <>
+                            {/* <div className="task-card active-task">
+                                <div className="task-card-right">
+                                    <div className="checkbox"></div>
+                                    <div className="task-title">Task 1 title</div>
+                                </div>
+                                <div className="task-tag high-priority-tag">High</div>
                             </div>
-                            <div className="task-tag high-priority-tag">High</div>
-                        </div>
-                        <div className="task-card active-task">
-                            <div className="task-card-right">
-                                <div className="checkbox"></div>
-                                <div className="task-title">Task 3 title</div>
+                            <div className="task-card active-task">
+                                <div className="task-card-right">
+                                    <div className="checkbox"></div>
+                                    <div className="task-title">Task 3 title</div>
+                                </div>
+                                <div className="task-tag low-priority-tag">Low</div>
                             </div>
-                            <div className="task-tag low-priority-tag">Low</div>
-                        </div>
-                        <div className="task-card active-task">
-                            <div className="task-card-right">
-                                <div className="checkbox"></div>
-                                <div className="task-title">Task 4 title</div>
+                            <div className="task-card active-task">
+                                <div className="task-card-right">
+                                    <div className="checkbox"></div>
+                                    <div className="task-title">Task 4 title</div>
+                                </div>
+                                <div className="task-tag medium-priority-tag">Medium</div>
                             </div>
-                            <div className="task-tag medium-priority-tag">Medium</div>
-                        </div>
-                        <div className="task-card done-task">
-                            <div className="task-card-right">
-                                <div className="checkbox checked"></div>
-                                <div className="task-title title-done">Task 5 title</div>
-                            </div>
-                            <div className="task-tag done-tag">Done</div>
-                        </div>
+                            <div className="task-card done-task">
+                                <div className="task-card-right">
+                                    <div className="checkbox checked"></div>
+                                    <div className="task-title title-done">Task 5 title</div>
+                                </div>
+                                <div className="task-tag done-tag">Done</div>
+                            </div> */}
+                        </>
                     </section>
                 </div>
 
