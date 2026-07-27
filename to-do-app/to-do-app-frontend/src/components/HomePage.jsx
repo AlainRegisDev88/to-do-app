@@ -60,7 +60,7 @@ const HomePage = ({ user }) => {
     const completeTask = async (e) => {
         e.preventDefault()
         const currentId = e.currentTarget.dataset.id;
-        const response = await taskService.getTask(currentId);
+        const response = await taskService.retrieveTask(currentId);
     }
 
     const todayTasks = tasks.filter(task => task.title === "new task")
