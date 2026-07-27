@@ -32,6 +32,15 @@ const taskService = {
         }
 
 
+    },
+
+    retriveTask: async (taskId) =>{
+        try{
+            const response = await api.get(`/task/${taskId}`)
+        }catch(error){
+            console.log(error)
+            throw error
+        }
     }
 }
 

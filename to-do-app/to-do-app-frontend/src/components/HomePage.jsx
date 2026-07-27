@@ -16,6 +16,7 @@ const HomePage = ({ user }) => {
     // const [random, setRandom] = useState(0)
     const [activeFilter, setActiveFilter] = useState('')
     const [loading, setLoading] = useState(false)
+    const [currentId, setCurrentId] = useState("")
 
     // useEffect(() => {
     //     const fetchUserInfo = async () => {
@@ -56,6 +57,12 @@ const HomePage = ({ user }) => {
 
     }, [])
 
+    const completeTask = async (e) => {
+        e.preventDefault()
+        const currentId = e.currentTarget.dataset.id;
+        const response = await tasksService.getTask(currentId)
+    }
+
     const todayTasks = tasks.filter(task => task.title === "new task")
     console.log(todayTasks.title)
 
@@ -93,10 +100,11 @@ const HomePage = ({ user }) => {
 
                     <section className="tasks-section">
                         {tasks.map((task) => {
+                            setCurrentId(task.task_id)
                             return (
-                                <div key={task.title} className="task-card active-task">
+                                <div key={task.task_id} className="task-card active-task">
                                     <div className="task-card-right">
-                                        <div className={`checkbox ${task.task_status === 'Completed' ? "checked" : ""}`}></div>
+                                        <div data-id={task.task_id} onClick={completeTask} className={`checkbox ${task.task_status === 'Completed' ? "checked" : ""}`}></div>
                                         <div className={`task-title ${task.task_status === 'Completed' ? "title-done" : ""}`}>{task.title}</div>
                                     </div>
                                     <div className={`task-tag ${task.task_status !== "Completed" ? `${task.priority?.charAt(0).toLowerCase()}${task.priority?.slice(1)}-priority-tag` : ""} ${task.task_status === 'Completed' ? "done-tag" : ""}`}>
