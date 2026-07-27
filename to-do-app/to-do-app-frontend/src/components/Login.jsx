@@ -14,13 +14,13 @@ const Login = () => {
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
-
+    
     useEffect(() => {
         const token = localStorage.getItem('token'); // Replace with your auth state
         if (token) {
             navigate('/')
         }
-    })
+    },[])
 
     const location = useLocation()
     const { successMessage, name } = location.state || {}
@@ -50,7 +50,7 @@ const Login = () => {
     return (
         <div className="login-page">
             {loading && (
-                <span class="spinner-container">
+                <span className="spinner-container">
                     <FontAwesomeIcon className='loading-spinner' icon={faSpinner} />
                 </span>)}
             <div className="login-form">
