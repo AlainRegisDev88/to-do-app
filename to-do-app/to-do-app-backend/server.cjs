@@ -220,6 +220,22 @@ app.get('/api/tasks', verifyToken, async (req, res) =>{
     }
 })
 
+app.get('/api/task/:id', async (req, res)=>{
+
+    const taskId = req.params.id;
+
+    try{
+
+        
+
+        res.json({message: `FETCHING THE TASK WITH ID ${taskId}`})
+        
+    }catch(error){
+        console.log(error),
+        res.status(500).json({message: "unable to update the task status"})
+    }
+})
+
 app.listen(PORT, () => {
     console.log(`server running on port http://localhost:${PORT}`)
 })
