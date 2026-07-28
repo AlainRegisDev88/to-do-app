@@ -1,23 +1,22 @@
 // import { useLocation } from 'react-router-dom'
-import { use, useEffect, useState } from 'react'
+import { useState } from 'react'
 // import profileService from '../services/profileService'
 import './HomePage.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowAltCircleRight } from '@fortawesome/free-regular-svg-icons'
 import taskService from '../services/tasksService'
-import Skeleton from './Skeleton/AvatarSkeleton'
 import { Link } from 'react-router-dom'
 import { faClipboardCheck } from '@fortawesome/free-solid-svg-icons'
 
 
-const HomePage = ({ user, tasks, setTasks}) => {
+const HomePage = ({ tasks, setTasks}) => {
     // const location = useLocation()
     // const { message, name } = location.state || {}
     // const [user, setUser] = useState([])
     // const [random, setRandom] = useState(0)
+    // const [loading, setLoading] = useState(false)
     const [activeFilter, setActiveFilter] = useState('')
-    const [loading, setLoading] = useState(false)
-    const [currentId, setCurrentId] = useState("")
+
 
     // useEffect(() => {
     //     const fetchUserInfo = async () => {

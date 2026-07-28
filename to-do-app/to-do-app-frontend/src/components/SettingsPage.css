@@ -1,15 +1,15 @@
-.settings-page{
+.settings-page {
     padding: 24px 28px;
     width: 520px;
 }
 
-.settings-cards{
+.settings-cards {
     display: flex;
     flex-direction: column;
     gap: 14px;
 }
 
-.settings-card{
+.settings-card {
     border: 0.5px solid var(--border);
     background-color: var(--surface-2);
     border-radius: var(--radius-lg);
@@ -18,49 +18,93 @@
     flex-direction: column;
     gap: 12px;
 }
-.avatar{
+
+.avatar {
     width: 44px;
     height: 44px;
     border-radius: 50%;
 }
 
-.profile-info{
+.profile-info {
     display: flex;
     align-items: center;
     gap: 20px;
 }
 
 
-.email{
+.email {
     font-size: 13px;
     color: var(--text-secondary);
 }
 
-.settings-card-heading{
+.settings-card-heading {
     font-size: 14px;
     font-weight: 600;
     margin-bottom: 6px;
 }
 
-.settings-row{
+.settings-row {
     font-size: 13px;
     font-weight: 400;
     color: var(--text-primary);
     cursor: pointer;
 }
 
-.preference, .setting{
+.preference,
+.setting {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    
+
 }
-.setting .chevron-icon{
+
+.setting .chevron-icon {
     width: 6px;
     color: var(--text-muted);
     cursor: pointer;
 }
 
-.delete-row{
+.delete-row {
     color: var(--text-danger);
+}
+
+#edit-profile-card {
+    position: absolute;
+    width: 100dvw;
+    height: 100dvh;
+    background-color: transparent;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(8px);
+    background-color: rgba(0, 0, 0, 0.4);
+    display: none;
+}
+
+.edit-profile-form {
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+    background-color: var(--surface-0);
+    border: 0.5px solid var(--border);
+    padding: 50px 40px;
+    border-radius: var(--radius-sm);
+    width: 400px;
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    /* Higher than the blur overlay */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.edit-profile-form .form-title {
+    font-size: 16px;
+    font-weight: 600;
+}
+.edit-profile-form .close-button{
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    cursor: pointer;
 }
