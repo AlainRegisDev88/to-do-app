@@ -83,7 +83,6 @@ const HomePage = ({ tasks, setTasks}) => {
     const filters = ["All", "Today", "This week", "Active", "Done", "High priority", "Medium priority", "Low priority"]
 
     const pendingTasks = tasks.filter(task => task.task_status != "Completed")
-    console.log(pendingTasks)
 
 
     return (
