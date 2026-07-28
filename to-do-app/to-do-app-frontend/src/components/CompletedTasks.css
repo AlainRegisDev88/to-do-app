@@ -9,3 +9,7 @@
     color: var(--text-primary);
     margin-bottom: 18px;
 }
+
+.completed-section{
+    width: 700px;
+}

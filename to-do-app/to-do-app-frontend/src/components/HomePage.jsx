@@ -10,8 +10,7 @@ import { Link } from 'react-router-dom'
 import { faClipboardCheck } from '@fortawesome/free-solid-svg-icons'
 
 
-const HomePage = ({ user }) => {
-    const [tasks, setTasks] = useState([])
+const HomePage = ({ user, tasks, setTasks}) => {
     // const location = useLocation()
     // const { message, name } = location.state || {}
     // const [user, setUser] = useState([])
@@ -43,21 +42,21 @@ const HomePage = ({ user }) => {
 
 
 
-    useEffect(() => {
-        const fetchTasks = async () => {
-            try {
-                setLoading(true)
-                const response = await taskService.retrieveTasks()
-                setLoading(false)
-                setTasks(response.data.tasks)
-            } catch (error) {
-                console.log(error)
-            }
-        }
+    // useEffect(() => {
+    //     const fetchTasks = async () => {
+    //         try {
+    //             setLoading(true)
+    //             const response = await taskService.retrieveTasks()
+    //             setLoading(false)
+    //             setTasks(response.data.tasks)
+    //         } catch (error) {
+    //             console.log(error)
+    //         }
+    //     }
 
-        fetchTasks()
+    //     fetchTasks()
 
-    }, [])
+    // }, [])
 
     const completeTask = async (e) => {
         e.preventDefault()
