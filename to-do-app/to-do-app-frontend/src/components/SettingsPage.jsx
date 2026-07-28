@@ -7,20 +7,56 @@ const SettingsPage = ({ user }) => {
     const [newUsername, setNewUsername] = useState("")
     const [newEmail, setNewEmail] = useState("")
 
+    const animTiming = {
+        duration: 300, // milliseconds
+        easing: 'cubic-bezier(0.34, 1.56, 0.64, 1)', // smooth spring effect
+        fill: 'forwards' // retains the final style frame
+    };
+
     const openEditProfileCard = (e) => {
         e.preventDefault()
-        const editUpdateForm = document.getElementById("edit-profile-card");
-            editUpdateForm.style.display = "flex";     
+        const editUpdateLayout = document.getElementById("edit-profile-card");
+        const editUpdateForm = document.querySelector(".edit-profile-form")
+        editUpdateLayout.style.display = "flex";
+        editUpdateLayout.style.pointerEvents = "auto";
+
+        editUpdateLayout.animate([
+            { opacity: 0, backdropFilter: 'blur(0px)', backgroundColor: 'rgba(0,0,0,0)' },
+            { opacity: 1, backdropFilter: 'blur(8px)', backgroundColor: 'rgba(0,0,0,0.4)' }
+        ], animTiming);
+
+        // Animate the form scaling and fading in
+        editUpdateForm.animate([
+            { opacity: 0, transform: 'scale(0.9)' },
+            { opacity: 1, transform: 'scale(1)' }
+        ], animTiming);
     }
 
-    const closeEditProfileCard = () =>{
-        const editUpdateForm = document.getElementById("edit-profile-card");
-            editUpdateForm.style.display = "none";
+    const closeEditProfileCard = () => {
+        const editUpdateLayout = document.getElementById("edit-profile-card");
+        const editUpdateForm = document.querySelector(".edit-profile-form")
+
+        const layoutAnimate = editUpdateLayout.animate([
+            { opacity: 1, backdropFilter: 'blur(8px)', backgroundColor: 'rgba(0,0,0,0.4)' },
+            { opacity: 0, backdropFilter: 'blur(0)', backgroundColor: 'rgba(0, 0, 0, 0)' }
+        ], animTiming)
+
+        editUpdateForm.animate([
+            { opacity: 1, transform: 'scale(1)' },
+            { opacity: 0, transform: 'scale(0.9' }
+        ])
+
+        layoutAnimate.onfinish = () => {
+            editUpdateLayout.style.display = "none";
+            editUpdateLayout.style.pointerEvents = "none";
+        }
     }
 
     const updateProfile = () => {
 
     }
+
+
 
     return (
         <>
@@ -76,7 +112,7 @@ const SettingsPage = ({ user }) => {
             </section>
 
             <div id="edit-profile-card">
-                <form className="edit-profile-form" onSubmit={updateProfile}>
+                <form className="edit-profile-form" id="edit-profile-form" onSubmit={updateProfile}>
                     <div onClick={closeEditProfileCard} className="close-button" id="close-button"><FontAwesomeIcon icon={faClose} /></div>
                     <div className="form-title">
                         <p>Update your profile</p>
