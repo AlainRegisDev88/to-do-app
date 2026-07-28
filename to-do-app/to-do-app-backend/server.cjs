@@ -220,13 +220,28 @@ app.get('/api/tasks', verifyToken, async (req, res) =>{
     }
 })
 
-app.get('/api/task/:id', async (req, res)=>{
+app.get('/api/task/:id', verifyToken, async (req, res)=>{
 
     const taskId = req.params.id;
 
     try{
 
-        
+        const connection = await pool.getConnection()
+
+        const [result] = await connection.execute(
+            'update tasks set task_status = "Completed" where task_id = ?',
+            [taskId]
+        )
+        connection.release()
+
+        if(result){
+            res.status(200).json({
+                message: "Task marked complete🎉",
+                taskId
+            })
+        }
+
+
 
         res.json({message: `FETCHING THE TASK WITH ID ${taskId}`})
         
