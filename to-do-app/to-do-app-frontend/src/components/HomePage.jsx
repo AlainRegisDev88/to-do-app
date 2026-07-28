@@ -6,6 +6,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowAltCircleRight } from '@fortawesome/free-regular-svg-icons'
 import taskService from '../services/tasksService'
 import Skeleton from './Skeleton/AvatarSkeleton'
+import { Link } from 'react-router-dom'
+import { faClipboardCheck } from '@fortawesome/free-solid-svg-icons'
 
 
 const HomePage = ({ user }) => {
@@ -61,10 +63,10 @@ const HomePage = ({ user }) => {
         e.preventDefault()
         const currentId = e.currentTarget.dataset.id;
         const response = await taskService.retrieveTask(currentId);
-        setTasks(prevTasks => 
-            prevTasks.map(task => 
-                task.task_id == currentId 
-                    ? { ...task, task_status: 'Completed' } 
+        setTasks(prevTasks =>
+            prevTasks.map(task =>
+                task.task_id == currentId
+                    ? { ...task, task_status: 'Completed' }
                     : task
             )
         );
@@ -82,6 +84,8 @@ const HomePage = ({ user }) => {
 
     const filters = ["All", "Today", "This week", "Active", "Done", "High priority", "Medium priority", "Low priority"]
 
+    const pendingTasks = tasks.filter(task => task.task_status != "Completed")
+    console.log(pendingTasks)
 
 
     return (
@@ -112,7 +116,15 @@ const HomePage = ({ user }) => {
                     </div>
 
                     <section className="tasks-section">
-                        {tasks.map((task) => {
+
+                        {pendingTasks.length === 0 && (
+                            <div className="no-tasks">
+                                <FontAwesomeIcon className='clipboard-icon' icon={faClipboardCheck} />
+                                <p>No pending tasks</p>
+                                </div>
+                        )}
+
+                        {pendingTasks.map((task) => {
                             return (
                                 <div key={task.task_id} className="task-card active-task">
                                     <div className="task-card-right">
@@ -126,6 +138,11 @@ const HomePage = ({ user }) => {
                                 </div>
                             )
                         })}
+
+                        <div className="task-card new-task">
+                            <Link to="/new-task" className="task-title new-task-title">+ Add new task</Link>
+                        </div>
+
 
 
                         <>
