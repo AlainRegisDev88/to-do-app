@@ -1,5 +1,5 @@
 // import { useLocation } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { use, useEffect, useState } from 'react'
 // import profileService from '../services/profileService'
 import './HomePage.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -61,10 +61,23 @@ const HomePage = ({ user }) => {
         e.preventDefault()
         const currentId = e.currentTarget.dataset.id;
         const response = await taskService.retrieveTask(currentId);
+        setTasks(prevTasks => 
+            prevTasks.map(task => 
+                task.task_id == currentId 
+                    ? { ...task, task_status: 'Completed' } 
+                    : task
+            )
+        );
+        console.log(response)
     }
 
-    const todayTasks = tasks.filter(task => task.title === "new task")
-    console.log(todayTasks.title)
+    // useEffect(() => {
+    //     completeTask()
+    // }, [])
+
+
+    // const todayTasks = tasks.filter(task => task.title === "new task")
+    // console.log(todayTasks.title)
 
 
     const filters = ["All", "Today", "This week", "Active", "Done", "High priority", "Medium priority", "Low priority"]
@@ -100,7 +113,6 @@ const HomePage = ({ user }) => {
 
                     <section className="tasks-section">
                         {tasks.map((task) => {
-                            setCurrentId(task.task_id)
                             return (
                                 <div key={task.task_id} className="task-card active-task">
                                     <div className="task-card-right">
