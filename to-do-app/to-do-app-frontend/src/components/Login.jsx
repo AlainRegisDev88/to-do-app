@@ -29,6 +29,7 @@ const Login = () => {
         e.preventDefault()
         setLoading(true)
         setError('')
+        // fix loading issuesfe
 
         try {
             const result = await authService.login(email, password);

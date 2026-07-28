@@ -1,21 +1,23 @@
 // import { useLocation } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { use, useEffect, useState } from 'react'
 // import profileService from '../services/profileService'
 import './HomePage.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowAltCircleRight } from '@fortawesome/free-regular-svg-icons'
 import taskService from '../services/tasksService'
 import Skeleton from './Skeleton/AvatarSkeleton'
+import { Link } from 'react-router-dom'
+import { faClipboardCheck } from '@fortawesome/free-solid-svg-icons'
 
 
-const HomePage = ({ user }) => {
-    const [tasks, setTasks] = useState([])
+const HomePage = ({ user, tasks, setTasks}) => {
     // const location = useLocation()
     // const { message, name } = location.state || {}
     // const [user, setUser] = useState([])
     // const [random, setRandom] = useState(0)
     const [activeFilter, setActiveFilter] = useState('')
     const [loading, setLoading] = useState(false)
+    const [currentId, setCurrentId] = useState("")
 
     // useEffect(() => {
     //     const fetchUserInfo = async () => {
@@ -40,28 +42,49 @@ const HomePage = ({ user }) => {
 
 
 
-    useEffect(() => {
-        const fetchTasks = async () => {
-            try {
-                setLoading(true)
-                const response = await taskService.retrieveTasks()
-                setLoading(false)
-                setTasks(response.data.tasks)
-            } catch (error) {
-                console.log(error)
-            }
-        }
+    // useEffect(() => {
+    //     const fetchTasks = async () => {
+    //         try {
+    //             setLoading(true)
+    //             const response = await taskService.retrieveTasks()
+    //             setLoading(false)
+    //             setTasks(response.data.tasks)
+    //         } catch (error) {
+    //             console.log(error)
+    //         }
+    //     }
 
-        fetchTasks()
+    //     fetchTasks()
 
-    }, [])
+    // }, [])
 
-    const todayTasks = tasks.filter(task => task.title === "new task")
-    console.log(todayTasks.title)
+    const completeTask = async (e) => {
+        e.preventDefault()
+        const currentId = e.currentTarget.dataset.id;
+        const response = await taskService.retrieveTask(currentId);
+        setTasks(prevTasks =>
+            prevTasks.map(task =>
+                task.task_id == currentId
+                    ? { ...task, task_status: 'Completed' }
+                    : task
+            )
+        );
+        console.log(response)
+    }
+
+    // useEffect(() => {
+    //     completeTask()
+    // }, [])
+
+
+    // const todayTasks = tasks.filter(task => task.title === "new task")
+    // console.log(todayTasks.title)
 
 
     const filters = ["All", "Today", "This week", "Active", "Done", "High priority", "Medium priority", "Low priority"]
 
+    const pendingTasks = tasks.filter(task => task.task_status != "Completed")
+    console.log(pendingTasks)
 
 
     return (
@@ -92,11 +115,19 @@ const HomePage = ({ user }) => {
                     </div>
 
                     <section className="tasks-section">
-                        {tasks.map((task) => {
+
+                        {pendingTasks.length === 0 && (
+                            <div className="no-tasks">
+                                <FontAwesomeIcon className='clipboard-icon' icon={faClipboardCheck} />
+                                <p>No pending tasks</p>
+                                </div>
+                        )}
+
+                        {pendingTasks.map((task) => {
                             return (
-                                <div key={task.title} className="task-card active-task">
+                                <div key={task.task_id} className="task-card active-task">
                                     <div className="task-card-right">
-                                        <div className={`checkbox ${task.task_status === 'Completed' ? "checked" : ""}`}></div>
+                                        <div data-id={task.task_id} onClick={completeTask} className={`checkbox ${task.task_status === 'Completed' ? "checked" : ""}`}></div>
                                         <div className={`task-title ${task.task_status === 'Completed' ? "title-done" : ""}`}>{task.title}</div>
                                     </div>
                                     <div className={`task-tag ${task.task_status !== "Completed" ? `${task.priority?.charAt(0).toLowerCase()}${task.priority?.slice(1)}-priority-tag` : ""} ${task.task_status === 'Completed' ? "done-tag" : ""}`}>
@@ -106,6 +137,11 @@ const HomePage = ({ user }) => {
                                 </div>
                             )
                         })}
+
+                        <div className="task-card new-task">
+                            <Link to="/new-task" className="task-title new-task-title">+ Add new task</Link>
+                        </div>
+
 
 
                         <>
