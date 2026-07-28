@@ -15,6 +15,7 @@ import Empty from './components/Empty'
 import projectsServices from './services/projectsServices'
 import NewProject from './components/Pages/NewProject/NewProject'
 import delay from './helpers/delay'
+import CompletedTasks from './components/CompletedTasks'
 
 function App() {
   const [user, setUser] = useState([])
@@ -61,7 +62,7 @@ function App() {
           <Route path='/projects' element={<ProjectsPage loading={loading} projects={projects} />} />
           <Route path='/settings' element={<SettingsPage />} />
           <Route path='/upcoming-tasks' element={<Empty />} />
-          <Route path='/completed-tasks' element={<Empty />} />
+          <Route path='/completed-tasks' element={<CompletedTasks />} />
         </Route>
 
         <Route path='/auth' element={<AuthenticationPage />}>
