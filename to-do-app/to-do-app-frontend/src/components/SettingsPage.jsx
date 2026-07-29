@@ -80,6 +80,8 @@ const SettingsPage = ({ user, setUser }) => {
                         ...user,
                         name: newUsername
                     })
+                    setNewUsername("")
+                    closeEditProfileCard()
                     
                 }catch(error){
                     console.log(error)
@@ -93,6 +95,8 @@ const SettingsPage = ({ user, setUser }) => {
                         ...user,
                         email: newEmail
                     })
+                    setNewEmail("")
+                    closeEditProfileCard()
                     
                 }catch(error){
                     console.log(error)
@@ -111,6 +115,9 @@ const SettingsPage = ({ user, setUser }) => {
                         name: newUsername,
                         email: newEmail
                     })
+                    setNewUsername("")
+                    setNewEmail("")
+                    closeEditProfileCard()
                     
                 }catch(error){
                     console.log(error)
