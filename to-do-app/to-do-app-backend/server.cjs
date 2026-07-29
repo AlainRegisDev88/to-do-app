@@ -256,18 +256,19 @@ app.post('/api/update/username', verifyToken, async (req, res) =>{
     const userId = req.user.id
 
     if(!newUsername){
+        console.log("VALIDATION FAILED: newUsername is missing!");
         return res.status(400).json({ message: "Username is required" })
     }
 
     try{
         const conn = await pool.getConnection();
         const [result] = await conn.execute(
-            'update users set name = ? where id = ?',
+            'update users set fullName = ? where id = ?',
             [newUsername, userId]
         )
         conn.release()
 
-        if(result){
+        if(result && result.affectedRows > 0){
             res.status(200).json({
                 message: "User updated successfully",
                 userId,
@@ -275,7 +276,7 @@ app.post('/api/update/username', verifyToken, async (req, res) =>{
             })
         }
     }catch(error){
-        res.status(400).json({message: "Unable to update the user"})
+        res.status(400).json({message: "Unable to update the user", sqlError: error.message })
     }
 })
 
@@ -296,7 +297,7 @@ app.post('/api/update/email', verifyToken, async (req, res) =>{
         )
         conn.release()
 
-        if(result){
+        if(result && result.affectedRows > 0){
             res.status(200).json({
                 message: "User updated successfully",
                 userId,
