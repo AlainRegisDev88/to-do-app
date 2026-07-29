@@ -81,7 +81,7 @@ function App() {
         <Route path='/' element={<HomeLayout user={user} loadingUser={loadingUser} />}>
           <Route index element={<HomePage user={user} tasks={tasks} setTasks={setTasks} />}></Route>
           <Route path='/projects' element={<ProjectsPage loading={loading} projects={projects} />} />
-          <Route path='/settings' element={<SettingsPage user={user} />} />
+          <Route path='/settings' element={<SettingsPage user={user} setUser={setUser} />} />
           <Route path='/upcoming-tasks' element={<Empty />} />
           <Route path='/completed-tasks' element={<CompletedTasks tasks={tasks} />} />
         </Route>

@@ -2,8 +2,9 @@ import { faChevronRight, faClose } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import './SettingsPage.css'
 import { useState } from "react";
+import profileService from "../services/profileService";
 
-const SettingsPage = ({ user }) => {
+const SettingsPage = ({ user, setUser }) => {
     const [newUsername, setNewUsername] = useState("")
     const [newEmail, setNewEmail] = useState("")
 
@@ -55,7 +56,7 @@ const SettingsPage = ({ user }) => {
         }
     }
 
-    const updateProfile = (e) => {
+    const updateProfile = async (e) => {
         e.preventDefault();
 
         if(newUsername === "" && newEmail ===""){
@@ -72,20 +73,49 @@ const SettingsPage = ({ user }) => {
 
         if(newUsername || newEmail){
             if(newUsername && !newEmail){
-
-
-                console.log("updating the username...")
-
-
-            }else if(newEmail && !newUsername){
-
-
-                console.log("Updating the email...")
-
+                try{
+                    const result = await profileService.updateUsername(newUsername)
+                    console.log(result)
+                    setUser({
+                        ...user,
+                        name: newUsername
+                    })
+                    
+                }catch(error){
+                    console.log(error)
+                    throw error
+                }
+            }else if(newEmail && !newUsername){ 
+                try{
+                    const result = await profileService.updateEmail(newEmail)
+                    console.log(result)
+                    setUser({
+                        ...user,
+                        email: newEmail
+                    })
+                    
+                }catch(error){
+                    console.log(error)
+                    throw error
+                }
 
             }else if(newEmail && newUsername){
                 
-                console.log("Updating both email and password...")
+                try{
+                    const result1 = await profileService.updateUsername(newUsername)
+                    const result2 = await profileService.updateEmail(newEmail)
+                    
+                    console.log(result1 + result2)
+                    setUser({
+                        ...user,
+                        name: newUsername,
+                        email: newEmail
+                    })
+                    
+                }catch(error){
+                    console.log(error)
+                    throw error
+                }
             }
         }
 
