@@ -11,6 +11,26 @@ const profileService = {
         }
     },
 
+    updateUsername: async (userName) => {
+        try {
+            const result = await api.post('/update/username', {newUsername: userName})
+            return result
+        } catch (error) {
+            console.log(error)
+            throw error
+        }
+    },
+
+    updateEmail: async (email) => {
+        try {
+            const result = await api.post('/update/email', {newEmail: email})
+            return result
+        } catch (error) {
+            console.log(error)
+            throw error
+        }
+    }
+
 }
 
 export default profileService;

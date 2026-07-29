@@ -251,6 +251,64 @@ app.get('/api/task/:id', verifyToken, async (req, res)=>{
     }
 })
 
+app.post('/api/update/username', verifyToken, async (req, res) =>{
+    const { newUsername } = req.body
+    const userId = req.user.id
+
+    if(!newUsername){
+        console.log("VALIDATION FAILED: newUsername is missing!");
+        return res.status(400).json({ message: "Username is required" })
+    }
+
+    try{
+        const conn = await pool.getConnection();
+        const [result] = await conn.execute(
+            'update users set fullName = ? where id = ?',
+            [newUsername, userId]
+        )
+        conn.release()
+
+        if(result && result.affectedRows > 0){
+            res.status(200).json({
+                message: "User updated successfully",
+                userId,
+                newUsername
+            })
+        }
+    }catch(error){
+        res.status(400).json({message: "Unable to update the user", sqlError: error.message })
+    }
+})
+
+app.post('/api/update/email', verifyToken, async (req, res) =>{
+    console.log(req.body)
+    const { newEmail } = req.body
+    const userId = req.user.id
+
+    if(!newEmail){
+        return res.status(400).json({ message: "Email is required" })
+    }
+
+    try{
+        const conn = await pool.getConnection();
+        const [result] = await conn.execute(
+            'update users set email = ? where id = ?',
+            [newEmail, userId]
+        )
+        conn.release()
+
+        if(result && result.affectedRows > 0){
+            res.status(200).json({
+                message: "User updated successfully",
+                userId,
+                newEmail
+            })
+        }
+    }catch(error){
+        res.status(400).json({message: "Unable to update the user"})
+    }
+})
+
 app.listen(PORT, () => {
     console.log(`server running on port http://localhost:${PORT}`)
 })

@@ -64,7 +64,7 @@
 }
 
 .submit-button:hover{
-    color: var(--fill-primary-hover);
+    background-color: var(--fill-primary-hover);
 }
 
 .logo-section{
