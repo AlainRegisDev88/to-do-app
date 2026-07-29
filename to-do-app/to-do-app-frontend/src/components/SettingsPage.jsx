@@ -7,6 +7,9 @@ const SettingsPage = ({ user }) => {
     const [newUsername, setNewUsername] = useState("")
     const [newEmail, setNewEmail] = useState("")
 
+    const currentUserName = user.name;
+    const currentEmail = user.email;
+
     const animTiming = {
         duration: 300, // milliseconds
         easing: 'cubic-bezier(0.34, 1.56, 0.64, 1)', // smooth spring effect
@@ -52,7 +55,40 @@ const SettingsPage = ({ user }) => {
         }
     }
 
-    const updateProfile = () => {
+    const updateProfile = (e) => {
+        e.preventDefault();
+
+        if(newUsername === "" && newEmail ===""){
+            return "Invalid input"
+        }
+
+        if(newUsername === currentUserName){
+            return "Your username can't be the same as the current one!"
+        }
+
+        if(newEmail === currentEmail){
+            return "Your email can't be the same as the current one!"
+        }
+
+        if(newUsername || newEmail){
+            if(newUsername && !newEmail){
+
+
+                console.log("updating the username...")
+
+
+            }else if(newEmail && !newUsername){
+
+
+                console.log("Updating the email...")
+
+
+            }else if(newEmail && newUsername){
+                
+                console.log("Updating both email and password...")
+            }
+        }
+
 
     }
 
@@ -114,10 +150,12 @@ const SettingsPage = ({ user }) => {
             <div id="edit-profile-card">
                 <form className="edit-profile-form" id="edit-profile-form" onSubmit={updateProfile}>
                     <div onClick={closeEditProfileCard} className="close-button" id="close-button"><FontAwesomeIcon icon={faClose} /></div>
-                    <div className="form-title">
-                        <p>Update your profile</p>
-                    </div>
                     <div className="form-item">
+                        <div className="form-title">
+                            <center>
+                                <p>Update your username</p>
+                            </center>
+                        </div>
                         <label htmlFor="name">Enter new username </label>
                         <input
                             className="input-box"
@@ -128,7 +166,14 @@ const SettingsPage = ({ user }) => {
                         />
                     </div>
 
+                    <div className="form-item separator-line">
+                        <hr></hr>
+                    </div>
+
                     <div className="form-item">
+                        <div className="form-title">
+                            <center><p>Update your email</p></center>
+                        </div>
                         <label htmlFor="email">Enter new email </label>
                         <input
                             className="input-box"
@@ -138,8 +183,8 @@ const SettingsPage = ({ user }) => {
                             onChange={(e) => setNewEmail(e.target.value)}
                         />
                     </div>
-                    <div className="form-item">
-                        <button className="submit-button button-secondary">Update profile</button>
+                    <div className="form-item settings-action-section">
+                        <button onClick={updateProfile} className="submit-button button-primary">Update profile</button>
                     </div>
                 </form>
             </div>

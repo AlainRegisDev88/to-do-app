@@ -85,7 +85,7 @@
 
 .edit-profile-form {
     display: flex;
-    gap: 15px;
+    gap: 10px;
     flex-direction: column;
     background-color: var(--surface-0);
     border: 0.5px solid var(--border);
@@ -99,7 +99,7 @@
 }
 
 .edit-profile-form .form-title {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
 }
 .edit-profile-form .close-button{
@@ -107,4 +107,19 @@
     top: 24px;
     right: 24px;
     cursor: pointer;
+}
+
+.edit-profile-form .submit-button{
+    margin-top: 10px;
+    width: fit-content;
+    left: 0;
+}
+
+.separator-line{
+    margin-top:10px;
+}
+
+.settings-action-section{
+    display: flex;
+    align-items: end;
 }
