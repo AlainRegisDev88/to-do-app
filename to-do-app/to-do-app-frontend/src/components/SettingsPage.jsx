@@ -197,6 +197,7 @@ const SettingsPage = ({ user, setUser }) => {
                         <input
                             className="input-box"
                             type="text"
+                            placeholder="Enter new username"
                             name="new-username"
                             value={newUsername}
                             onChange={(e) => setNewUsername(e.target.value)}
@@ -215,6 +216,7 @@ const SettingsPage = ({ user, setUser }) => {
                         <input
                             className="input-box"
                             type="email"
+                            placeholder="Enter new email"
                             name="new-email"
                             value={newEmail}
                             onChange={(e) => setNewEmail(e.target.value)}
