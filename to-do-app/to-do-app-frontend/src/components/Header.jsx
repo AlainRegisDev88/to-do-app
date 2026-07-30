@@ -37,7 +37,7 @@ const Header = ({ user, loadingUser}) => {
                 <Link className="add-task-button" to='/new-task'>+ New Task</Link>
                 <Link to='/notifications'><FontAwesomeIcon className="bell-icon" icon={faBell} /></Link>
                 <div className="user-name">{loadingUser? <UserNameSkeleton /> :formattedName}</div>
-                <div className={`${loadingUser ? "": "avatar"}`}>{loadingUser ? <AvatarSkeleton /> :avatarInitial}</div>
+                <Link to="/settings" style={{textDecoration: "none"}}className={`${loadingUser ? "": "avatar"}`}>{loadingUser ? <AvatarSkeleton /> :avatarInitial}</Link>
             </div>
         </section>
     );
