@@ -93,7 +93,7 @@
 
 .avatar{
     border-radius: 20px;
-    display: flex;
+    display: flex;  
     align-items: center;
     justify-content: center;
     width: 32px;
