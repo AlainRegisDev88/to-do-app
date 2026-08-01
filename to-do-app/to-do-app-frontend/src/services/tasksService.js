@@ -42,6 +42,18 @@ const taskService = {
             console.log(error)
             throw error
         }
+    },
+
+    removeTask: async (taskId) =>{
+        try {
+
+            const result = await api.delete(`tasks/${taskId}`)
+            return result
+            
+        } catch (error) {
+            console.log(error)
+            throw error
+        }
     }
 }
 
