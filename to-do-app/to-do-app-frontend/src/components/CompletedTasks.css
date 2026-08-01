@@ -11,3 +11,15 @@
     margin-bottom: 18px;
 }
 
+.task-right{
+    display: flex;
+    gap: 10px;
+}
+
+.remove-task{
+    width: 8px;
+    margin-right: 5px;
+    color: var(--text-secondary);
+    cursor: pointer;
+}
+
