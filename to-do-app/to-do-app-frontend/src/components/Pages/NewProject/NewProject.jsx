@@ -4,6 +4,7 @@ import { faClose, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
 import projectsServices from '../../../services/projectsServices';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const NewProject = ({projects, setProjects, getProjects}) => {
     const [projectName, setProjectName] = useState("")
@@ -40,7 +41,7 @@ const NewProject = ({projects, setProjects, getProjects}) => {
                     <FontAwesomeIcon className='loading-spinner' icon={faSpinner} />
                 </span>)}
             <div className="new-project-card">
-                <FontAwesomeIcon className="close-icon" icon={faClose} />
+                <Link to={navigate(-1)}><FontAwesomeIcon className="close-icon" icon={faClose} /></Link>
 
                 <div className="form-header">
                     <p>Add a project</p>
