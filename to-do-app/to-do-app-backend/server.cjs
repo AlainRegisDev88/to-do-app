@@ -124,19 +124,16 @@ app.post('/api/tasks', verifyToken, async (req, res) => {
             [userId, title, description || '', priority, task_status, due_date, project_id]
         );
 
+        const [insertedTask] = await connection.execute(
+            'SELECT * FROM tasks WHERE task_id = ?',
+            [result.insertId]
+        )
+
         connection.release();
 
         res.status(201).json({
             message: 'Task added successfully',
-            task: {
-                id: result.insertId,
-                userId,
-                title,
-                description,
-                due_date,
-                priority,
-                project_id
-            }
+            task: insertedTask[0]
         });
     } catch (err) {
         console.log(err);
