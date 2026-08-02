@@ -10,7 +10,7 @@ const taskService = {
                     priority: taskData.priority || 'Low',
                     task_status: 'Pending',
                     due_date: taskData.dueDate || null,
-                    project_id: 1
+                    project_id: taskData.project_id
                 }
             }
 

@@ -130,7 +130,12 @@ app.post('/api/tasks', verifyToken, async (req, res) => {
             message: 'Task added successfully',
             task: {
                 id: result.insertId,
-                title
+                userId,
+                title,
+                description,
+                due_date,
+                priority,
+                project_id
             }
         });
     } catch (err) {
@@ -140,6 +145,7 @@ app.post('/api/tasks', verifyToken, async (req, res) => {
         });
     }
 });
+
 
 app.get('/api/projects/', verifyToken, async (req, res) => {
     try {
@@ -161,6 +167,7 @@ app.get('/api/projects/', verifyToken, async (req, res) => {
             res.status(401).json({ message: "Unable to load the projects" })
     }
 })
+
 
 app.post('/api/add-project', verifyToken, async (req, res) => {
 

@@ -91,7 +91,7 @@ function App() {
           <Route path='signup' element={<Signup />} />
         </Route>
 
-        <Route path='/new-task' element={<NewTask projects={projects} />} />
+        <Route path='/new-task' element={<NewTask projects={projects} tasks={tasks} setTasks={setTasks} />} />
         <Route path='/new-project' element={<NewProject projects={projects} setProjects={setProjects} getProjects={getProjects} />} />
         <Route path='*' element={<NotFound />} />
       </Routes>

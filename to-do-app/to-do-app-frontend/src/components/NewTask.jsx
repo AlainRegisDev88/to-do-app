@@ -8,7 +8,7 @@ import taskService from '../services/tasksService';
 import delay from '../helpers/delay';
 
 
-const NewTask = ({ projects }) => {
+const NewTask = ({ projects, tasks, setTasks }) => {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
     const navigate = useNavigate();
@@ -18,7 +18,7 @@ const NewTask = ({ projects }) => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [dueDate, setDueDate] = useState('');
-    const [priority, setPriority] = useState('');
+    const [priority, setPriority] = useState('High');
     const [project, setProject] = useState('Select a project');
 
     const addNewTask = async (e) => {
@@ -26,15 +26,22 @@ const NewTask = ({ projects }) => {
         setLoading(true)
         setError('')
         try {
+
+            const selectedProject = projects.find(p => p.project_name === project)
+
             const newTask = {
                 title,
                 description,
                 dueDate,
                 priority,
-                project
+                project_id: selectedProject.project_id
             }
+            
             const response = await taskService.saveTask(newTask);
             console.log(response.task)
+            setTasks(prevTasks => [
+                ...prevTasks, response.task
+            ])
             navigate('/')
 
         }
