@@ -2,6 +2,8 @@ import { faAdd, faSpinner, faTasks } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import './ProjectsPage.css'
+import { useNavigate } from "react-router-dom";
+import { state } from "../../../../../to-do-app-backend/db.cjs";
 // import { useEffect, useState } from "react";
 // import projectsServices from "../services/projectsServices";
 
@@ -10,6 +12,8 @@ import './ProjectsPage.css'
 const ProjectsPage = ({projects, loading}) => {
     // const [projects, setProjects] = useState([])
     // const [loading, setLoading] = useState(false)
+
+    const navigate = useNavigate();
 
     // useEffect(() => {
     //     const getProjects = async () => {
@@ -22,6 +26,12 @@ const ProjectsPage = ({projects, loading}) => {
     //     getProjects()
     //     console.log(projects)
     // }, [])
+
+    const openProject = (e) =>{
+        e.preventDefault()
+        const currentId = e.currentTarget.dataset.id;
+        navigate("/project", {state: {taskId: currentId}})
+    }
 
     return (
         <section className="projects-page">
@@ -40,7 +50,7 @@ const ProjectsPage = ({projects, loading}) => {
                     
                     return (
                     
-                        <div key={project.project_id} className="project-card">
+                        <div data-id={project.project_id} onClick={openProject} key={project.project_id} className="project-card">
                             <div className="project-header">
                                 <FontAwesomeIcon icon={faTasks} />
                                 <p className="project-title">{project.project_name}</p> 
