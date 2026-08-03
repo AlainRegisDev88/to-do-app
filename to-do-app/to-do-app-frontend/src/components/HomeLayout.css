@@ -3,3 +3,29 @@
     flex-direction: row;
 }
 
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+.home-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.home-layout-main {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.outlet-content {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+}

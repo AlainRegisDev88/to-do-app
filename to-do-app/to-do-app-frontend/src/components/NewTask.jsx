@@ -42,6 +42,7 @@ const NewTask = ({ projects, tasks, setTasks }) => {
             setTasks(prevTasks => [
                 ...prevTasks, response.task
             ])
+            console.log(tasks)
             navigate('/')
 
         }
