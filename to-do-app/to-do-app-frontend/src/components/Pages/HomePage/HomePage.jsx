@@ -4,7 +4,7 @@ import { useState } from 'react'
 import './HomePage.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowAltCircleRight } from '@fortawesome/free-regular-svg-icons'
-import taskService from '../services/tasksService'
+import taskService from '../../../services/tasksService'
 import { Link } from 'react-router-dom'
 import { faClipboardCheck } from '@fortawesome/free-solid-svg-icons'
 

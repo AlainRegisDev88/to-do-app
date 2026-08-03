@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import './Login.css'
 import { useNavigate, useLocation } from 'react-router-dom'
-import authService from "../services/authService";
+import authService from "../../services/authService";
 import { faCheck, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
