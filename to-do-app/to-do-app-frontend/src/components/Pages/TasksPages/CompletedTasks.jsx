@@ -1,6 +1,6 @@
 import { faClipboardCheck, faClose } from '@fortawesome/free-solid-svg-icons';
 import './CompletedTasks.css'
-import taskService from '../services/tasksService';
+import taskService from '../../../services/tasksService';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const CompletedTasks = ({ tasks }) => {

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import authService from '../services/authService'
+import authService from '../../services/authService'
 import './Signup.css'
 import { useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

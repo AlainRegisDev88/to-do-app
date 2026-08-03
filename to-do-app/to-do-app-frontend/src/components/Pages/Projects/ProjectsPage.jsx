@@ -33,11 +33,13 @@ const ProjectsPage = ({projects, loading}) => {
                 <p>Projects</p>
             </div>
             <div className="projects-container">
-
+                
 
                 {projects.map((project) => {
-                    console.log(project.project_icon)
+                    
+                    
                     return (
+                    
                         <div key={project.project_id} className="project-card">
                             <div className="project-header">
                                 <FontAwesomeIcon icon={faTasks} />

@@ -2,7 +2,7 @@ import { faChevronRight, faClose } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import './SettingsPage.css'
 import { useState } from "react";
-import profileService from "../services/profileService";
+import profileService from "../../../services/profileService";
 
 const SettingsPage = ({ user, setUser }) => {
     const [newUsername, setNewUsername] = useState("")

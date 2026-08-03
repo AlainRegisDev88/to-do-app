@@ -3,8 +3,8 @@ import './Header.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { faBell } from "@fortawesome/free-solid-svg-icons";
-import AvatarSkeleton from "./Skeleton/AvatarSkeleton";
-import UserNameSkeleton from "./Skeleton/UserNameSkeleton";
+import AvatarSkeleton from "../Skeleton/AvatarSkeleton";
+import UserNameSkeleton from "../Skeleton/UserNameSkeleton";
 
 const Header = ({ user, loadingUser}) => {
 

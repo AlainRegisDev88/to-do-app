@@ -4,8 +4,8 @@ import { faClose, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 
 import { useState } from 'react';
-import taskService from '../services/tasksService';
-import delay from '../helpers/delay';
+import taskService from '../../../services/tasksService';
+import delay from '../../../helpers/delay';
 
 
 const NewTask = ({ projects }) => {
