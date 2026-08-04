@@ -17,9 +17,10 @@ import NewProject from './components/Pages/Projects/NewProject'
 import delay from './helpers/delay'
 import CompletedTasks from './components/Pages/TasksPages/CompletedTasks'
 import taskService from './services/tasksService'
+import Project from './components/Pages/Projects/Project'
 
 function App() {
-  const [user, setUser] = useState([])
+  const [user, setUser] = useState(null)
   const [projects, setProjects] = useState([])
   const [loading, setLoading] = useState(false)
   const [loadingUser, setLoadingUser] = useState(false)
@@ -32,10 +33,12 @@ function App() {
         const fetchedUser = await profileService.getPersonalData()
         setUser(fetchedUser)
         await delay(1000);
-        setLoadingUser(false)
         // setRandom(Math.random())
       } catch (error) {
         console.error('Failed to load profile', error)
+      }
+      finally {
+        setLoadingUser(false)
       }
     }
 
@@ -56,34 +59,33 @@ function App() {
 
   // fetch tasks
 
-  
-    useEffect(() => {
-        const fetchTasks = async () => {
-            try {
-                setLoading(true)
-                const response = await taskService.retrieveTasks()
-                setLoading(false)
-                setTasks(response.data.tasks)
-            } catch (error) {
-                console.log(error)
-            }
-        }
 
-        fetchTasks()
+  useEffect(() => {
+    const fetchTasks = async () => {
+      try {
+        setLoading(true)
+        const response = await taskService.retrieveTasks()
+        setLoading(false)
+        setTasks(response.data.tasks)
+      } catch (error) {
+        console.log(error)
+      }
+    }
 
-    }, [])
+    fetchTasks()
+
+  }, [])
 
   return (
     <>
       <Routes>
-
-
         <Route path='/' element={<HomeLayout user={user} loadingUser={loadingUser} />}>
           <Route index element={<HomePage user={user} tasks={tasks} setTasks={setTasks} />}></Route>
           <Route path='/projects' element={<ProjectsPage loading={loading} projects={projects} />} />
           <Route path='/settings' element={<SettingsPage user={user} setUser={setUser} />} />
           <Route path='/upcoming-tasks' element={<Empty />} />
           <Route path='/completed-tasks' element={<CompletedTasks tasks={tasks} />} />
+          <Route path='/project' element={<Project  projects={projects} tasks={tasks} />} />
         </Route>
 
         <Route path='/auth' element={<AuthenticationPage />}>
