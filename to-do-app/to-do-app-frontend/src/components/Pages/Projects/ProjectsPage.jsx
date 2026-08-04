@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import './ProjectsPage.css'
 import { useNavigate } from "react-router-dom";
-import { state } from "../../../../../to-do-app-backend/db.cjs";
 // import { useEffect, useState } from "react";
 // import projectsServices from "../services/projectsServices";
 
@@ -30,7 +29,7 @@ const ProjectsPage = ({projects, loading}) => {
     const openProject = (e) =>{
         e.preventDefault()
         const currentId = e.currentTarget.dataset.id;
-        navigate("/project", {state: {taskId: currentId}})
+        navigate("/project", {state: {projectId: currentId}})
     }
 
     return (
