@@ -31,21 +31,93 @@
 
 .tasks-list{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 10px;
     width: 100%;
 
 }
 .task-card-1{
+    width: 180px;
     height: 150px;
-    padding: 10px 15px; 
     margin: 10px;
     background-color: var(--surface-2);
     box-shadow: 0 0 10px 2px rgba(0,0,0,0.08);
     border-radius: 10px;
     font-size: 14px;
     color: var(--text-secondary);
-    padding: 15px 10px;
+    padding: 15px 0;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
+
+.task-card-title{
+    padding: 0 15px;
+}
+
+.task-card-title .task-title{
+    font-size: 14px;
+    color: var(--text-primary);
+    font-weight: 600;
+
+}
+
+#task-card .task-tag-p{
+    padding: 0 10px;
+    border-radius: 10px;
+    font-size: 11px;
+    width: fit-content;
+    font-weight: 600;
+}
+
+.task-label .task-tag-p{
+    position: relative;
+    width: 100%;
+    right: -15px;
+}
+
+.task-tag-p.high-priority-tag{
+    background-color: var(--bg-danger);
+    color: var(--text-danger);
+    
+}
+
+.task-tag-p.medium-priority-tag{
+    background-color: var(--bg-warning);
+    color: var(--text-warning);
+}
+
+.task-tag-p.low-priority-tag{
+    background-color: var(--bg-success);
+    color: var(--text-success);   
+}
+
+.task-card-body .descriprion{
+    font-size: 11px;
+    padding: 0 15px;
+}
+
+.due-date{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: auto;
+    gap: 8px;
+    width: 100%;
+    border-top: 0.5px solid var(--border-strong);
+    bottom: 0;
+    position: absolute;
+    height: 40px;
+    padding: 0 15px;
+    background-color: var(--surface-0);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+}
+
+.due-date p{
+    font-size: 13px;
+    font-weight: 600;   
+}
