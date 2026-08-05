@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 
 
-const ProjectsPage = ({projects, loading}) => {
+const ProjectsPage = ({projects, loading, onSelectProject}) => {
     // const [projects, setProjects] = useState([])
     // const [loading, setLoading] = useState(false)
 
@@ -29,7 +29,8 @@ const ProjectsPage = ({projects, loading}) => {
     const openProject = (e) =>{
         e.preventDefault()
         const currentId = e.currentTarget.dataset.id;
-        navigate("/project", {state: {projectId: currentId}})
+        onSelectProject(currentId)
+        // navigate("/project", {state: {projectId: currentId}})
     }
 
     return (
