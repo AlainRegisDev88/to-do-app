@@ -1,38 +1,47 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './Project.css'
-
-import { faClipboardCheck } from '@fortawesome/free-solid-svg-icons';
-import { useState } from 'react';
-// import { useLocation } from 'react-router-dom';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { faArrowLeft, faClipboardCheck } from '@fortawesome/free-solid-svg-icons';
 import { useParams } from 'react-router-dom';
 
 
 const Project = ({ projects, tasks }) => {
-    // const location = useLocation()
-    // const { projectId } = location.state || {}
-
-    // const navigate = useNavigate()
-    const [project, setProject] = useState([])
     const { projectId } = useParams();
-    const [tasksInThisProject, setTasksInThisProject] = useState([])
-
-    useState(() => {
-        setProject(projects.find((project) => {
-            return projectId == project.project_id
-        }))
-
-        setTasksInThisProject(tasks.filter(task => task.project_id = projectId))
-        console.log(project)
-    })
+    const navigate = useNavigate()
 
 
-    console.log(tasksInThisProject)  
+    const project = projects?.find((project) => project.project_id == projectId);
+    const tasksInThisProject = tasks?.filter((task) => task.project_id == projectId) ?? [];
+
+    console.log(tasksInThisProject)
     console.log(projectId)
+
+    const animationTiming = {
+        duration: 300,
+        easing: "ease-in-out",
+        fill: "forwards"
+    }
+
+    const scaleUp = (e) => {
+        const taskCard = e.currentTarget;
+        taskCard.animate([
+            { transform: "scale(1)"},
+            { transform: "scale(1.05)", boxShadow: "0 0 10px 2px rgba(0,0,0,0.1)"}
+        ], animationTiming) 
+
+    }
+
+    const scaleDown = (e) => {
+        const taskCard = e.currentTarget;
+        taskCard.animate([
+            { transform: "scale(1.05)"},
+            { transform: "scale(1)"}
+        ], animationTiming) 
+    }
 
     return (
         <section className="main-project">
-            <div className="project-title">Project: {project?.project_name}</div>
+            <div className="project-title"><FontAwesomeIcon className="back-icon" onClick={() => navigate(-1)} icon={faArrowLeft} /><p>Project: {project?.project_name}</p></div>
 
             <div className="project-description"><i>{project?.description}</i></div>
             {tasksInThisProject.length === 0 && (
@@ -41,13 +50,15 @@ const Project = ({ projects, tasks }) => {
                     <p>No pending tasks in this project</p>
                 </div>
             )}
+            <div className="tasks-list">
+                {tasksInThisProject.map((task) => {
+                    return (
 
-            {tasksInThisProject.map((task) => {
-                <div key={task.title} className="tasks-list">
-                    <div className="task-card">task 1</div>
-                </div>
-            })}
+                        <div id="task-card" key={task.task_id} onMouseEnter={scaleUp} onMouseLeave={scaleDown} className="task-card-1">{task.title}</div>
 
+                    )
+                })}
+            </div>
 
 
         </section>

@@ -26,7 +26,7 @@ function App() {
   const [loading, setLoading] = useState(false)
   const [loadingUser, setLoadingUser] = useState(false)
   const [tasks, setTasks] = useState([])
-  const [ activeProductId, setActiveProductId] = useState(null)
+  const [ activeProjectId, setActiveProjectId] = useState(null)
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -80,7 +80,7 @@ function App() {
   }, [])
 
   const handleProjectSelect = (id) => {
-    setActiveProductId(id); // Update your raised state
+    setActiveProjectId(id); // Update your raised state
     navigate(`/project/${id}`); // Update the URL dynamically
   };
 
@@ -93,7 +93,7 @@ function App() {
           <Route path='/settings' element={<SettingsPage user={user} setUser={setUser} />} />
           <Route path='/upcoming-tasks' element={<Empty />} />
           <Route path='/completed-tasks' element={<CompletedTasks tasks={tasks} />} />
-          <Route path={`/project/:projectId`} element={<Project  projects={projects} tasks={tasks} />} />
+          <Route path={`/project/:projectId`} element={<Project  projects={projects} tasks={tasks} activeProjecttId={activeProjectId} />} />
         </Route>
 
         <Route path='/auth' element={<AuthenticationPage />}>
