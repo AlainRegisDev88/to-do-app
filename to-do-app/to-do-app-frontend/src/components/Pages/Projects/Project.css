@@ -1,9 +1,9 @@
-.main-project{
+.main-project {
     margin: 24px 28px;
     width: 100%;
 }
 
-.project-title{
+.project-title {
     font-size: 16px;
     font-weight: 600;
     margin-bottom: 20px;
@@ -12,36 +12,37 @@
     gap: 10px;
 }
 
-.project-title .back-icon{
+.project-title .back-icon {
     cursor: pointer;
     color: var(--text-secondary);
     width: 15px;
 }
 
-.project-description{
+.project-description {
     background: var(--surface-1);
     font-size: 12px;
     color: var(--text-secondary);
     padding: 10px;
     margin: 20px 0;
-    box-shadow: 0 0 10px 1px rgba(0,0,0,0.1);
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.1);
     border-left: 3px solid var(--text-muted);
     max-width: 400px;
 }
 
-.tasks-list{
+.tasks-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(auto-fit, 180px);
+    gap: 20px;
     width: 100%;
 
 }
-.task-card-1{
+
+.task-card-1 {
     width: 180px;
-    height: 150px;
+    height: 160px;
     margin: 10px;
     background-color: var(--surface-2);
-    box-shadow: 0 0 10px 2px rgba(0,0,0,0.08);
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.08);
     border-radius: 10px;
     font-size: 14px;
     color: var(--text-secondary);
@@ -50,21 +51,27 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
+
+    /* position relative so absolutely-positioned footer (.due-date) anchors to card */
+    position: relative;
+    /* reserve space for the absolute footer so content doesn't overlap */
+    padding-bottom: 48px;
+    border: 1px solid var(--border-strong);
 }
 
 
-.task-card-title{
+.task-card-title {
     padding: 0 15px;
 }
 
-.task-card-title .task-title{
+.task-card-title .task-title {
     font-size: 14px;
     color: var(--text-primary);
     font-weight: 600;
 
 }
 
-#task-card .task-tag-p{
+#task-card .task-tag-p {
     padding: 0 10px;
     border-radius: 10px;
     font-size: 11px;
@@ -72,34 +79,39 @@
     font-weight: 600;
 }
 
-.task-label .task-tag-p{
+.task-label .task-tag-p {
     position: relative;
     width: 100%;
     right: -15px;
 }
 
-.task-tag-p.high-priority-tag{
+.task-tag-p.high-priority-tag {
     background-color: var(--bg-danger);
     color: var(--text-danger);
-    
+
 }
 
-.task-tag-p.medium-priority-tag{
+.task-tag-p.medium-priority-tag {
     background-color: var(--bg-warning);
     color: var(--text-warning);
 }
 
-.task-tag-p.low-priority-tag{
+.task-tag-p.low-priority-tag {
     background-color: var(--bg-success);
-    color: var(--text-success);   
+    color: var(--text-success);
 }
 
-.task-card-body .descriprion{
+.task-card-body .descriprion {
     font-size: 11px;
     padding: 0 15px;
+    display: -webkit-box;
+    line-clamp: 3;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
-.due-date{
+.due-date {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -117,7 +129,7 @@
 
 }
 
-.due-date p{
+.due-date p {
     font-size: 13px;
-    font-weight: 600;   
+    font-weight: 600;
 }

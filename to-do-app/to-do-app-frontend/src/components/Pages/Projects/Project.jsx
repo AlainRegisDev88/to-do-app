@@ -28,6 +28,15 @@ const Project = ({ projects, tasks }) => {
         return date
     }
 
+    const truncateString = (string, limit) =>{
+        if(string.length <= limit){
+            return string
+        }else{
+            return (string.slice(0, limit) + "...")
+            
+        }
+    }
+
     const animationTiming = {
         duration: 300,
         easing: "ease-in-out",
