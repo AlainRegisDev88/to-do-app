@@ -2,17 +2,16 @@ import { faAdd, faSpinner, faTasks } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import './ProjectsPage.css'
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 // import { useEffect, useState } from "react";
 // import projectsServices from "../services/projectsServices";
 
 
 
-const ProjectsPage = ({projects, loading}) => {
+const ProjectsPage = ({projects, loading, onSelectProject}) => {
     // const [projects, setProjects] = useState([])
     // const [loading, setLoading] = useState(false)
-
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     // useEffect(() => {
     //     const getProjects = async () => {
@@ -29,7 +28,8 @@ const ProjectsPage = ({projects, loading}) => {
     const openProject = (e) =>{
         e.preventDefault()
         const currentId = e.currentTarget.dataset.id;
-        navigate("/project", {state: {projectId: currentId}})
+        onSelectProject(currentId)
+        // navigate("/project", {state: {projectId: currentId}})
     }
 
     return (
