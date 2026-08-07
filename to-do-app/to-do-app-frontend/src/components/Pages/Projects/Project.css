@@ -50,7 +50,7 @@
     cursor: pointer;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 7px;
 
     /* position relative so absolutely-positioned footer (.due-date) anchors to card */
     position: relative;
