@@ -9,13 +9,34 @@ import { Link } from 'react-router-dom'
 import { faClipboardCheck } from '@fortawesome/free-solid-svg-icons'
 
 
-const HomePage = ({ tasks, setTasks}) => {
+const HomePage = ({ tasks, setTasks }) => {
     // const location = useLocation()
     // const { message, name } = location.state || {}
     // const [user, setUser] = useState([])
     // const [random, setRandom] = useState(0)
     // const [loading, setLoading] = useState(false)
     const [activeFilter, setActiveFilter] = useState('')
+
+
+    const now = new Date()
+    const todaysDate = now.toDateString()
+
+    // Set start of today (00:00:00.000)
+    const startOfToday = new Date(now);
+    startOfToday.setHours(0, 0, 0, 0);
+
+    // Set end of today (23:59:59.999)
+    const endOfToday = new Date(now);
+    endOfToday.setHours(23, 59, 59, 999);
+
+    // Filter tasks between start and end of today
+    const todayTasks = tasks.filter(task => {
+        const dueDate = new Date(task.due_date);
+        // console.log(startOfToday+ "this", endOfToday + "that", dueDate + "middle")
+        return dueDate >= startOfToday && dueDate <= endOfToday;
+    });
+
+    console.log(todayTasks)
 
 
     // useEffect(() => {
@@ -33,11 +54,7 @@ const HomePage = ({ tasks, setTasks}) => {
     //     fetchUserInfo()
     // }, [])
 
-    const now = new Date()
-    const todaysDate = now.toDateString()
 
-    const endOfToday = new Date();
-    endOfToday.setHours(23, 59, 59, 999);
 
 
 
@@ -118,7 +135,7 @@ const HomePage = ({ tasks, setTasks}) => {
                             <div className="no-tasks">
                                 <FontAwesomeIcon className='clipboard-icon' icon={faClipboardCheck} />
                                 <p>No pending tasks</p>
-                                </div>
+                            </div>
                         )}
 
                         {pendingTasks.map((task) => {
